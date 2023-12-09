@@ -1,0 +1,28 @@
+{
+  "name": "stylelint-define-config",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "stylelint": ">=16.0.0"
+  },
+  "dependencies": {
+    "csstype": "^3.1.3"
+  },
+  "devDependencies": {
+    "@pengzhanbo/eslint-config": "^1.3.1",
+    "@types/node": "^20.10.4",
+    "eslint": "^8.55.0",
+    "stylelint": "^16.0.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}
