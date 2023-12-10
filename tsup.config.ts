@@ -1,7 +1,6 @@
-import type { Options } from 'tsup'
 import { defineConfig } from 'tsup'
 
-const baseOptions: Options = {
+export default defineConfig({
   entry: ['src/index.ts'],
   outDir: 'dist',
   clean: true,
@@ -9,9 +8,5 @@ const baseOptions: Options = {
   minify: true,
   sourcemap: false,
   splitting: true,
-}
-
-export default defineConfig([
-  { ...baseOptions, format: 'esm', dts: true },
-  { ...baseOptions, format: 'cjs', dts: false },
-])
+  dts: true,
+})

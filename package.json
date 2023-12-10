@@ -1,15 +1,54 @@
 {
   "name": "stylelint-define-config",
   "type": "module",
-  "version": "1.0.0",
-  "description": "",
-  "author": "",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.11.0",
+  "description": "Provide a defineConfig function for stylelint.config.js files",
+  "author": "pengzhanbo <https://github.com/pengzhanbo>",
   "license": "MIT",
-  "keywords": [],
-  "main": "index.js",
+  "homepage": "https://github.com/stylelint-types/stylelint-define-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stylelint-types/stylelint-define-config.git"
+  },
+  "bugs": "https://github.com/stylelint-types/stylelint-define-config/issues",
+  "keywords": [
+    "config",
+    "configuration",
+    "define-config",
+    "stylelint-config",
+    "stylelint",
+    "stylelintconfig",
+    "typed",
+    "typescript"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0",
+    "pnpm": ">=8.6.0"
+  },
   "scripts": {
-    "build": "tsup",
-    "lint": "eslint ."
+    "build": "tsup-node",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "stylelint": ">=16.0.0"
