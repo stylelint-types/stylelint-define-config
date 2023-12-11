@@ -6,6 +6,7 @@
     "idents",
     "SMACSS",
     "stylelintconfig",
+    "Unprefix",
     "unprefixed",
     "Unspaced",
     "vmax",
