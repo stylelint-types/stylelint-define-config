@@ -28,7 +28,7 @@ export interface SecondaryOptions {
   message?: string | ((...args: any[]) => string)
 }
 
-export type RuleConfig<T, S extends object = object>
+export type RuleConfig<T = any, S extends object = object>
   = null
   | undefined
   | NonNullable<T>

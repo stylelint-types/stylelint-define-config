@@ -1,8 +1,10 @@
-export type SelectorAttributeOperator = '=' | '~=' | '|=' | '^=' | '$=' | '*='
+import type { LiteralUnion } from '../utils'
 
-export type SelectorCombinator = ' ' | '>' | '+' | '~' | '||' | '|' | ','
+export type SelectorAttributeOperator = LiteralUnion<'=' | '~=' | '|=' | '^=' | '$=' | '*='>
 
-export type SelectorPseudoClass =
+export type SelectorCombinator = LiteralUnion<' ' | '>' | '+' | '~' | '||' | '|' | ','>
+
+export type SelectorPseudoClass = LiteralUnion<
   | 'active' | 'any-link' | 'autofill' | 'buffering' | 'blank' | 'checked'
   | 'current' | 'default' | 'defined' | 'dir' | 'disabled' | 'empty'
   | 'enabled' | 'first' | 'first-child' | 'first-of-type' | 'focus' | 'focus-visible'
@@ -14,8 +16,10 @@ export type SelectorPseudoClass =
   | 'placeholder-shown' | 'playing' | 'popover-open' | 'ready-only' | 'read-write'
   | 'required' | 'right' | 'root' | 'scope' | 'seeking' | 'stalled' | 'target' | 'target-within'
   | 'user-invalid' | 'user-valid' | 'valid' | 'visited' | 'volume-locked' | 'where'
+>
 
-export type SelectorPseudoElement =
+export type SelectorPseudoElement = LiteralUnion<
   | 'before' | 'after' | 'backdrop' | 'cue' | 'cue-region' | 'file-selector-button'
   | 'first-letter' | 'first-line' | 'highlight' | 'marker' | 'part' | 'placeholder'
   | 'selection' | 'slotted'
+>

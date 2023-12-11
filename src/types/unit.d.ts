@@ -1,3 +1,5 @@
+import type { LiteralUnion } from '../utils'
+
 export type RelativeUnit = 'em' | 'rem' | 'vw' | 'vh' | 'vmin' | 'vmax' | 'ex' | 'cap' | 'ch' | 'ic' | 'lh' | 'rlh' | 'vi' | 'vb'
 
 export type AbsoluteUnit = 'px' | 'pt' | 'cm' | 'mm' | 'Q' | 'in' | 'pc'
@@ -14,4 +16,4 @@ export type ResolutionUnit = 'dpi' | 'dpcm' | 'dppx'
 
 export type CustomUnit = 'rpx'
 
-export type Unit = RelativeUnit | AbsoluteUnit | AngleUnit | PercentUnit | TimeUnit | FrequencyUnit | ResolutionUnit | CustomUnit
+export type Unit = LiteralUnion<RelativeUnit | AbsoluteUnit | AngleUnit | PercentUnit | TimeUnit | FrequencyUnit | ResolutionUnit | CustomUnit>
