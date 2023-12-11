@@ -1,4 +1,4 @@
-import type { CustomSyntax, Plugin, Rule, Severity } from 'stylelint'
+import type { CustomSyntax, Rule, Severity } from 'stylelint'
 import type { Rules } from '../rules'
 import type { Plugins } from './plugins'
 import type { KnownCustomSyntax } from './customSyntax'
