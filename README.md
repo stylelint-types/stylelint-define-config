@@ -1,4 +1,4 @@
-## stylelint-define-config
+# stylelint-define-config
 
 Provide a `defineConfig` function for `stylelint.config.js`.
 
@@ -44,6 +44,44 @@ Improve your stylelint configuration experience with:
 ![](./static/rule.png)
 
 ![](./static/secondary.png)
+
+## Community Plugins
+
+- [@stylelint-types/stylelint-scss](https://www.npmjs.com/org/stylelint-types/stylelint-scss)
+
+## Want to support your own plugin?
+
+:warning: **This feature is very new and requires the support of the respective plugin owners**
+
+Add a `declare module` to your plugin package like this:
+
+```ts
+declare module 'stylelint-define-config' {
+  export interface CustomRuleOptions {
+    /**
+     * Require or disallow a newline after the closing brace of `@else` statements.
+     *
+     * @see [at-else-closing-brace-newline-after](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/at-else-closing-brace-space-after)
+     */
+    'scss/at-else-closing-brace-newline-after': AtElseClosingBraceNewlineAfterOptions
+
+    // ... more Rules
+  }
+}
+```
+```ts
+import { RuleConfig } from 'stylelint-define-config'
+
+export type AtElseClosingBraceNewlineAfterOptions = RuleConfig<'always-last-in-chain', {
+  disableFix?: boolean
+}>
+```
+
+There are other interfaces that can be extended.
+
+- `CustomExtends`
+- `CustomPlugins`
+- `CustomSyntax`
 
 ## LICENSE
 
