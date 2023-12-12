@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/stylelint-types/stylelint-define-config/compare/v1.0.0...v1.0.1) (2023-12-12)
+
+
+### Performance Improvements
+
+* update `RuleConfig` ([484b6bd](https://github.com/stylelint-types/stylelint-define-config/commit/484b6bd4b72319a012cd50e6d6be8192559ee863))
+
+
+
 # 1.0.0 (2023-12-11)
 
 
