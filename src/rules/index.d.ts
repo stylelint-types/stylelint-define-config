@@ -33,4 +33,4 @@ type CustomRules = {
 export interface Rules extends
   StyleLintRules,
   CustomRules,
-  Record<string, RuleConfig> {}
+  Record<string, RuleConfig<any>> {}

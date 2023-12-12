@@ -186,4 +186,4 @@ export interface StylelintConfig {
   rules?: Partial<Rules>
 }
 
-export { CustomSyntax, Severity }
+export { Severity }
