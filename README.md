@@ -47,11 +47,11 @@ Improve your stylelint configuration experience with:
 
 ## Community Plugins
 
-- [@stylelint-types/stylelint-scss](https://www.npmjs.com/org/stylelint-types/stylelint-scss)
-- [@stylelint-types/stylelint-stylistic](https://www.npmjs.com/org/stylelint-types/stylelint-stylistic)
-- [@stylelint-types/stylelint-scales](https://www.npmjs.com/org/stylelint-types/stylelint-scales)
-- [@stylelint-types/stylelint-order](https://www.npmjs.com/org/stylelint-types/stylelint-order)
-- [@stylelint-types/stylelint-stylus](https://www.npmjs.com/org/stylelint-types/stylelint-stylus)
+- [@stylelint-types/stylelint-scss](https://github.com/stylelint-types/stylelint-scss)
+- [@stylelint-types/stylelint-stylistic](https://github.com/stylelint-types/stylelint-stylistic)
+- [@stylelint-types/stylelint-scales](https://github.com/stylelint-types/stylelint-scales)
+- [@stylelint-types/stylelint-order](https://github.com/stylelint-types/stylelint-order)
+- [@stylelint-types/stylelint-stylus](https://github.com/stylelint-types/stylelint-stylus)
 
 ## Want to support your own plugin?
 
