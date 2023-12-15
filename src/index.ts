@@ -9,7 +9,7 @@ export type * from './utils'
 
 export type { CustomSyntax } from './config/customSyntax'
 export type { CustomPlugins } from './config/plugins'
-export type { CustomRuleOptions } from './rules'
+export type { CustomRuleOptions, Rules } from './rules'
 export type { CustomExtends } from './config/extends'
 
 export default defineConfig
