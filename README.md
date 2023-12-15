@@ -1,6 +1,15 @@
 # stylelint-define-config
 
-Provide a `defineConfig` function for `stylelint.config.js`.
+<p align="center">
+  <img alt="Static Badge" src="https://img.shields.io/badge/120%2B-blue?style=flat-square&label=Stylelint%20Rules&labelColor=%23096">
+  <a href="https://www.npmjs.com/package/stylelint-define-config"><img alt="npm" src="https://img.shields.io/npm/v/stylelint-define-config?style=flat-square"></a>
+  <img alt="npm peer dependency version" src="https://img.shields.io/npm/dependency-version/stylelint-define-config/peer/stylelint?style=flat-square">
+  <img alt="npm" src="https://img.shields.io/npm/dt/stylelint-define-config?style=flat-square">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/stylelint-types/stylelint-define-config?style=flat-square">
+</p>
+
+<p align="center">Provide a <code>defineConfig</code> function for <code>stylelint.config.js</code>.</p>
+
 
 ## Install
 
