@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/stylelint-types/stylelint-define-config/compare/v1.0.1...v1.0.2) (2023-12-15)
+
+
+### Performance Improvements
+
+* export Rules types ([9be13fa](https://github.com/stylelint-types/stylelint-define-config/commit/9be13fae6912456b5af3f5cf865b98040303848a))
+
+
+
 ## [1.0.1](https://github.com/stylelint-types/stylelint-define-config/compare/v1.0.0...v1.0.1) (2023-12-12)
 
 
