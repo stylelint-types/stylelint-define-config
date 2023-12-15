@@ -49,6 +49,7 @@ Improve your stylelint configuration experience with:
 
 - [@stylelint-types/stylelint-scss](https://github.com/stylelint-types/stylelint-scss)
 - [@stylelint-types/stylelint-stylistic](https://github.com/stylelint-types/stylelint-stylistic)
+- - [@stylelint-types/stylelint-codeguide](https://github.com/stylelint-types/stylelint-codeguide)
 - [@stylelint-types/stylelint-scales](https://github.com/stylelint-types/stylelint-scales)
 - [@stylelint-types/stylelint-order](https://github.com/stylelint-types/stylelint-order)
 - [@stylelint-types/stylelint-stylus](https://github.com/stylelint-types/stylelint-stylus)
