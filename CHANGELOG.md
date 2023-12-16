@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.0.2...v1.1.0) (2023-12-16)
+
+
+### Features
+
+* add rule desc ([afb544e](https://github.com/stylelint-types/stylelint-define-config/commit/afb544e94f9d04fd4c1ba647a65b58729827b71b))
+
+
+
 ## [1.0.2](https://github.com/stylelint-types/stylelint-define-config/compare/v1.0.1...v1.0.2) (2023-12-15)
 
 
