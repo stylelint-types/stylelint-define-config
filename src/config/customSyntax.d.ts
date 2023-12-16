@@ -1,5 +1,20 @@
 import type { LiteralUnion } from '../utils'
 
+/**
+ * This is a special exported interface for other packages to declare
+ * additional types that should bail out for stylelint postcss custom syntax. For example
+ * `stylelint-scss` can declare it like so in its `d.ts`:
+ *
+ * ```ts
+ * declare module 'stylelint-define-config' {
+ *   export interface CustomSyntax {
+ *     'postcss-scss': void;
+ *
+ *     // ... more syntax
+ *   }
+ * }
+ * ```
+ */
 export interface CustomSyntax {}
 
 export type KnownCustomSyntax = LiteralUnion<

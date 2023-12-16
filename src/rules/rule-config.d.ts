@@ -28,6 +28,11 @@ export interface SecondaryOptions {
   message?: string | ((...args: any[]) => string)
 }
 
+/**
+ * declaration rule config.
+ *
+ * `RuleConfig<PrimaryOptions, SecondaryOptions>`
+ */
 export type RuleConfig<T, S extends Record<string, any> = Record<string, any>>
   = null
   | undefined

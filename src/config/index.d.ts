@@ -8,6 +8,8 @@ export interface PluginFunctions {
   [pluginName: string]: Rule
 }
 
+export type Extends = KnownExtends | StylelintConfig
+
 /**
  * specify what subset of files to apply a configuration to.
  */
@@ -70,6 +72,13 @@ export interface StylelintConfig {
 
   /**
    * Pattern of files to ignore (in addition to those in `.stylelintignore` ).
+   * @see [Configure ignorePatterns](https://stylelint.io/user-guide/configure#ignorefiles)
+   * @example
+   * ```json
+   * {
+   *   "ignorePatterns": ["**\/*.js"]
+   * }
+   * ```
    */
   ignorePatterns?: string
 
@@ -83,7 +92,18 @@ export interface StylelintConfig {
   ignoreDisables?: boolean
 
   /**
-   * You can set what configuration comments like `\/* stylelint-disable *\/` start with.This can be useful if you use multiple instances of Stylelint with different configurations.
+   * You can set what configuration comments like `\/* stylelint-disable *\/` start with.
+   * This can be useful if you use multiple instances of Stylelint with different configurations.
+   *
+   * For example, to have an instance of Stylelint disable rules with \/* stylelint-foo-instance-disable *\/ instead of the default \/* stylelint-disable *\/:
+   *
+   * @see [configuration comment](https://stylelint.io/user-guide/configure#configurationcomment)
+   * @example
+   * ```json
+   * {
+   *   "configurationComment": "stylelint-foo-instance"
+   * }
+   * ```
    */
   configurationComment?: string
 
@@ -139,12 +159,18 @@ export interface StylelintConfig {
    * }
    * ```
    */
-  extends?: KnownExtends | KnownExtends[]
+  extends?: Extends | Extends[]
   /**
    * Plugins are custom rules or sets of custom rules built to support methodologies,
    * toolsets, non-standard CSS features, or very specific use cases.
    *
    * @see [Configure plugins](https://stylelint.io/user-guide/configure#plugins)
+   * @example
+   * ```json
+   * {
+   *   "plugins": ["stylelint-scss"],
+   * }
+   * ```
    */
   plugins?: Plugins
 

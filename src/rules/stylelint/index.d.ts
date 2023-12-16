@@ -132,21 +132,62 @@ export interface StyleLintRules {
   /**
    * Specify percentage or number notation for alpha-values.
    *
-   * ### Options:
+   * ```scss
+   * a { color: rgb(0 0 0 / 0.5) }
+   * //                     ^^^
+   * //                     This notation
+   * ```
+   *
+   * ### Primary Options:
    * - `"number"`: Alpha-values must always use the number notation.
    * - `"percentage"`: Alpha-values must always use percentage notation.
    *
+   * ### Optional Secondary Options:
+   *
+   * - `exceptProperties`: Reverse the primary option for matching properties.
+   *
    * @see [alpha-value-notation](https://stylelint.io/user-guide/rules/alpha-value-notation)
+   * @example
+   * ```json
+   * {
+   *   "alpha-value-notation": ["number", { "exceptProperties": ["opacity"] }]
+   * }
+   * ```
    */
   'alpha-value-notation': AlphaValueNotationOptions
   /**
    * Disallow unknown annotations.
+   *
+   *
+   * ```scss
+   * a { color: green !important; }
+   * //               ^^^^^^^^^^
+   * //               This annotation
+   * ```
+   *
+   * This rule considers annotations defined in the CSS Specifications, up to and including Editor's Drafts, to be known.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreAnnotations`
    *
    * @see [annotation-no-unknown](https://stylelint.io/user-guide/rules/annotation-no-unknown)
    */
   'annotation-no-unknown': AnnotationNoUnknownOptions
   /**
    * Specify a list of allowed at-rules.
+   *
+   * >```scss
+   * >@keyframes name {}
+   * >//^^^^^^^^
+   * >//At-rules like this
+   * >```
+   *
+   * ### Primary Options:
+   * - `array | string`
    *
    * @see [at-rule-allowed-list](https://stylelint.io/user-guide/rules/at-rule-allowed-list)
    */
@@ -155,6 +196,14 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed at-rules.
    *
+   * >```scss
+   * >@keyframes name {}
+   * >//^^^^^^^^
+   * >//At-rules like this
+   * >```
+   * ### Primary Options:
+   * - `array | string`
+   *
    * @see [at-rule-disallowed-list](https://stylelint.io/user-guide/rules/at-rule-disallowed-list)
    */
   'at-rule-disallowed-list': AtRuleDisallowedListOptions
@@ -162,13 +211,24 @@ export interface StyleLintRules {
   /**
    * Require or disallow an empty line before at-rules.
    *
+   * >```scss
+   * >a {}
+   * >          // ← This line
+   * >@media {}
+   * >```
+   *
    * This rule ignores:
    * - at-rules that are the very first node in the source
    * - `@import` in Less.
    *
-   * ### Options:
+   * ### Primary Options:
    * - `"always"`: There must always be an empty line before at-rules.
    * - `"never"`: There must never be an empty line before at-rules.
+   *
+   * ### Optional Secondary Options:
+   * - `except`
+   * - `ignore`
+   * - `ignoreAtRules`
    *
    * @see [at-rule-empty-line-before](https://stylelint.io/user-guide/rules/at-rule-empty-line-before)
    */
@@ -177,8 +237,20 @@ export interface StyleLintRules {
   /**
    * Disallow unknown at-rules.
    *
+   * >```scss
+   * >@unknown (max-width: 960px) {}
+   * >//^^^^^^
+   * >//At-rules like this
+   * >```
+   *
    * This rule considers at-rules defined in the CSS Specifications,
    * up to and including Editor's Drafts, to be known.
+   *
+   * ### Primary Options:
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreAtRules`
    *
    * @see [at-rule-no-unknown](https://stylelint.io/user-guide/rules/at-rule-no-unknown)
    */
@@ -186,6 +258,15 @@ export interface StyleLintRules {
 
   /**
    * Disallow vendor prefixes for at-rules.
+   *
+   * >```scss
+   * >@-webkit-keyframes { 0% { top: 0; } }
+   * >//^^^^^^
+   * >//This prefix
+   * >```
+   *
+   * ### Primary Options:
+   * `true`
    *
    * This rule ignores non-standard vendor-prefixed at-rules that aren't handled by
    * {@link https://github.com/postcss/autoprefixer Autoprefixer}.
@@ -197,7 +278,7 @@ export interface StyleLintRules {
   /**
    * Specify a list of required properties for an at-rule.
    *
-   * ### Options
+   * ### Primary Options
    * `object`: `{ "at-rule-name": ["array", "of", "properties"] |"property" }`
    *
    * @see [at-rule-property-required-list](https://stylelint.io/user-guide/rules/at-rule-property-required-list)
@@ -207,12 +288,27 @@ export interface StyleLintRules {
   /**
    * Disallow empty blocks.
    *
+   * ```scss
+   * a {  }
+   * // ^^
+   * // Blocks like this
+   * ```
+   *
+   * ### Primary Options:
+   * `true`
+   *
    * @see [block-no-empty](https://stylelint.io/user-guide/rules/block-no-empty)
    */
   'block-no-empty': BlockNoEmptyOptions
 
   /**
    * Specify modern or legacy notation for color-functions.
+   *
+   * ```scss
+   * a { color: rgb(0 0 0 / 0.2) }
+   * //         ^^^
+   * //         This notation
+   * ```
    *
    * Modern color-functions use a comma-free syntax because functions in CSS are used to group/name a syntax chunk.
    * They should work by the same rules that CSS grammar does in general:
@@ -221,9 +317,12 @@ export interface StyleLintRules {
    * For legacy reasons, `rgb()` and `hsl()` also supports an alternate syntax that separates all of its arguments with commas.
    * Also for legacy reasons, the `rgba()` and `hsla()` functions exist using the same comma-based syntax.
    *
-   * ### Options
+   * ### Primary Options
    * - `"modern"`: Applicable color-functions must always use modern notation.
    * - `"legacy"`: Applicable color-functions must always use the legacy notation.
+   *
+   * #### Optional Secondary Options
+   * - `ignore`
    *
    * @see [color-function-notation](https://stylelint.io/user-guide/rules/color-function-notation)
    */
@@ -232,7 +331,13 @@ export interface StyleLintRules {
   /**
    * Require or disallow alpha channel for hex colors.
    *
-   * ### Options
+   * ```scss
+   * a { color: #fffa }
+   * //             ^
+   * //           This alpha channel
+   * ```
+   *
+   * ### Primary Options
    * - `"always"`
    * - `"never"`
    *
@@ -243,7 +348,13 @@ export interface StyleLintRules {
   /**
    * Specify short or long notation for hex colors.
    *
-   * ### Options
+   * ```scss
+   * a { color: #fff }
+   * //         ^^^^
+   * //         This hex color
+   * ```
+   *
+   * ### Primary Options
    * - `"short"`
    * - `"long"`
    *
@@ -254,13 +365,23 @@ export interface StyleLintRules {
   /**
    * Require (where possible) or disallow named colors.
    *
+   * ```scss
+   * a { color: black }
+   * //         ^^^^^
+   * //         This named color
+   * ```
+   *
    * This rule ignores `$sass` and `@less` variable syntaxes.
    *
-   * ### Options
+   * ### Primary Options
    * - `"always-where-possible"`: Colors must always, where possible, be named.
    *   This will complain if a hex (3, 4, 6 and 8 digit), `rgb()`, `rgba()`, `hsl()`,
    *   `hsla()`, `hwb()` or `gray()` color can be represented as a named color.
    * - `"never"`: Colors must never be named.
+   *
+   * ### Optional Secondary Options
+   * - `ignore`
+   * - `ignoreProperties`
    *
    * @see [color-named](https://stylelint.io/user-guide/rules/color-named)
    */
@@ -269,12 +390,30 @@ export interface StyleLintRules {
   /**
    * Disallow hex colors.
    *
+   * ```scss
+   * a { color: #333 }
+   * //         ^^^^
+   * //         This hex color
+   * ```
+   *
+   * ### Primary Options
+   * `true`
+   *
    * @see [color-no-hex](https://stylelint.io/user-guide/rules/color-no-hex)
    */
   'color-no-hex': ColorNoHexOptions
 
   /**
    * Disallow invalid hex colors.
+   *
+   * ```scss
+   * a { color: #y3 }
+   * //         ^^^
+   * //         This hex color
+   * ```
+   *
+   * ### Primary Options
+   * `true`
    *
    * Longhand hex colors can be either 6 or 8 (with alpha channel) hexadecimal characters.
    * And their shorthand variants are 3 and 4 characters respectively.
@@ -286,15 +425,29 @@ export interface StyleLintRules {
   /**
    * Require or disallow an empty line before comments.
    *
+   * ```scss
+   * a {}
+   *                 // ←
+   * \/* comment *\/ // ↑
+   * //                 ↑
+   * //              This line
+   * ```
+   *
    * This rule ignores:
    * - comments that are the very first node in the source
    * - shared-line comments
    * - single-line comments with `//` (when you're using a custom syntax that supports them)
    * - comments within selector and value lists
    *
-   * ### Options:
+   * ### Primary Options
    * - `"always"`: There must always be an empty line before comments.
    * - `"never"`: There must never be an empty line before comments.
+   *
+   * ### Optional Secondary Options
+   *
+   * - `except`
+   * - `ignore`
+   * - `ignoreComments`
    *
    * @see [comment-empty-line-before](https://stylelint.io/user-guide/rules/comment-empty-line-before)
    */
@@ -303,13 +456,16 @@ export interface StyleLintRules {
   /**
    * Disallow empty comments.
    *
+   * ```scss
+   * \/*   *\/
+   * // ^^^
+   * // Comments like this
+   * ```
+   *
    * This rule ignores SCSS-like comments.
    *
-   * ### Options:
-   *
-   * `RegExp | string`
-   *
-   * A string will be translated into a RegExp like so `new RegExp(yourString)` — so be sure to escape properly.
+   * ### Primary Options
+   * `true`
    *
    * @see [comment-no-empty](https://stylelint.io/user-guide/rules/comment-no-empty)
    */
@@ -318,6 +474,18 @@ export interface StyleLintRules {
   /**
    * Specify a pattern for comments.
    *
+   * ```scss
+   * \/*  comment *\/
+   *      ^^^^^^^
+   *      The pattern of this
+   * ```
+   *
+   * ### Primary Options
+   *
+   * `RegExp | string`
+   *
+   * A string will be translated into a RegExp like so `new RegExp(yourString)` — so be sure to escape properly.
+   *
    * @see [comment-pattern](https://stylelint.io/user-guide/rules/comment-pattern)
    */
   'comment-pattern': CommentPatternOptions
@@ -325,9 +493,15 @@ export interface StyleLintRules {
   /**
    * Require or disallow whitespace on the inside of comment markers.
    *
+   * ```scss
+   * \/* comment *\/
+   *    ^       ^
+   *    The space inside these two markers
+   * ```
+   *
    * Any number of asterisks are allowed at the beginning or end of the comment.
    *
-   * ### Options
+   * ### Primary Options
    * - `"always"`: There must always be whitespace inside the markers.
    * - `"never"`: There must never be whitespace on the inside the markers.
    *
@@ -338,6 +512,15 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed words within comments.
    *
+   * ```scss
+   * \/* words within comments *\/
+   * //  ^^^^^ ^^^^^^ ^^^^^^^^
+   * //  These three words
+   * ```
+   *
+   * ### Primary Option
+   * `(string | RegExp)[]`
+   *
    * @see [comment-word-disallowed-list](https://stylelint.io/user-guide/rules/comment-word-disallowed-list)
    */
   'comment-word-disallowed-list': CommentWordDisallowedListOptions
@@ -345,8 +528,13 @@ export interface StyleLintRules {
   /**
    * Specify a pattern for custom media query names.
    *
-   * ### Options:
+   * >```scss
+   * >@custom-media --foo (max-width: 30em);
+   * >//            ^^^^^
+   * >//            The pattern of this
+   * >```
    *
+   * ### Primary Options
    * `RegExp | string`
    *
    * A string will be translated into a RegExp like so `new RegExp(yourString)` — so be sure to escape properly.
@@ -358,9 +546,21 @@ export interface StyleLintRules {
   /**
    * Require or disallow an empty line before custom properties.
    *
-   * ### Options
+   * ```scss
+   * a {
+   *   top: 10px;
+   *                  // This line
+   *   --color: pink;
+   * }
+   * ```
+   *
+   * ### Primary Options
    * - `"always"`
    * - `"never"`
+   *
+   * ## Optional Secondary Options
+   * - `except`
+   * - `ignore`
    *
    * @see [custom-property-empty-line-before](https://stylelint.io/user-guide/rules/custom-property-empty-line-before)
    */
@@ -368,6 +568,13 @@ export interface StyleLintRules {
 
   /**
    * Disallow missing var function for custom properties.
+   *
+   * ```scss
+   * :root { --foo: red; }
+   *  a { color: --foo; }
+   * //          ^^^^^
+   * //          This custom property
+   * ```
    *
    * This rule only reports custom properties that are defined within the same source.
    *
@@ -378,7 +585,13 @@ export interface StyleLintRules {
   /**
    * Specify a pattern for custom properties.
    *
-   * ### Options:
+   * ```scss
+   * a { --foo-: 1px; }
+   * //  ^^^^^^
+   * //  The pattern of this
+   * ```
+   *
+   * ### Primary Options:
    *
    * `RegExp | string`
    *
@@ -391,7 +604,16 @@ export interface StyleLintRules {
   /**
    * Disallow duplicate custom properties within declaration blocks.
    *
+   * ```scss
+   * a { --custom-property: pink; --custom-property: orange; }
+   * //  ^^^^^^^^^^^^^^^^^        ^^^^^^^^^^^^^^^^^
+   * //  These duplicated custom properties
+   * ```
+   *
    * This rule is case-sensitive.
+   *
+   * ### Primary Options
+   * `true`
    *
    * @see [declaration-block-no-duplicate-custom-properties](https://stylelint.io/user-guide/rules/declaration-block-no-duplicate-custom-properties)
    */
@@ -400,7 +622,20 @@ export interface StyleLintRules {
   /**
    * Disallow duplicate properties within declaration blocks.
    *
+   * ```scss
+   * a { color: pink; color: orange; }
+   * //  ^^^^^        ^^^^^
+   * // These duplicated properties
+   * ```
+   *
    * This rule ignores variables (`$sass`, `@less`, `--custom-property`).
+   *
+   * ### Primary Options
+   * `true`
+   *
+   * ### Optional Secondary Options
+   * - `ignore`
+   * - `ignoreProperties`
    *
    * @see [declaration-block-no-duplicate-properties](https://stylelint.io/user-guide/rules/declaration-block-no-duplicate-properties)
    */
@@ -409,8 +644,28 @@ export interface StyleLintRules {
   /**
    * Disallow redundant longhand properties within declaration-block.
    *
+   * ```scss
+   * a {
+   *   padding-top: 1px;    // ←
+   *   padding-right: 2px;  // ←
+   *   padding-bottom: 3px; // ←
+   *   padding-left: 4px;   // ←
+   * //                    These longhand properties
+   * }
+   * ```
+   * The longhand properties in the example above can be more concisely written as:
+   * ```
+   * a { padding: 1px 2px 3px 4px; }
+   * ```
+   *
    * This rule will only complain if you've used the longhand equivalent of all the properties
    * that the shorthand will set and if their values are not {@link https://www.w3.org/TR/css-values/#common-keywords CSS-wide keywords} like initial, inherit etc.
+   *
+   * ### Primary Options
+   * `true`
+   *
+   * ### Optional Secondary Options
+   * - `ignoreShorthands`
    *
    * @see [declaration-block-no-redundant-longhand-properties](https://stylelint.io/user-guide/rules/declaration-block-no-redundant-longhand-properties)
    */
@@ -419,8 +674,17 @@ export interface StyleLintRules {
   /**
    * Disallow shorthand properties that override related longhand properties.
    *
+   * ```scss
+   * a { background-repeat: repeat; background: green; }
+   * //                             ^^^^^^^^^^
+   * //     This overrides the longhand property before it
+   * ```
+   *
    * In almost every case, this is just an authorial oversight. For more about this behavior,
    * see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties MDN's documentation of shorthand properties}.
+   *
+   * ### Primary Options
+   * `true`
    *
    * @see [declaration-block-no-shorthand-property-overrides](https://stylelint.io/user-guide/rules/declaration-block-no-shorthand-property-overrides)
    */
@@ -429,7 +693,13 @@ export interface StyleLintRules {
   /**
    * Limit the number of declarations within a single-line declaration block.
    *
-   * ### Options:
+   * ```scss
+   * a { color: pink; top: 0; }
+   * //  ^            ^
+   * //  The number of these declarations
+   * ```
+   *
+   * ### Primary Options:
    *
    * `int`: Maximum number of declarations allowed.
    * @see [declaration-block-single-line-max-declarations](https://stylelint.io/user-guide/rules/declaration-block-single-line-max-declarations)
@@ -439,13 +709,25 @@ export interface StyleLintRules {
   /**
    * Require or disallow an empty line before declarations.
    *
+   * ```scss
+   * a {
+   *   --foo: pink;
+   * //               ← This line
+   *   top: 15px;
+   * }
+   * ```
+   *
    * This rule only applies to standard property declarations.
    * Use the {@link https://github.com/stylelint/stylelint/blob/main/lib/rules/custom-property-empty-line-before/README.md custom-property-empty-line-before}
    * rule for custom property declarations.
    *
-   * ### Options
+   * ### Primary Options
    * - `"always"`
    * - `"never"`
+   *
+   * ### Optional Secondary Options
+   * - `except`
+   * - `ignore`
    *
    * @see [declaration-empty-line-before](https://stylelint.io/user-guide/rules/declaration-empty-line-before)
    */
@@ -454,9 +736,18 @@ export interface StyleLintRules {
   /**
    * Disallow `!important` within declarations.
    *
+   * ```scss
+   * a { color: pink !important; }
+   * //              ^^^^^^^^^^
+   * //           This `!important`
+   * ```
+   *
    * If you always want `!important` in your declarations, e.g.
    * if you're writing {@link https://userstyles.org/ user styles}, you can safely add them using
    * {@link https://github.com/crimx/postcss-safe-important postcss-safe-important}.
+   *
+   * ### Primary Options
+   * `true`
    *
    * @see [declaration-no-important](https://stylelint.io/user-guide/rules/declaration-no-important)
    */
@@ -465,9 +756,15 @@ export interface StyleLintRules {
   /**
    * Limit the number of values for a list of properties within declarations.
    *
-   * ### Options:
+   * ### Primary Options:
    *
    * `object`: `{ "unprefixed-property-name": int }`
+   * ```json
+   * {
+   *   "border": 2,
+   *   "/^margin/": 2,
+   * }
+   * ```
    *
    * If a property name is surrounded with `"/"` (e.g. `"/^margin/"`),
    * it is interpreted as a regular expression. This allows, for example,
@@ -480,9 +777,25 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed property and unit pairs within declarations.
    *
-   * ### Options
+   * ```scss
+   * a { width: 100px; }
+   * //  ^^^^^     ^^
+   * // These properties and these units
+   * ```
+   *
+   * ### Primary Options
    *
    * `object`: `{ "unprefixed-property-name": ["array", "of", "units"]|"unit" }`
+   *
+   * ```json
+   * {
+   *   "font-size": ["em", "px"],
+   *   "/^animation/": "s",
+   * }
+   * ```
+   *
+   * ### Optional Secondary Options
+   * - `ignore`
    *
    * If a property name is surrounded with `"/"` (e.g. `"/^animation/"`),
    * it is interpreted as a regular expression. This allows, for example,
@@ -495,9 +808,22 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed property and unit pairs within declarations.
    *
-   * ### Options
+   * ```scss
+   * a { width: 100px; }
+   * //  ^^^^^     ^^
+   * //  These properties and these units
+   * ```
+   *
+   * ### Primary Options
    *
    * `object`: `{ "unprefixed-property-name": ["array", "of", "units"]|"unit" }`
+   *
+   * ```json
+   * {
+   *   "font-size": ["em", "px"],
+   *   "/^animation/": "s",
+   * }
+   * ```
    *
    * If a property name is surrounded with `"/"` (e.g. `"/^animation/"`),
    * it is interpreted as a regular expression. This allows, for example,
@@ -510,9 +836,22 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed property and value pairs within declarations.
    *
-   * ### Options:
+   * ```scss
+   * a { text-transform: uppercase; }
+   * //  ^^^^^^^^^^^^^^  ^^^^^^^^^
+   * //  These properties and these values
+   * ```
+   *
+   * ### Primary Options:
    *
    * `object`: `{ "unprefixed-property-name": ["array", "of", "values", "/regex/", /regex/] |"value" | "/regex/" | /regex/ }`
+   *
+   * ```json
+   * {
+   *   "transform": ["/scale/"],
+   *   "/color/": "/^green/"
+   * }
+   * ```
    *
    * If a property name is found in the object, only the listed property values are allowed.
    * This rule complains about all non-matching values.
@@ -538,9 +877,22 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed property and value pairs within declarations.
    *
-   * ### Options:
+   * ```scss
+   * a { text-transform: uppercase; }
+   * //  ^^^^^^^^^^^^^^  ^^^^^^^^^
+   * //  These properties and these values
+   * ```
+   *
+   * ### Primary Options:
    *
    * `object`: `{ "unprefixed-property-name": ["array", "of", "values", "/regex/", /regex/] |"value" | "/regex/" | /regex/ }`
+   *
+   * ```json
+   * {
+   *   "transform": ["/scale3d/", "/rotate3d/", "/translate3d/"],
+   *   "/^animation/": ["/ease/"]
+   * }
+   * ```
    *
    * If a property name is surrounded with` "/"` (e.g. `"/^animation/"`),
    * it is interpreted as a regular expression.
@@ -562,6 +914,12 @@ export interface StyleLintRules {
   /**
    * Disallow unknown values for properties within declarations.
    *
+   * ```scss
+   * a { top: unknown; }
+   * //  ^^^  ^^^^^^^
+   * //  property and value pairs like these
+   * ```
+   *
    * This rule considers values for properties defined within the CSS specifications to be known.
    * You can use the `propertiesSyntax` and `typesSyntax` secondary options to extend the syntax.
    *
@@ -578,6 +936,14 @@ export interface StyleLintRules {
    *
    * If duplicate problems are flagged, you can turn off the corresponding rule.
    *
+   * ### Primary Option
+   * `true`
+   *
+   * ### Optional Secondary Options
+   * - `ignoreProperties`
+   * - `propertiesSyntax`
+   * - `typesSyntax`
+   *
    * @see [declaration-property-value-no-unknown](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown)
    */
   'declaration-property-value-no-unknown': DeclarationPropertyValueNoUnknownOptions
@@ -585,11 +951,18 @@ export interface StyleLintRules {
   /**
    * Require or disallow quotes for font family names.
    *
+   * ```scss
+   * a { font-family: "Times New Roman", 'Ancient Runes', serif; }
+   * //               ^               ^  ^             ^
+   * //               These quotation marks and this one
+   * ```
+   *
    * This rule checks the `font` and `font-family` properties.
    *
    * This rule ignores `$sass`, `@less`, and `var(--custom-property)` variable syntaxes.
    *
-   * ### Options:
+   * ### Primary Options
+   *
    * - `"always-unless-keyword"`: Expect quotes around every font family name that is not a keyword.
    * - `"always-where-required"`: Expect quotes only when quotes are required according to the criteria above, and disallow quotes in all other cases.
    * - `"always-where-recommended"`: Expect quotes only when quotes are recommended according to the criteria above, and disallow quotes in all other cases. (This includes all cases where quotes are required, as well.)
@@ -601,9 +974,21 @@ export interface StyleLintRules {
   /**
    * Disallow duplicate names within font families.
    *
+   * ```scss
+   * a { font-family: serif, serif; }
+   * //               ^^^^^  ^^^^^
+   * //               These font family names
+   * ```
+   *
    * This rule checks the `font` and `font-family` properties.
    *
    * This rule ignores `$sass`, `@less`, and `var(--custom-property)` variable syntaxes.
+   *
+   * ### Primary Options
+   * `true`
+   *
+   * ### Optional Secondary Options
+   * - `ignoreFontFamilyNames`
    *
    * @see [font-family-no-duplicate-names](https://stylelint.io/user-guide/rules/font-family-no-duplicate-names)
    */
@@ -612,11 +997,23 @@ export interface StyleLintRules {
   /**
    * Disallow a missing generic family keyword within font families.
    *
+   * ```scss
+   * a { font-family: Arial, sans-serif; }
+   * //                      ^^^^^^^^^^
+   * //        An example of generic family name
+   * ```
+   *
    * The generic font family can be:
    * - placed anywhere in the font family list
    * - omitted if a keyword related to property inheritance or a system font is used
    *
    * This rule checks the font and font-family properties.
+   *
+   * ### Primary Options
+   * `true`
+   *
+   * ### Optional Secondary Options
+   * - `ignoreFontFamilies`
    *
    * @see [font-family-no-missing-generic-family-keyword](https://stylelint.io/user-guide/rules/font-family-no-missing-generic-family-keyword)
    */
@@ -625,11 +1022,24 @@ export interface StyleLintRules {
   /**
    * Require numeric or named (where possible) `font-weight` values.
    *
+   * ```scss
+   * a { font-weight: bold; }
+   * //               ^^^^
+   * a { font: italic small-caps 600 16px/3 cursive; }
+   * //                          ^^^
+   * \@font-face { font-weight: normal bold; }
+   * //                         ^^^^^^ ^^^^
+   * ```
+   *
    * This rule ignores `$sass`, `@less`, and `var(--custom-property)` variable syntaxes.
    *
-   * ### Options:
+   * ### Primary Options:
    * - `"numeric"`: `font-weight` values must always be numbers.
    * - `"named-where-possible"`: `font-weight` values must always be keywords when an appropriate keyword is available. This means that only `400` and `700` will be rejected, because those are the only numbers with keyword equivalents (`normal` and `bold`).
+   *
+   * ### Optional Secondary Options
+   *
+   * - `ignore`
    *
    * @see [font-weight-notation](https://stylelint.io/user-guide/rules/font-weight-notation)
    */
@@ -638,9 +1048,15 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed functions.
    *
-   * ### Options:
+   * ```scss
+   * a { transform: scale(1); }
+   * //             ^^^^^
+   * //             This function
+   * ```
    *
-   * `array|string|regex`: `["array", "of", "unprefixed", /functions/, "/regex/"]|"function"|"/regex/"|/regex/`
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * If a string is surrounded with `"/"` (e.g. `"/^rgb/"`), it is interpreted as a regular expression.
    *
@@ -651,19 +1067,34 @@ export interface StyleLintRules {
   /**
    * Disallow invalid unspaced operator within calc functions.
    *
+   * ```scss
+   * a { top: calc(1px + 2px); }
+   * //                ^
+   * //         The space around this operator
+   * ```
+   *
    * This rule checks that there is a single whitespace or a newline plus indentation
    * before the `+` or `-` operator, and a single whitespace or a newline after that operator.
    *
-   * @see [](https://stylelint.io/user-guide/rules/function-calc-no-unspaced-operator)
+   * ### Primary Options
+   * `true`
+   *
+   * @see [function-calc-no-unspaced-operator](https://stylelint.io/user-guide/rules/function-calc-no-unspaced-operator)
    */
   'function-calc-no-unspaced-operator': FunctionCalcNoUnspacedOperatorOptions
 
   /**
    * Specify a list of disallowed functions.
    *
-   * ### Options:
+   * ```scss
+   * a { transform: scale(1); }
+   * //             ^^^^^
+   * //      This function
+   * ```
    *
-   * `array|string|regex`: `["array", "of", "unprefixed", /functions/, "/regex/"]|"function"|"/regex/"|/regex/`
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * If a string is surrounded with `"/"` (e.g. `"/^rgb/"`), it is interpreted as a regular expression.
    *
@@ -674,11 +1105,20 @@ export interface StyleLintRules {
   /**
    * Disallow non-standard direction values for linear gradient functions.
    *
+   * ```scss
+   * .foo { background: linear-gradient(to top, #fff, #000); }
+   * //                                 ^^^^^^
+   * //     This (optional) first argument is the "direction"
+   * ```
+   *
    * A valid and standard direction value is one of the following:
    * - an angle
    * - `to` plus a side-or-corner (`to top`, `to bottom`, `to left`, `to right`; `to top right`, `to right top`, `to bottom left`, etc.)
    *
    * A common mistake (matching outdated non-standard syntax) is to use just a side-or-corner without the preceding `to`.
+   *
+   * ### Primary Options
+   * `true`
    *
    * @see [function-linear-gradient-no-nonstandard-direction](https://stylelint.io/user-guide/rules/function-linear-gradient-no-nonstandard-direction)
    */
@@ -686,12 +1126,20 @@ export interface StyleLintRules {
 
   /**
    * Specify lowercase or uppercase for function names.
+   * ```scss
+   * a { width: calc(5% - 10em); }
+   * //         ^^^^
+   * //      This function
+   * ```
    *
    * Camel case function names, e.g. `translateX`, are accounted for when the `lower` option is used.
    *
-   * ### Options:
+   * ### Primary Options:
    * - "lower"
    * - "upper"
+   *
+   * ### Optional Secondary Options
+   * -`ignoreFunctions`
    *
    * @see [function-name-case](https://stylelint.io/user-guide/rules/function-name-case)
    */
@@ -700,9 +1148,21 @@ export interface StyleLintRules {
   /**
    * Disallow unknown functions.
    *
+   * ```scss
+   * a { transform: unknown(1); }
+   * //             ^^^^^^^
+   * //            Functions like this
+   * ```
+   *
    * This rule considers functions defined in the CSS Specifications to be known.
    *
    * This rule ignores double-dashed custom functions, e.g. `--custom-function()`.
+   *
+   * ### Primary Options
+   * `true`
+   *
+   * ### Optional Secondary Options
+   * - `ignoreFunctions`
    *
    * @see [function-no-unknown](https://stylelint.io/user-guide/rules/function-no-unknown)
    */
@@ -711,10 +1171,19 @@ export interface StyleLintRules {
   /**
    * Disallow scheme-relative urls.
    *
+   * ```scss
+   * a { background-image: url('//www.google.com/file.jpg'); }
+   * //                         ^^
+   * //                 This scheme-relative url
+   * ```
+   *
    * A {@link https://url.spec.whatwg.org/#syntax-url-scheme-relative scheme-relative url}
    * is a url that begins with `//` followed by a host.
    *
    * This rule ignores url arguments that are variables (`$sass`, `@less`, `--custom-property`).
+   *
+   * ### Primary Options
+   * `true`
    *
    * @see [function-url-no-scheme-relative](https://stylelint.io/user-guide/rules/function-url-no-scheme-relative)
    */
@@ -723,9 +1192,18 @@ export interface StyleLintRules {
   /**
    * Require or disallow quotes for urls.
    *
-   * ### Options:
-   * - "always"
-   * - "never"
+   * ```scss
+   * a { background: url("x.jpg") }
+   * //                  ^     ^
+   * //                 These quotes
+   * ```
+   *
+   * ### Primary Options:
+   * - `"always"`: Urls must always be quoted.
+   * - `"never"`:  Urls must never be quoted.
+   *
+   * ### Optional Secondary Options
+   * - `except`
    *
    * @see [function-url-quotes](https://stylelint.io/user-guide/rules/function-url-quotes)
    */
@@ -734,11 +1212,21 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed URL schemes.
    *
+   * ```scss
+   * a { background-image: url('http://www.example.com/file.jpg'); }
+   * //                         ^^^^^
+   * //                        This URL scheme
+   * ```
+   *
    * A {@link https://url.spec.whatwg.org/#syntax-url-scheme URL scheme} consists of alphanumeric, `+`, `-`, and `.` characters. It can appear at the start of a URL and is followed by `:`.
    *
    * This rule ignores:
    * - URL arguments without an existing URL scheme
    * - URL arguments with variables or variable interpolation (`$sass`, `@less`, `--custom-property`, `#{$var}`, `@{var}`, `$(var)`)
+   *
+   * ### Primary Options
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * @see [function-url-scheme-allowed-list](https://stylelint.io/user-guide/rules/function-url-scheme-allowed-list)
    */
@@ -747,11 +1235,21 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed URL schemes.
    *
+   * ```scss
+   * a { background-image: url('http://www.example.com/file.jpg'); }
+   * //                         ^^^^^
+   * //                        This URL scheme
+   * ```
+   *
    *  A {@link https://url.spec.whatwg.org/#syntax-url-scheme URL scheme} consists of alphanumeric, `+`, `-`, and `.` characters. It can appear at the start of a URL and is followed by `:`.
    *
    * This rule ignores:
    * - URL arguments without an existing URL scheme
    * - URL arguments with variables or variable interpolation (`$sass`, `@less`, `--custom-property`, `#{$var}`, `@{var}`, `$(var)`)
+   *
+   * ### Primary Options
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * @see [function-url-scheme-disallowed-list](https://stylelint.io/user-guide/rules/function-url-scheme-disallowed-list)
    */
@@ -760,12 +1258,18 @@ export interface StyleLintRules {
   /**
    * Specify number or angle notation for degree hues.
    *
+   * ```scss
+   * a { color: hsl(198deg 28% 50%) }
+   * //             ^^^^^^
+   * //           This notation
+   * ```
+   *
    * Because hues are so often given in degrees, a hue can also be given as a number,
    * which is interpreted as a number of degrees.
    *
-   * ### Options:
-   * - "angle"
-   * - "number"
+   * ### Primary Options:
+   * - `"angle"`: Degree hues must always use angle notation.
+   * - `"number"`: Degree hues must always use the number notation.
    *
    * @see [hue-degree-notation](https://stylelint.io/user-guide/rules/hue-degree-notation)
    */
@@ -774,7 +1278,13 @@ export interface StyleLintRules {
   /**
    * Specify string or URL notation for `@import` rules.
    *
-   * ### Options:
+   * ```scss
+   * \@import url("x.jpg");
+   * //       ^^^^       ^
+   * //     This notation
+   * ```
+   *
+   * ### Primary Options:
    * - "string"
    * - "url"
    *
@@ -784,6 +1294,12 @@ export interface StyleLintRules {
 
   /**
    * Disallow duplicate selectors within keyframe blocks.
+   *
+   * ```scss
+   * \@keyframes foo { 0% {} 0% {} }
+   * //                     ^
+   * //        This duplicate selector
+   * ```
    *
    * This rule is case-insensitive.
    *
@@ -797,6 +1313,9 @@ export interface StyleLintRules {
    * Using `!important` within keyframes declarations is
    * {@link https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes#!important_in_a_keyframe completely ignored in some browsers}.
    *
+   * ### Primary Options:
+   * `true`
+   *
    * @see [keyframe-declaration-no-important](https://stylelint.io/user-guide/rules/keyframe-declaration-no-important)
    */
   'keyframe-declaration-no-important': KeyframeDeclarationNoImportantOptions
@@ -804,13 +1323,21 @@ export interface StyleLintRules {
   /**
    * Specify keyword or percentage notation for keyframe selectors.
    *
+   * ```scss
+   * \@keyframes foo {
+   *   from { opacity: 0 }
+   *   to { opacity: 1 !important }
+   * //                ^^^^^^^^^^
+   * }
+   * ```
+   *
    * The keyword `from` is equivalent to the value `0%`.
    * The keyword `to` is equivalent to the value `100%`.
    *
-   * ### Options:
-   * - "keyword"
-   * - "percentage"
-   * - "percentage-unless-within-keyword-only-block"
+   * ### Primary Options:
+   * - `"keyword"`: Keyframe selectors must always use the keyword notation.
+   * - `"percentage"`: Keyframe selectors must always use the percentage notation.
+   * - `"percentage-unless-within-keyword-only-block"`: Keyframe selectors must use the percentage notation unless within a keyword-only block.
    *
    * @see [keyframe-selector-notation](https://stylelint.io/user-guide/rules/keyframe-selector-notation)
    */
@@ -819,12 +1346,27 @@ export interface StyleLintRules {
   /**
    * Specify a pattern for keyframe names.
    *
+   * >```scss
+   * >@keyframes slide-right {}
+   * >//          ^^^^^^^^^^^
+   * >//        The pattern of this
+   * >```
+   *
+   * ### Primary Options
+   * `string | RegExp`
+   *
    * @see [keyframes-name-pattern](https://stylelint.io/user-guide/rules/keyframes-name-pattern)
    */
   'keyframes-name-pattern': KeyframesNamePatternOptions
 
   /**
    * Disallow units for zero lengths.
+   *
+   * ```scss
+   * a { top: 0px; }
+   * //       ^^^
+   * //  This zero and this type of length unit
+   * ```
    *
    * _Lengths_ refer to distance measurements.
    * A length is a dimension, which is a number immediately followed by a unit identifier.
@@ -833,12 +1375,37 @@ export interface StyleLintRules {
    *
    * This rule ignores lengths within math functions (e.g. `calc`).
    *
+   * ### Primary Options
+   * `true`
+   *
+   * ### Optional Secondary Options
+   * - `ignore`
+   * - `ignoreFunctions`
+   *
    * @see [length-zero-no-unit](https://stylelint.io/user-guide/rules/length-zero-no-unit)
    */
   'length-zero-no-unit': LengthZeroNoUnitOptions
 
   /**
    * Limit the depth of nesting.
+   *
+   * ```scss
+   * a { & > b { top: 0; } }
+   * //  ^^^^^
+   * //  This nesting
+   * ```
+   *
+   * This rule works by checking rules' and at-rules' actual "nesting depth" against your specified max
+   *
+   * ### Primary Options
+   *
+   * `init`: Maximum nesting depth allowed.
+   *
+   * ### Optional Secondary Options
+   * - `ignore`
+   * - `ignoreAtRules`
+   * - `ignorePseudoClasses`
+   * - `ignoreRules`
    *
    * @see [max-nesting-depth](https://stylelint.io/user-guide/rules/max-nesting-depth)
    */
@@ -847,12 +1414,32 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed media feature names.
    *
+   * ```scss
+   * \@media (min-width: 700px) {}
+   * //       ^^^^^^^^^
+   * //       This media feature name
+   * ```
+   *
+   * ### Primary Options
+   *
+   * `string | RegExp | (string | RegExp)[]`
+   *
    * @see [media-feature-name-allowed-list](https://stylelint.io/user-guide/rules/media-feature-name-allowed-list)
    */
   'media-feature-name-allowed-list': MediaFeatureNameAllowedListOptions
 
   /**
    * Specify a list of disallowed media feature names.
+   *
+   * ```scss
+   * \@media (min-width: 700px) {}
+   * //       ^^^^^^^^^
+   * //       This media feature name
+   * ```
+   *
+   * ### Primary Options
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * @see [media-feature-name-disallowed-list](https://stylelint.io/user-guide/rules/media-feature-name-disallowed-list)
    */
@@ -861,10 +1448,22 @@ export interface StyleLintRules {
   /**
    * Disallow unknown media feature names.
    *
+   * ```scss
+   * \@media (min-width: 700px) {}
+   * //       ^^^^^^^^^
+   * //       This media feature name
+   * ```
+   *
    * This rule considers media feature names defined in the CSS Specifications,
    * up to and including Editor's Drafts, to be known.
    *
    * This rule ignores vendor-prefixed media feature names.
+   *
+   * ### Primary Options
+   * `true`
+   *
+   * ### Optional Secondary Options
+   * - `ignoreMediaFeatureNames`
    *
    * @see [media-feature-name-no-unknown](https://stylelint.io/user-guide/rules/media-feature-name-no-unknown)
    */
@@ -873,8 +1472,17 @@ export interface StyleLintRules {
   /**
    * Disallow vendor prefixes for media feature names.
    *
+   * ```scss
+   * \@media (-webkit-min-device-pixel-ratio: 1) {}
+   * //       ^^^^^^^
+   * //       this prefix
+   * ```
+   *
    * This rule ignores non-standard vendor-prefixed media feature names that aren't handled
    * by {@link https://github.com/postcss/autoprefixer Autoprefixer}.
+   *
+   * ### Primary Options
+   * `true`
    *
    * @see [media-feature-name-no-vendor-prefix](https://stylelint.io/user-guide/rules/media-feature-name-no-vendor-prefix)
    */
@@ -883,12 +1491,36 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed name and unit pairs within media features.
    *
+   * ```scss
+   * @media (width: 50em) {}
+   * //      ^^^^^    ^^
+   * //   This media feature name and these units
+   * ```
+   *
+   * ### Primary Options
+   *
+   * `object`: `{ "name": ["array", "of", "units"] | "unit" }`
+   *
    * @see [media-feature-name-unit-allowed-list](https://stylelint.io/user-guide/rules/media-feature-name-unit-allowed-list)
    */
   'media-feature-name-unit-allowed-list': MediaFeatureNameUnitAllowedListOptions
 
   /**
    * Specify a list of allowed media feature name and value pairs.
+   *
+   * ```scss
+   * \@media screen and (min-width: 768px) {}
+   * //                  ^^^^^^^^^  ^^^
+   * //       These features and values
+   * ````
+   *
+   * ### Primary Options
+   *
+   * `object`: `{ "unprefixed-media-feature-name": ["array", "of", "values", "/regex/", /regex/]|"value"|"/regex/"|/regex/ }`
+   *
+   * If a media feature name is found in the object, only its allowed-listed values are allowed. If the media feature name is not included in the object, anything goes.
+   *
+   * If a name or value is surrounded with `/` (e.g. `"/width$/"`), it is interpreted as a regular expression. For example, `/width$/` will match `max-width` and `min-width`.
    *
    * @see [media-feature-name-value-allowed-list](https://stylelint.io/user-guide/rules/media-feature-name-value-allowed-list)
    */
@@ -897,6 +1529,12 @@ export interface StyleLintRules {
   /**
    * Disallow unknown values for media features.
    *
+   * ```scss
+   * \@media (color: red) {}
+   * //      ^^^^^  ^^^
+   * //   feature and value pairs like these
+   * ```
+   *
    * This rule considers values for media features defined within the CSS specifications to be known.
    *
    * This rule is only appropriate for CSS. You should not turn it on for CSS-like languages, such as Sass or Less, as they have their own syntaxes.
@@ -904,9 +1542,12 @@ export interface StyleLintRules {
    * @experimental This rule is experimental with some false negatives that we'll patch in minor releases.
    *
    * It sometimes overlaps with:
-   * - unit-no-unknown
+   * - [unit-no-unknown](https://stylelint.io/user-guide/rules/unit-no-unknown)
    *
    * If duplicate problems are flagged, you can turn off the corresponding rule.
+   *
+   * ### Primary Options
+   * `trur`
    *
    * @see [media-feature-name-value-no-unknown](https://stylelint.io/user-guide/rules/media-feature-name-value-no-unknown)
    */
@@ -915,14 +1556,20 @@ export interface StyleLintRules {
   /**
    * Specify context or prefix notation for media feature ranges.
    *
+   * ```scss
+   * \@media (width >= 600px) and (min-width: 600px) {}
+   * //       ^^^^^^^^^^^^^^       ^^^^^^^^^^^^^^^^
+   * //       These media feature notations
+   * ```
+   *
    * Media features of the range type can be written using prefixes or the more modern context notation.
    *
    * Because `min-` and `max-` both equate to range comparisons that include the value,
    * they may be {@link https://drafts.csswg.org/mediaqueries/#mq-min-max limiting in certain situations}.
    *
-   * ### Options:
-   * - "context"
-   * - "prefix"
+   * ### Primary Options:
+   * - `"context"`: Media feature ranges must always use context notation.
+   * - `"prefix"`: Media feature ranges must always use prefix notation.
    *
    * @see [media-feature-range-notation](https://stylelint.io/user-guide/rules/media-feature-range-notation)
    */
@@ -931,14 +1578,23 @@ export interface StyleLintRules {
   /**
    * Disallow invalid media queries.
    *
+   * ```scss
+   * \@media not(min-width: 300px) {}
+   * //      ^^^
+   * //   This media query
+   * ```
+   *
    * Media queries must be grammatically valid according to the
    * {@link https://www.w3.org/TR/mediaqueries-5/ Media Queries Level 5} specification.
    *
    * This rule is only appropriate for CSS. You should not turn it on for CSS-like languages, such as Sass or Less, as they have their own syntaxes.
    *
    * It works well with other rules that validate feature names and values:
-   * - media-feature-name-no-unknown
-   * - media-feature-name-value-no-unknown
+   * - [media-feature-name-no-unknown](https://stylelint.io/user-guide/rules/media-feature-name-no-unknown)
+   * - [media-feature-name-value-no-unknown](https://stylelint.io/user-guide/rules/media-feature-name-value-no-unknown)
+   *
+   * ### Primary Options:
+   * `true`
    *
    * @see [media-query-no-invalid](https://stylelint.io/user-guide/rules/media-query-no-invalid)
    */
@@ -947,11 +1603,22 @@ export interface StyleLintRules {
   /**
    * Disallow invalid named grid areas.
    *
+   * ```scss
+   * a { grid-template-areas:
+   *      "a a a"
+   *      "b b b"; }
+   * //  ^^^
+   * //  This named grid area
+   * ```
+   *
    * For a named grid area to be valid, all strings must define:
    * - the same number of cell tokens
    * - at least one cell token
    *
    * And all named grid areas that spans multiple grid cells must form a single filled-in rectangle.
+   *
+   * ### Primary Options:
+   * `true`
    *
    * @see [named-grid-areas-no-invalid](https://stylelint.io/user-guide/rules/named-grid-areas-no-invalid)
    */
@@ -959,6 +1626,12 @@ export interface StyleLintRules {
 
   /**
    * Disallow selectors of lower specificity from coming after overriding selectors of higher specificity.
+   *
+   * ```scss
+   *   #container a { top: 10px; } a { top: 0; }
+   * //^^^^^^^^^^^^                ^
+   * //The order of these selectors represents descending specificity
+   * ```
    *
    * Source order is important in CSS, and when two selectors have the same specificity,
    * the one that occurs last will take priority.
@@ -979,6 +1652,12 @@ export interface StyleLintRules {
    *
    * We recommend turning this rule off if you use a lot of nesting.
    *
+   * ### Primary Options:
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   * - `ignore`
+   *
    * @see [no-descending-specificity](https://stylelint.io/user-guide/rules/no-descending-specificity)
    */
   'no-descending-specificity': NoDescendingSpecificityOptions
@@ -986,12 +1665,28 @@ export interface StyleLintRules {
   /**
    * Disallow duplicate `@import` rules.
    *
+   * ```scss
+   *  \@import "a.css";
+   *  \@import "a.css";
+   * //^^^^^^^
+   * //These are duplicates
+   * ```
+   *
+   * ### Primary Options:
+   * `true`
+   *
    * @see [no-duplicate-at-import-rules](https://stylelint.io/user-guide/rules/no-duplicate-at-import-rules)
    */
   'no-duplicate-at-import-rules': NoDuplicateAtImportRulesOptions
 
   /**
    * Disallow duplicate selectors.
+   *
+   * ```scss
+   *   .foo {} .bar {} .foo {}
+   * //^^^^            ^^^^
+   * // These duplicates
+   * ```
    *
    * This rule checks for two types of duplication:
    * - Duplication of a single selector with a rule's selector list, e.g. `a, b, a {}`.
@@ -1010,6 +1705,13 @@ export interface StyleLintRules {
    * This rule resolves nested selectors. So `a b {} a { & b {} }` counts as a problem,
    * because the resolved selectors end up with a duplicate.
    *
+   * ### Primary Options:
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `disallowInList`
+   *
    * @see [no-duplicate-selectors](https://stylelint.io/user-guide/rules/no-duplicate-selectors)
    */
   'no-duplicate-selectors': NoDuplicateSelectorsOptions
@@ -1017,7 +1719,16 @@ export interface StyleLintRules {
   /**
    * Disallow empty sources.
    *
+   * ```scss
+   * ···\n\t
+   * //^^^^^
+   * // This empty source
+   * ```
+   *
    * A source containing only whitespace is considered empty.
+   *
+   * ### Primary Options:
+   * `true`
    *
    * @see [no-empty-source](https://stylelint.io/user-guide/rules/no-empty-source)
    *
@@ -1026,6 +1737,13 @@ export interface StyleLintRules {
 
   /**
    * Disallow invalid double-slash comments.
+   *
+   * ```css
+   * a {
+   *   // color: pink;
+   *   ^^
+   * }
+   * ```
    *
    * Disallow double-slash comments `(//...)` are not supported by CSS and {@link https://stackoverflow.com/a/20192639/130652 could lead to unexpected results}.
    *
@@ -1038,6 +1756,9 @@ export interface StyleLintRules {
    * (If you didn't know this was possible, have a look at
    * {@link http://www.xanthir.com/b4U10 "Single Line Comments (//) in CSS"}).
    *
+   * ### Primary options:
+   * `true`
+   *
    * @see [no-invalid-double-slash-comments](https://stylelint.io/user-guide/rules/no-invalid-double-slash-comments)
    */
   'no-invalid-double-slash-comments': NoInvalidDoubleSlashCommentsOptions
@@ -1045,7 +1766,20 @@ export interface StyleLintRules {
   /**
    * Disallow invalid position `@import` rules.
    *
+   * ```scss
+   *   a {}
+   *  \@import 'foo.css';
+   * //^^^^^^^
+   * ```
+   *
    * Any `@import` rules must precede all other valid at-rules and style rules in a stylesheet (ignoring `@charset` and `@layer`), or else the `@import` rule is invalid.
+   *
+   * ### Primary Options:
+   * `true`
+   *
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreAtRules`
    *
    * @see [no-invalid-position-at-import-rule](https://stylelint.io/user-guide/rules/no-invalid-position-at-import-rule)
    */
@@ -1054,6 +1788,14 @@ export interface StyleLintRules {
   /**
    * Disallow irregular whitespaces.
    *
+   * ```scss
+   *   .firstClass .secondClass {}
+   * //           ^
+   * // Irregular whitespace. Selector would fail to match '.firstClass'
+   * ```
+   *
+   * ### Primary Options:
+   * `true`
    * @see [no-irregular-whitespace](https://stylelint.io/user-guide/rules/no-irregular-whitespace)
    */
   'no-irregular-whitespace': NoIrregularWhitespaceOptions
@@ -1061,7 +1803,17 @@ export interface StyleLintRules {
   /**
    * Disallow unknown animations.
    *
+   * ```scss
+   * a { animation-name: fancy-slide; }
+   * //                  ^^^^^^^^^^^
+   * a { animation: fancy-slide 2s linear; }
+   * //             ^^^^^^^^^^^
+   * ```
+   *
    * This rule considers the identifiers of `@keyframes` rules defined within the same source to be known.
+   *
+   * ### Primary Options:
+   * `true`
    *
    * @see [no-unknown-animations](https://stylelint.io/user-guide/rules/no-unknown-animations)
    */
@@ -1070,7 +1822,17 @@ export interface StyleLintRules {
   /**
    * Disallow unknown custom properties.
    *
+   * ```scss
+   * a { color: var(--foo); }
+   * //             ^^^^^
+   * a { color: var(--foo, var(--bar)); }
+   * //                        ^^^^^
+   * ```
+   *
    * This rule considers custom properties defined within the same source to be known.
+   *
+   * ### Primary Options:
+   * `true`
    *
    * @see [no-unknown-custom-properties](https://stylelint.io/user-guide/rules/no-unknown-custom-properties)
    */
@@ -1079,6 +1841,21 @@ export interface StyleLintRules {
   /**
    * Limit the number of decimal places allowed in numbers.
    *
+   * ```scss
+   * a { top: 3.245634px; }
+   * //         ^^^^^^
+   * //       This decimal place
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `int`: Maximum number of decimal places allowed.
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreProperties`
+   * - `ignoreUnits`
+   * - `insideFunctions`
+   *
    * @see [number-max-precision](https://stylelint.io/user-guide/rules/number-max-precision)
    */
   'number-max-precision': NumberMaxPrecisionOptions
@@ -1086,7 +1863,16 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed properties.
    *
+   * ```scss
+   * a { display: block; }
+   * //  ^^^^^^^
+   * ```
+   *
    * This rule ignores variables (`$sass`, `@less`, `--custom-property`).
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * @see [property-allowed-list](https://stylelint.io/user-guide/rules/property-allowed-list)
    */
@@ -1095,17 +1881,41 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed properties.
    *
+   * ```scss
+   * a { text-rendering: optimizeLegibility; }
+   * //  ^^^^^^^^^^^^^^
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
+   *
    * @see [property-disallowed-list](https://stylelint.io/user-guide/rules/property-disallowed-list)
    */
   'property-disallowed-list': PropertyDisallowedListOptions
 
   /**
    * Disallow unknown properties.
+   *
+   * ```scss
+   * a { height: 100%; }
+   * //  ^^^^^^
+   * ```
+   *
    * This rule considers properties defined in the {@link https://github.com/betit/known-css-properties#source CSS Specifications and browser specific properties} to be known.
    *
    * This rule ignores:
    * - variables (`$sass`, `@less`, `--custom-property`)
    * - vendor-prefixed properties (e.g., `-moz-align-self`, `-webkit-align-self`)
+   *
+   * ### Primary Options:
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreProperties`
+   * - `ignoreSelectors`
+   * - `ignoreAtRules`
+   * - `checkPrefixed`
    *
    * @see [property-no-unknown](https://stylelint.io/user-guide/rules/property-no-unknown)
    */
@@ -1114,7 +1924,18 @@ export interface StyleLintRules {
   /**
    * Disallow vendor prefixes for properties.
    *
+   * ```scss
+   * a { -webkit-transform: scale(1); }
+   * //  ^^^^^^^^
+   * ```
+   *
    * This rule ignores non-standard vendor-prefixed properties that aren't handled by {@link https://github.com/postcss/autoprefixer Autoprefixer}.
+   *
+   * ### Primary Options:
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreProperties`
    *
    * @see [property-no-vendor-prefix](https://stylelint.io/user-guide/rules/property-no-vendor-prefix)
    */
@@ -1123,7 +1944,23 @@ export interface StyleLintRules {
   /**
    * Require or disallow an empty line before rules.
    *
+   * ```scss
+   * a {}
+   *       // this line
+   * b {}
+   * ```
+   *
    * This rule ignores rules that are the very first node in a source.
+   *
+   * ### Primary Options:
+   * - `"always"`: There must always be an empty line before rules.
+   * - `"never"`: There must never be an empty line before rules.
+   * - `"always-multi-line"`: There must always be an empty line before multi-line rules.
+   * - `"never-multi-line"`: There must never be an empty line before multi-line rules.
+   *
+   * ### Optional Secondary Options:
+   * - `except`
+   * - `ignore`
    *
    * @see [rule-empty-line-before](https://stylelint.io/user-guide/rules/rule-empty-line-before)
    */
@@ -1132,6 +1969,23 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed properties for selectors within rules.
    *
+   * ```scss
+   *   a { color: red; }
+   * //^   ^^^^^
+   * //Selector and property name
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `Record<string, string | RegExp | (string | RegExp)[]>`
+   *
+   * ```json
+   * {
+   *   "a": ["color", "/margin/"],
+   *   "/foo/": "/size/"
+   * }
+   * ```
+   *
    * @see [rule-selector-property-disallowed-list](https://stylelint.io/user-guide/rules/rule-selector-property-disallowed-list)
    */
   'rule-selector-property-disallowed-list': RuleSelectorPropertyDisallowedListOptions
@@ -1139,7 +1993,15 @@ export interface StyleLintRules {
   /**
    * Disallow unmatchable An+B selectors.
    *
+   * ```scss
+   *   a:nth-child(0n+0) {}
+   * //            ^^^^
+   * ```
+   *
    * {@link https://www.w3.org/TR/css-syntax-3/#anb-microsyntax An+B selectors} are one-indexed. Selectors that always evaluate to 0 will not match any elements.
+   *
+   * ### Primary Options:
+   * `true`
    *
    * @see [selector-anb-no-unmatchable](https://stylelint.io/user-guide/rules/selector-anb-no-unmatchable)
    */
@@ -1148,12 +2010,29 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed attribute names.
    *
+   * ```scss
+   *   [class~="foo"] {}
+   * // ^^^^^
+   * ```
+   *
+   * ### Primary Options:
+   * `true`
+   *
    * @see [selector-attribute-name-disallowed-list](https://stylelint.io/user-guide/rules/selector-attribute-name-disallowed-list)
    */
   'selector-attribute-name-disallowed-list': SelectorAttributeNameDisallowedListOptions
 
   /**
    * Specify a list of allowed attribute operators.
+   *
+   * ```scss
+   *   [target="_blank"] {}
+   * //       ^
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `string | string[]`
    *
    * @see [selector-attribute-operator-allowed-list](https://stylelint.io/user-guide/rules/selector-attribute-operator-allowed-list)
    */
@@ -1162,12 +2041,28 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed attribute operators.
    *
+   * ```scss
+   *   [target="_blank"] {}
+   * //       ^
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `string | string[]`
+   *
    * @see [selector-attribute-operator-disallowed-list](https://stylelint.io/user-guide/rules/selector-attribute-operator-disallowed-list)
    */
   'selector-attribute-operator-disallowed-list': SelectorAttributeOperatorDisallowedListOptions
 
   /**
    * Require or disallow quotes for attribute values.
+   *
+   * ```scss
+   *   [target="_blank"] {}
+   * //        ^      ^
+   * ```
+   *
+   * ### Primary Options:
    * - `always`: Attribute values must always be quoted.
    * - `never`: Attribute values must never be quoted.
    *
@@ -1178,9 +2073,21 @@ export interface StyleLintRules {
   /**
    * Specify a pattern for class selectors.
    *
+   * ```scss
+   *    .foo, #bar.baz span, #hoo[disabled] { color: pink; }
+   * // ^         ^
+   * ```
+   *
    * This rule ignores non-outputting Less mixin definitions and called Less mixins.
    *
    * Escaped selectors (e.g. `.u-size-11\/12\@sm`) are parsed as escaped twice (e.g. `.u-size-11\\/12\\@sm`). Your RegExp should account for that.
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp`
+   *
+   * ### Optional Secondary Options:
+   * - `resolveNestedSelectors`
    *
    * @see [selector-class-pattern](https://stylelint.io/user-guide/rules/selector-class-pattern)
    */
@@ -1189,7 +2096,16 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed combinators.
    *
+   * ```scss
+   *   a + b {}
+   * //  ^
+   * ```
+   *
    * This rule normalizes the whitespace descendant combinator to be a single space.
+   *
+   * ### Primary Options:
+   *
+   * `string | string[]`
    *
    * This rule ignores {@link https://www.w3.org/TR/selectors4/#idref-combinators reference combinators} e.g. `/for/`.
    *
@@ -1200,9 +2116,18 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed combinators.
    *
+   * ```scss
+   *   a + b {}
+   * //  ^
+   * ```
+   *
    * This rule normalizes the whitespace descendant combinator to be a single space.
    *
    * This rule ignores {@link https://www.w3.org/TR/selectors4/#idref-combinators reference combinators} e.g. `/for/`.
+   *
+   * ### Primary Options:
+   *
+   * `string | string[]`
    *
    * @see [selector-combinator-disallowed-list](https://stylelint.io/user-guide/rules/selector-combinator-disallowed-list)
    */
@@ -1211,12 +2136,34 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed selectors.
    *
+   * ```scss
+   *    .foo > .bar
+   * // ^
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
+   *
+   * ### Optional Secondary Options:
+   * - `splitList`
+   * - `ignore`
+   *
    * @see [selector-disallowed-list](https://stylelint.io/user-guide/rules/selector-disallowed-list)
    */
   'selector-disallowed-list': SelectorDisallowedListOptions
 
   /**
    * Specify a pattern for ID selectors.
+   *
+   * ```scss
+   *    .foo, #bar.baz a, #hoo[disabled] { color: pink; }
+   * //       ^^^^        ^^^^
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp`
    *
    * @see [selector-id-pattern](https://stylelint.io/user-guide/rules/selector-id-pattern)
    */
@@ -1225,12 +2172,25 @@ export interface StyleLintRules {
   /**
    * Limit the number of attribute selectors in a selector.
    *
+   * ```scss
+   *    [rel="external"] {}
+   * // ^^^^^^^^^^^^^^^^
+   * ```
+   *
    * This rule resolves nested selectors before counting the number of attribute selectors.
    * Each selector in a {@link https://www.w3.org/TR/selectors4/#selector-list selector list} is evaluated separately.
    *
    * The `:not()` pseudo-class is also evaluated separately.
    * The rule processes the argument as if it were an independent selector,
    * and the result does not count toward the total for the entire selector.
+   *
+   * ### Primary Options:
+   *
+   * `int`: Maximum attribute selectors allowed.
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreAttributes`
    *
    * @see [selector-max-attribute](https://stylelint.io/user-guide/rules/selector-max-attribute)
    */
@@ -1239,12 +2199,22 @@ export interface StyleLintRules {
   /**
    * Limit the number of classes in a selector.
    *
+   * ```scss
+   *    div .foo.bar[data-val] > a.baz {}
+   * //     ^   ^                 ^
+   * //     1   2                 3
+   * ```
+   *
    * This rule resolves nested selectors before counting the number of classes in a selector.
    * Each selector in a {@link https://www.w3.org/TR/selectors4/#selector-list selector list} is evaluated separately.
    *
    * The `:not()` pseudo-class is also evaluated separately.
    * The rule processes the argument as if it were an independent selector,
    * and the result does not count toward the total for the entire selector.
+   *
+   * ### Primary Options:
+   *
+   * `int`: Maximum classes allowed.
    *
    * @see [selector-max-class](https://stylelint.io/user-guide/rules/selector-max-class)
    */
@@ -1253,8 +2223,17 @@ export interface StyleLintRules {
   /**
    * Limit the number of combinators in a selector.
    *
+   * ```scss
+   *    a > b + c ~ d e { color: pink; }
+   * //   ^   ^   ^  ^
+   * ```
+   *
    * This rule resolves nested selectors before counting the number of combinators selectors.
    * Each selector in a {@link https://www.w3.org/TR/selectors4/#selector-list selector list} is evaluated separately.
+   *
+   * ### Primary Options:
+   *
+   * `int`: Maximum combinators selectors allowed.
    *
    * @see [selector-max-combinators](https://stylelint.io/user-guide/rules/selector-max-combinators)
    */
@@ -1262,6 +2241,12 @@ export interface StyleLintRules {
 
   /**
    * Limit the number of compound selectors in a selector.
+   *
+   * ```scss
+   *    div .bar[data-val] > a.baz + .boom > #lorem {}
+   * // ^   ^                ^^      ^^      ^^
+   * // 1   2                 3       4       5
+   * ```
    *
    * A {@link https://www.w3.org/TR/selectors4/#compound compound selector} is
    * a chain of one or more simple (tag, class, ID, universal, attribute) selectors.
@@ -1276,12 +2261,21 @@ export interface StyleLintRules {
    * `:not()` is considered one compound selector irrespective to the complexity of the selector inside it.
    * The rule does process that inner selector, but does so separately, independent of the main selector.
    *
+   * ### Primary Options:
+   *
+   * `int`: Maximum compound selectors allowed.
+   *
    * @see [selector-max-compound-selectors](https://stylelint.io/user-guide/rules/selector-max-compound-selectors)
    */
   'selector-max-compound-selectors': SelectorMaxCompoundSelectorsOptions
 
   /**
    * Limit the number of ID selectors in a selector.
+   *
+   * ```scss
+   *    #foo {}
+   * // ^^^
+   * ```
    *
    * This rule resolves nested selectors before counting the number of ID selectors.
    * Each selector in a {@link https://www.w3.org/TR/selectors4/#selector-list selector list} is evaluated separately.
@@ -1290,6 +2284,14 @@ export interface StyleLintRules {
    * The rule processes the argument as if it were an independent selector,
    * and the result does not count toward the total for the entire selector.
    *
+   * ### Primary Options:
+   *
+   * `int`: Maximum universal selectors allowed.
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreContextFunctionalPseudoClasses`
+   *
    * @see [selector-max-id](https://stylelint.io/user-guide/rules/selector-max-id)
    */
   'selector-max-id': SelectorMaxIdOptions
@@ -1297,10 +2299,20 @@ export interface StyleLintRules {
   /**
    * Limit the number of pseudo-classes in a selector.
    *
+   * ```scss
+   *    .foo .bar:first-child:hover {}
+   * //          ^           ^
+   * //          1           2
+   * ```
+   *
    * This rule resolves nested selectors before counting the number of pseudo-classes in a selector.
    * Each selector in a {@link https://www.w3.org/TR/selectors4/#selector-list selector list} is evaluated separately.
    *
    * The content of the `:not()` pseudo-class is also evaluated separately. The rule processes the argument as if it were an independent selector, and the result does not count toward the total for the entire selector.
+   *
+   * ### Primary Options:
+   *
+   * `int`: Maximum pseudo-classes allowed.
    *
    * @see [selector-max-pseudo-class](https://stylelint.io/user-guide/rules/selector-max-pseudo-class)
    */
@@ -1308,6 +2320,11 @@ export interface StyleLintRules {
 
   /**
    * Limit the specificity of selectors.
+   *
+   * ```scss
+   *    .foo, #bar.baz span, #hoo { color: pink; }
+   * // ^     ^              ^
+   * ```
    *
    * Visit the {@link https://specificity.keegan.st/ Specificity Calculator}
    * for visual representation of selector specificity.
@@ -1329,10 +2346,24 @@ export interface StyleLintRules {
   /**
    * Limit the number of type selectors in a selector.
    *
+   * ```scss
+   *    a {}
+   * // ^
+   * ```
+   *
    * This rule resolves nested selectors before counting the number of type selectors.
    * Each selector in a {@link https://www.w3.org/TR/selectors4/#selector-list selector list} is evaluated separately.
    *
    * The `:not()` pseudo-class is also evaluated separately. The rule processes the argument as if it were an independent selector, and the result does not count toward the total for the entire selector.
+   *
+   * ### Primary Options:
+   *
+   * `int`: Maximum type selectors allowed.
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignore`
+   * - `ignoreTypes`
    *
    * @see [selector-max-type](https://stylelint.io/user-guide/rules/selector-max-type)
    */
@@ -1341,10 +2372,23 @@ export interface StyleLintRules {
   /**
    * Limit the number of universal selectors in a selector.
    *
+   * ```scss
+   *    {}
+   * // ^
+   * ```
+   *
    * This rule resolves nested selectors before counting the number of universal selectors.
    * Each selector in a {@link https://www.w3.org/TR/selectors4/#selector-list selector list} is evaluated separately.
    *
    * The logical combinations pseudo-class (e.g. `:not`, `:has`) is also evaluated separately. The rule processes the argument as if it were an independent selector, and the result does not count toward the total for the entire selector.
+   *
+   * ### Primary Options:
+   *
+   * `int`: Maximum universal selectors allowed.
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreAfterCombinators`
    *
    * @see [selector-max-universal](https://stylelint.io/user-guide/rules/selector-max-universal)
    */
@@ -1353,7 +2397,23 @@ export interface StyleLintRules {
   /**
    * Specify a pattern for the selectors of rules nested within rules.
    *
+   * ```scss
+   *    a {
+   *      color: orange;
+   *      &:hover { color: pink; }
+   * //   ^^^^^^^
+   *    }
+   * ```
+   *
    * Non-standard selectors (e.g. selectors with Sass or Less interpolation) and selectors of rules nested within at-rules are ignored.
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `splitList`
    *
    * @see [selector-nested-pattern](https://stylelint.io/user-guide/rules/selector-nested-pattern)
    */
@@ -1362,9 +2422,22 @@ export interface StyleLintRules {
   /**
    * Disallow qualifying a selector by type.
    *
+   * ```scss
+   *     a.foo {}
+   * //  ^^^^
+   * // This type selector is qualifying the class
+   * ```
+   *
    * A type selector is "qualifying" when it is compounded with (chained to) another selector
    * (e.g. `a.foo`, `a#foo`). This rule does not regulate type selectors that are
    * combined with other selectors via a combinator (e.g. `a > .foo`, `a #foo`).
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   * - `ignore`
    *
    * @see [selector-no-qualifying-type](https://stylelint.io/user-guide/rules/selector-no-qualifying-type)
    */
@@ -1373,8 +2446,21 @@ export interface StyleLintRules {
   /**
    * Disallow vendor prefixes for selectors.
    *
+   * ```scss
+   *    input::-moz-placeholder {}
+   * //        ^^^^^
+   * ```
+   *
    * This rule ignores non-standard vendor-prefixed selectors that aren't handled by
    * {@link https://github.com/postcss/autoprefixer Autoprefixer}.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreSelectors`
    *
    * @see [selector-no-vendor-prefix](https://stylelint.io/user-guide/rules/selector-no-vendor-prefix)
    */
@@ -1383,11 +2469,16 @@ export interface StyleLintRules {
   /**
    * Specify simple or complex notation for `:not()` pseudo-class selectors.
    *
+   * ```scss
+   *    a:not(.foo, .bar) {}
+   * //   ^^^
+   * ```
+   *
    * In Selectors Level 3, only a single simple selector was allowed as the argument to `:not()`, whereas Selectors Level 4 allows a selector list.
    *
-   * __Use:__
-   * - `complex`: to author modern Selectors Level 4 CSS
-   * - `simple`: for backwards compatibility with older browsers
+   * ### Primary Options:
+   * - `"complex"`: to author modern Selectors Level 4 CSS
+   * - `"simple"`: for backwards compatibility with older browsers
    *
    * @see [selector-not-notation](https://stylelint.io/user-guide/rules/selector-not-notation)
    */
@@ -1396,7 +2487,16 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed pseudo-class selectors.
    *
+   * ```scss
+   *    a:hover {}
+   * //   ^^^^^
+   * ```
+   *
    * This rule ignores selectors that use variable interpolation e.g. `:#{$variable} {}`.
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * @see [selector-pseudo-class-allowed-list](https://stylelint.io/user-guide/rules/selector-pseudo-class-allowed-list)
    */
@@ -1405,7 +2505,16 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed pseudo-class selectors.
    *
+   * ```scss
+   *    a:hover {}
+   * //   ^^^^^
+   * ```
+   *
    * This rule ignores selectors that use variable interpolation e.g. `:#{$variable} {}`.
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * @see [selector-pseudo-class-disallowed-list](https://stylelint.io/user-guide/rules/selector-pseudo-class-disallowed-list)
    */
@@ -1414,10 +2523,23 @@ export interface StyleLintRules {
   /**
    * Disallow unknown pseudo-class selectors.
    *
+   * ```scss
+   *    a:hover {}
+   * //   ^^^^^
+   * ```
+   *
    * This rule considers pseudo-class selectors defined in the CSS Specifications,
    * up to and including Editor's Drafts, to be known.
    *
    * This rule ignores vendor-prefixed pseudo-class selectors.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignorePseudoClasses`
    *
    * @see [selector-pseudo-class-no-unknown](https://stylelint.io/user-guide/rules/selector-pseudo-class-no-unknown)
    */
@@ -1426,9 +2548,18 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed pseudo-element selectors.
    *
+   * ```scss
+   *    a::before {}
+   * //    ^^^^^^
+   * ```
+   *
    * This rule ignores:
    * - CSS2 pseudo-elements i.e. those prefixed with a single colon
    * - selectors that use variable interpolation e.g. `::#{$variable} {}`
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * @see [selector-pseudo-element-allowed-list](https://stylelint.io/user-guide/rules/selector-pseudo-element-allowed-list)
    */
@@ -1437,9 +2568,18 @@ export interface StyleLintRules {
   /**
    * Specify a list of disallowed pseudo-element selectors.
    *
+   * ```scss
+   *     a::before {}
+   * //     ^^^^^^
+   * ```
+   *
    * This rule ignores:
    * - CSS2 pseudo-elements i.e. those prefixed with a single colon
    * - selectors that use variable interpolation e.g. `::#{$variable} {}`
+   *
+   * ### Primary Options:
+   *
+   * `string | RegExp | (string | RegExp)[]`
    *
    * @see [selector-pseudo-element-disallowed-list](https://stylelint.io/user-guide/rules/selector-pseudo-element-disallowed-list)
    */
@@ -1447,6 +2587,11 @@ export interface StyleLintRules {
 
   /**
    * Specify single or double colon notation for applicable pseudo-element selectors.
+   *
+   * ```scss
+   *     a::before {}
+   * //   ^^
+   * ```
    *
    * The `::` notation was chosen for pseudo-elements to establish a discrimination between
    * pseudo-classes (which subclass existing elements) and pseudo-elements
@@ -1456,6 +2601,10 @@ export interface StyleLintRules {
    * user agents also accept the previous one-colon notation for pseudo-elements introduced
    * in CSS levels 1 and 2 (namely, `:first-line`, `:first-letter`, `:before` and `:after`).
    *
+   * ### Primary Options:
+   * - `"single"`: Applicable pseudo-elements must always use the single colon notation.
+   * - `"double"`: Applicable pseudo-elements must always use the double colon notation.
+   *
    * @see [selector-pseudo-element-colon-notation](https://stylelint.io/user-guide/rules/selector-pseudo-element-colon-notation)
    */
   'selector-pseudo-element-colon-notation': SelectorPseudoElementColonNotationOptions
@@ -1463,10 +2612,23 @@ export interface StyleLintRules {
   /**
    * Disallow unknown pseudo-element selectors.
    *
+   * ```scss
+   *    a::before {}
+   * //    ^^^^^^
+   * ```
+   *
    * This rule considers pseudo-element selectors defined in the CSS Specifications,
    * up to and including Editor's Drafts, to be known.
    *
    * This rule ignores vendor-prefixed pseudo-element selectors.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignorePseudoElements`
    *
    * @see [selector-pseudo-element-no-unknown](https://stylelint.io/user-guide/rules/selector-pseudo-element-no-unknown)
    */
@@ -1475,6 +2637,19 @@ export interface StyleLintRules {
   /**
    * Specify lowercase or uppercase for type selectors.
    *
+   * ```scss
+   *    a {}
+   * // ^
+   * ```
+   *
+   * ### Primary Options:
+   * - `"lower"`
+   * - `"upper"`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreTypes`
+   *
    * @see [selector-type-case](https://stylelint.io/user-guide/rules/selector-type-case)
    */
   'selector-type-case': SelectorTypeCaseOptions
@@ -1482,7 +2657,21 @@ export interface StyleLintRules {
   /**
    * Disallow unknown type selectors.
    *
+   * ```scss
+   *    unknown {}
+   * // ^^^^^^^
+   * ```
+   *
    * This rule considers tags defined in the HTML, SVG, and MathML specifications to be known.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   * - `ignore`
+   * - `ignoreNamespaces`
+   * - `ignoreTypes`
    *
    * @see [selector-type-no-unknown](https://stylelint.io/user-guide/rules/selector-type-no-unknown)
    */
@@ -1490,6 +2679,11 @@ export interface StyleLintRules {
 
   /**
    * Disallow redundant values within shorthand properties.
+   *
+   * ```scss
+   *    a { margin: 1px 1px 1px 1px; }
+   * //             ^   ^   ^   ^
+   * ```
    *
    * You can use {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties shorthand properties} to set multiple values at once.
    * For example, you can use the margin property to set the `margin-top`, `margin-right`,
@@ -1502,12 +2696,23 @@ export interface StyleLintRules {
    * `margin`, `padding`, `border-color`, `border-radius`,
    * `border-style`, `border-width`, `grid-gap`, `inset`
    *
+   * ### Primary Options:
+   *
+   * `true`
+   *
    * @see [shorthand-property-no-redundant-values](https://stylelint.io/user-guide/rules/shorthand-property-no-redundant-values)
    */
   'shorthand-property-no-redundant-values': ShorthandPropertyNoRedundantValuesOptions
 
   /**
    * Disallow invalid newlines within strings.
+   *
+   * ```scss
+   *    a {
+   *      content: "first  // The newline here
+   *        second";
+   *    }
+   * ```
    *
    * {@link https://www.w3.org/TR/CSS2/syndata.html#strings The spec}
    * says this: "A string cannot directly contain a newline.
@@ -1517,6 +2722,10 @@ export interface StyleLintRules {
    * for aesthetic or other reasons, but in such a case the newline itself has to be escaped with
    * a backslash (\)."
    *
+   * ### Primary Options:
+   *
+   * `true`
+   *
    * @see [string-no-newline](https://stylelint.io/user-guide/rules/string-no-newline)
    */
   'string-no-newline': StringNoNewlineOptions
@@ -1524,9 +2733,22 @@ export interface StyleLintRules {
   /**
    * Limit the minimum number of milliseconds for time values.
    *
+   * ```scss
+   *    a { animation: slip-n-slide 150ms linear; }
+   * //                             ^^^^^
+   * ```
+   *
    * This rule checks positive numbers in `transition-duration`, `transition-delay`,
    * `animation-duration`, `animation-delay`, and those times as they manifest
    * in the `transition` and `animation` shorthands.
+   *
+   * ### Primary Options:
+   *
+   * `int`: Minimum number of milliseconds for time values.
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignore`
    *
    * @see [time-min-milliseconds](https://stylelint.io/user-guide/rules/time-min-milliseconds)
    */
@@ -1535,12 +2757,41 @@ export interface StyleLintRules {
   /**
    * Specify a list of allowed units.
    *
+   * ```scss
+   *     a { width: 100px; }
+   * //                ^^
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `string | string[]`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreProperties`
+   * - `ignoreFunctions`
+   *
    * @see [unit-allowed-list](https://stylelint.io/user-guide/rules/unit-allowed-list)
    */
   'unit-allowed-list': UnitAllowedListOptions
 
   /**
    * unit-disallowed-list
+   *
+   * ```scss
+   *    a { width: 100px; }
+   * //               ^^
+   * ```
+   *
+   * ### Primary Options:
+   *
+   * `string | string[]`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreProperties`
+   * - `ignoreMediaFeatureNames`
+   * - `ignoreFunctions`
    *
    * @see [unit-disallowed-list](https://stylelint.io/user-guide/rules/unit-disallowed-list)
    */
@@ -1549,7 +2800,21 @@ export interface StyleLintRules {
   /**
    * Disallow unknown units.
    *
+   * ```scss
+   *     a { width: 100pixels; }
+   * //                ^^^^^^
+   * ```
+   *
    * This rule considers units defined in the CSS Specifications, up to and including Editor's Drafts, to be known.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreUnits`
+   * - `ignoreFunctions`
    *
    * @see [unit-no-unknown](https://stylelint.io/user-guide/rules/unit-no-unknown)
    */
@@ -1558,10 +2823,27 @@ export interface StyleLintRules {
   /**
    * Specify lowercase or uppercase for keywords values.
    *
+   * ```scss
+   *     a { display: block; }
+   * //               ^^^^^
+   * ```
+   *
    * This rule ignores {@link https://developer.mozilla.org/en/docs/Web/CSS/custom-ident \<custom-idents\>} of known properties.
    * Keyword values which are paired with non-properties (e.g. `$vars` and custom properties),
    * and do not conform to the primary option, can be ignored using the
    * `ignoreKeywords: []` secondary option.
+   *
+   * ### Primary Options:
+   *
+   * - `"lower"`
+   * - `"upper"`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreKeywords`
+   * - `ignoreProperties`
+   * - `ignoreFunctions`
+   * - `camelCaseSvgKeywords`
    *
    * @see [value-keyword-case](https://stylelint.io/user-guide/rules/value-keyword-case)
    */
@@ -1570,8 +2852,21 @@ export interface StyleLintRules {
   /**
    * Disallow vendor prefixes for values.
    *
+   * ```scss
+   *     a { display: -webkit-flex; }
+   * //               ^^^^^^^
+   * ```
+   *
    * This rule ignores non-standard vendor-prefixed values that aren't handled by
    * {@link https://github.com/postcss/autoprefixer Autoprefixer}.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreValues`
    *
    * @see [value-no-vendor-prefix](https://stylelint.io/user-guide/rules/value-no-vendor-prefix)
    */

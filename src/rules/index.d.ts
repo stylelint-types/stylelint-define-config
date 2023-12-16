@@ -3,7 +3,7 @@ import type { StyleLintRules } from './stylelint'
 
 /**
  * This is a special exported interface for other packages to declare
- * additional types that should bail out for eslint rules. For example
+ * additional types that should bail out for stylelint rules. For example
  * `stylelint-scss` can declare it like so in its `d.ts`:
  *
  * ```ts

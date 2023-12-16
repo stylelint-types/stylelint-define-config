@@ -3,7 +3,7 @@ import type { LiteralUnion } from '../utils'
 
 /**
  * This is a special exported interface for other packages to declare
- * additional plugins that should bail out for eslint plugins. For example
+ * additional plugins that should bail out for stylelint plugins. For example
  * `'stylelint-scss'` can declare it like so in its `d.ts`:
  *
  * ```ts
@@ -18,7 +18,7 @@ export interface CustomPlugins {}
 
 type KnownPlugins = LiteralUnion<
   | 'stylelint-order' | 'stylelint-scss' | 'stylelint-stylistic' | 'stylelint-stylus'
-  | 'stylelint-suitcss' | 'stylelint-react-native' | 'stylelint-selector-bem-pattern'
+  | 'stylelint-suitcss' | 'stylelint-react-native' | 'stylelint-codeguide'
   | keyof CustomPlugins
 >
 
