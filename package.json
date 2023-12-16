@@ -2,7 +2,7 @@
   "name": "stylelint-define-config",
   "type": "module",
   "version": "1.0.2",
-  "packageManager": "pnpm@8.11.0",
+  "packageManager": "pnpm@8.12.1",
   "description": "Provide a defineConfig function for stylelint.config.js files",
   "author": "pengzhanbo <volodymyr@foxmail.com> (https://github.com/pengzhanbo)",
   "license": "MIT",
@@ -29,7 +29,7 @@
         "default": "./dist/index.js"
       },
       "require": {
-        "types": "./dist/index.d.cts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.cjs"
       }
     }
@@ -59,12 +59,12 @@
     "csstype": "^3.1.3"
   },
   "devDependencies": {
-    "@pengzhanbo/eslint-config": "^1.3.1",
+    "@pengzhanbo/eslint-config": "^1.3.3",
     "@types/node": "^20.10.4",
     "bumpp": "^9.2.1",
     "conventional-changelog-cli": "^4.1.0",
-    "eslint": "^8.55.0",
-    "stylelint": "^16.0.1",
+    "eslint": "^8.56.0",
+    "stylelint": "^16.0.2",
     "stylelint-define-config": "file:.",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
