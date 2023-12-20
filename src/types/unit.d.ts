@@ -1,6 +1,6 @@
 import type { LiteralUnion } from '../utils'
 
-export type RelativeUnit = 'em' | 'rem' | 'vw' | 'vh' | 'vmin' | 'vmax' | 'ex' | 'cap' | 'ch' | 'ic' | 'lh' | 'rlh' | 'vi' | 'vb'
+export type RelativeUnit = 'em' | 'rem' | 'vw' | 'vh' | 'vmin' | 'vmax' | 'ex' | 'cap' | 'ch' | 'ic' | 'lh' | 'rlh' | 'vi' | 'vb' | 'svw' | 'svh' | 'lvw' | 'lvh' | 'dvw' | 'dvh'
 
 export type AbsoluteUnit = 'px' | 'pt' | 'cm' | 'mm' | 'Q' | 'in' | 'pc'
 
