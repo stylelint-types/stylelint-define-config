@@ -23,3 +23,12 @@ export type LiteralUnion<Union extends Base, Base = string> =
   | (Base & { zz_IGNORE_ME?: never })
 
 export type RegExpLike = RegExp | `/${string}/`
+
+export type KebabCase<S extends string, B extends boolean = true> =
+  S extends `${infer F}${infer O}`
+    ? F extends Uncapitalize<F>
+      ? `${F}${KebabCase<O, false>}`
+      : B extends true
+        ? `${Uncapitalize<F>}${KebabCase<O, false>}`
+        : `-${Uncapitalize<F>}${KebabCase<O, false>}`
+    : S
