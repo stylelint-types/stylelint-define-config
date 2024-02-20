@@ -123,6 +123,7 @@ import type { UnitDisallowedListOptions } from './unit-disallowed-list'
 import type { UnitNoUnknownOptions } from './unit-no-unknown'
 import type { ValueKeywordCaseOptions } from './value-keyword-case'
 import type { ValueNoVendorPrefixOptions } from './value-no-vendor-prefix'
+import type { LightnessNotationOptions } from './lightness-notation'
 
 /**
  * Rules determine what the linter looks for and complains about.
@@ -1385,6 +1386,28 @@ export interface StyleLintRules {
    * @see [length-zero-no-unit](https://stylelint.io/user-guide/rules/length-zero-no-unit)
    */
   'length-zero-no-unit': LengthZeroNoUnitOptions
+
+  /**
+   * Specify number or percentage notation for lightness.
+   *
+   * ```scss
+   *   a { color: oklch(85% 0.17 88) }
+   * //                 ^^^
+   * //                 This notation
+   * ```
+   *
+   * This rule supports `oklch`, `oklab`, `lch` and `lab` functions.
+   *
+   * ### Primary Options
+   *
+   * string: `"percentage"|"number"`
+   *
+   * - `"percentage"`: Lightness must always use the percentage notation.
+   * - `"number"`: Lightness must always use the number notation.
+   *
+   * @see [lightness-notation](https://stylelint.io/user-guide/rules/lightness-notation)
+   */
+  'lightness-notation': LightnessNotationOptions
 
   /**
    * Limit the depth of nesting.
