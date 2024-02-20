@@ -10,7 +10,6 @@
 
 <p align="center">Provide a <code>defineConfig</code> function for <code>stylelint.config.js</code>.</p>
 
-
 ## Install
 
 ```sh
