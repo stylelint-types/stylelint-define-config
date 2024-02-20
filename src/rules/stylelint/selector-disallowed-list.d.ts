@@ -1,5 +1,7 @@
 import type { RuleConfig } from '../rule-config'
 
+type SelectorDisallowedListIgnore = 'inside-block' | 'keyframe-selectors'
+
 export type SelectorDisallowedListOptions = RuleConfig<
   string | RegExp | (string | RegExp)[],
   {
@@ -11,7 +13,7 @@ export type SelectorDisallowedListOptions = RuleConfig<
     /**
      * Ignore selectors that are inside a block.
      */
-    ignore?: ['inside-block']
+    ignore?: [SelectorDisallowedListIgnore]
     message?: string | ((selector: string) => string)
   }
 >
