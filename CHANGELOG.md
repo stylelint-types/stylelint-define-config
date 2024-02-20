@@ -1,3 +1,23 @@
+# [1.2.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.1.0...v1.2.0) (2024-2-20)
+
+
+### Features
+
+* ` ignore: ["keyframe-selectors"]` to `selector-disallowed-list` ([62c8a1f](https://github.com/stylelint-types/stylelint-define-config/commit/62c8a1f68dc9f53b1f05942525ae60193a345dc7))
+* `checkContextFunctionalPseudoClasses: []` to `selector-max-id` ([775da81](https://github.com/stylelint-types/stylelint-define-config/commit/775da81bd54a64ee5356287c540d4f8f1df62c0d))
+* `media-query-no-invalid` specific problem messages ([c7cabbf](https://github.com/stylelint-types/stylelint-define-config/commit/c7cabbf287ec19bd3cc862fecc33536d9b92d054))
+* add `KebabCaseStandardPropertiesMap` type ([eb32e76](https://github.com/stylelint-types/stylelint-define-config/commit/eb32e76a8adc02187bb9901666abad602cb8b1f8))
+* add `lightness-notation` rule ([22992bb](https://github.com/stylelint-types/stylelint-define-config/commit/22992bb541b60e7db61fea20ab8215934f0bb302))
+* add viewport unit types ([4b844cc](https://github.com/stylelint-types/stylelint-define-config/commit/4b844cc451f7266578fc51d9516d663cfc6bebf7))
+* rename `@stylistic/stylelint-plugin` ([5c80fb7](https://github.com/stylelint-types/stylelint-define-config/commit/5c80fb7a533dde7eb9e967d3ecc905b832028b07))
+
+
+### Performance Improvements
+
+* bump non-major deps to latest ([60fccd1](https://github.com/stylelint-types/stylelint-define-config/commit/60fccd1abd32e7f6690582704eb0136bede5a32e))
+
+
+
 # [1.1.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.0.2...v1.1.0) (2023-12-16)
 
 
