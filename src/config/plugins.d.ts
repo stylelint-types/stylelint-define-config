@@ -17,8 +17,8 @@ import type { LiteralUnion } from '../utils'
 export interface CustomPlugins {}
 
 type KnownPlugins = LiteralUnion<
-  | 'stylelint-order' | 'stylelint-scss' | 'stylelint-stylistic' | 'stylelint-stylus'
-  | 'stylelint-suitcss' | 'stylelint-react-native' | 'stylelint-codeguide'
+  | 'stylelint-order' | 'stylelint-scss' | '@stylistic/stylelint-plugin' | 'stylelint-stylus'
+  | 'stylelint-suitcss' | 'stylelint-react-native'
   | keyof CustomPlugins
 >
 
