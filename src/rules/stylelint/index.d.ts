@@ -2288,6 +2288,10 @@ export interface StyleLintRules {
    *
    * `int`: Maximum compound selectors allowed.
    *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreSelectors`: Ignore some compound selectors. This may be useful for deep selectors like Vue's `::v-deep` or Angular's `::ng-deep` that behave more like combinators than compound selectors.
+   *
    * @see [selector-max-compound-selectors](https://stylelint.io/user-guide/rules/selector-max-compound-selectors)
    */
   'selector-max-compound-selectors': SelectorMaxCompoundSelectorsOptions
