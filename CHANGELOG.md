@@ -1,3 +1,17 @@
+# [1.3.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.2.0...v1.3.0) (2024-4-9)
+
+
+### Features
+
+* add `ignoreSelectors: []` to `selector-max-compound-selectors` ([82a1148](https://github.com/stylelint-types/stylelint-define-config/commit/82a1148892c7dc5d03363ea5278e3aabe5352b0a))
+
+
+### Performance Improvements
+
+* update `stylelint` to `v16.3.1` ([944cede](https://github.com/stylelint-types/stylelint-define-config/commit/944cedea04b14c0a8e32df16d3010be1255ea9e9))
+
+
+
 # [1.2.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.1.0...v1.2.0) (2024-2-20)
 
 
