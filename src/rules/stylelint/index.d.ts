@@ -2032,6 +2032,10 @@ export interface StyleLintRules {
    * }
    * ```
    *
+   * ### Optional Secondary Options:
+   *
+   * - `ignore`
+   *
    * @see [rule-selector-property-disallowed-list](https://stylelint.io/user-guide/rules/rule-selector-property-disallowed-list)
    */
   'rule-selector-property-disallowed-list': RuleSelectorPropertyDisallowedListOptions

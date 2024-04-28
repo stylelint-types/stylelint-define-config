@@ -10,5 +10,6 @@ export type RuleSelectorPropertyDisallowedListOptions = RuleConfig<
   RuleSelectorPropertyDisallowedListPrimaryOptions,
   {
     message?: string | ((selector: string, property: string) => string)
+    ignore?: ['keyframe-selectors']
   }
 >
