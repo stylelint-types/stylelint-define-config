@@ -668,6 +668,7 @@ export interface StyleLintRules {
    *
    * ### Optional Secondary Options
    * - `ignoreShorthands`
+   * - `ignoreLonghands`
    *
    * @see [declaration-block-no-redundant-longhand-properties](https://stylelint.io/user-guide/rules/declaration-block-no-redundant-longhand-properties)
    */
@@ -1849,8 +1850,10 @@ export interface StyleLintRules {
    * ```scss
    * \@custom-media --sm (min-width: 40rem);
    * //             ^^^^
+   * //    This custom media query name
    * \@media (--sm) {}
    * //       ^^^^
+   * //       And this one
    * ```
    *
    * This rule considers custom media queries defined **within the same source** to be known.
