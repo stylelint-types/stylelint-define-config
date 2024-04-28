@@ -124,6 +124,7 @@ import type { UnitNoUnknownOptions } from './unit-no-unknown'
 import type { ValueKeywordCaseOptions } from './value-keyword-case'
 import type { ValueNoVendorPrefixOptions } from './value-no-vendor-prefix'
 import type { LightnessNotationOptions } from './lightness-notation'
+import type { NoUnknownCustomMediaOptions } from './no-unknown-custom-media'
 
 /**
  * Rules determine what the linter looks for and complains about.
@@ -1841,6 +1842,25 @@ export interface StyleLintRules {
    * @see [no-unknown-animations](https://stylelint.io/user-guide/rules/no-unknown-animations)
    */
   'no-unknown-animations': NoUnknownAnimationsOptions
+
+  /**
+   * Disallow unknown custom media queries.
+   *
+   * ```scss
+   * \@custom-media --sm (min-width: 40rem);
+   * //             ^^^^
+   * \@media (--sm) {}
+   * //       ^^^^
+   * ```
+   *
+   * This rule considers custom media queries defined **within the same source** to be known.
+   *
+   * ### Primary Options:
+   * `true`
+   *
+   * @see [no-unknown-custom-media](https://stylelint.io/user-guide/rules/no-unknown-custom-media)
+   */
+  'no-unknown-custom-media': NoUnknownCustomMediaOptions
 
   /**
    * Disallow unknown custom properties.
