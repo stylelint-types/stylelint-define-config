@@ -1,3 +1,14 @@
+# [1.4.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.3.0...v1.4.0) (2024-4-28)
+
+
+### Features
+
+* add `ignore: ["keyframe-selectors"]` to `rule-selector-property-disallowed-list` ([47ee8f6](https://github.com/stylelint-types/stylelint-define-config/commit/47ee8f61ed60e2f78c6b8f28901bf1d2c28f2d05))
+* add `ignoreLonghands: []` to `declaration-block-no-redundant-longhand-properties` ([94a2924](https://github.com/stylelint-types/stylelint-define-config/commit/94a292409ecd9ff979f89c9c8fb31d83560a886b))
+* add `no-unknown-custom-media` ([b78279f](https://github.com/stylelint-types/stylelint-define-config/commit/b78279fe272045a1fb52d4623b3c1b5a44095009))
+
+
+
 # [1.3.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.2.0...v1.3.0) (2024-4-9)
 
 
