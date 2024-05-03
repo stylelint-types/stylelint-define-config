@@ -3,7 +3,7 @@ import type { RuleConfig } from '../rule-config'
 export type ValueNoVendorPrefixOptions = RuleConfig<
   true,
   {
-    ignoreValues: string[]
+    ignoreValues: (string | RegExp)[]
     message?: string | ((actual: number, expected: string) => string)
   }
 >
