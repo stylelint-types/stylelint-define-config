@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.4.0...v1.5.0) (2024-5-3)
+
+
+### Features
+
+* regex support to `ignoreValues` for `value-no-vendor-prefix` ([d9b079e](https://github.com/stylelint-types/stylelint-define-config/commit/d9b079e1c6047a464c8017644e878209e602a3de))
+
+
+
 # [1.4.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.3.0...v1.4.0) (2024-4-28)
 
 
