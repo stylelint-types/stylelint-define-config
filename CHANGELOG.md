@@ -1,3 +1,13 @@
+# [1.6.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.5.0...v1.6.0) (2024-08-18)
+
+
+### Features
+
+* add `url` secondary option ([5d0c69f](https://github.com/stylelint-types/stylelint-define-config/commit/5d0c69f8f338e8fd2deb58348047dd362923f4c5))
+* update stylelint to `v16.8.x` ([61de38c](https://github.com/stylelint-types/stylelint-define-config/commit/61de38c52e28099c87e015d5824a41c8cc2ec900))
+
+
+
 # [1.5.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.4.0...v1.5.0) (2024-5-3)
 
 
