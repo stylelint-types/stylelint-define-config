@@ -26,6 +26,13 @@ export interface SecondaryOptions {
    * @see [configure message](https://stylelint.io/user-guide/configure#message)
    */
   message?: string | ((...args: any[]) => string)
+
+  /**
+   * You can use the url secondary option to provide a custom link to external docs.
+   * These urls can then be displayed in custom formatters.
+   * @see [configure url](https://stylelint.io/user-guide/configure#url)
+   */
+  url?: string
 }
 
 /**
