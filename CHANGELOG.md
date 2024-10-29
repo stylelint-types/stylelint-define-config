@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.6.0...v1.7.0) (2024-10-29)
+
+
+### Features
+
+* add `formatter` configuration property ([4d9584b](https://github.com/stylelint-types/stylelint-define-config/commit/4d9584b514b8ad3417f83db78243a3d4483dd1f2))
+* add support for `string | RegExp` to `ignoreValues` option of `value-no-vendor-prefix` ([c0ed9fc](https://github.com/stylelint-types/stylelint-define-config/commit/c0ed9fc11d6a20b4ea32f9869dfc115dc0cf60db))
+* add support for `string` to `ignoreLonghands` option of `declaration-block-no-redundant-longhand-properties` ([c975bf4](https://github.com/stylelint-types/stylelint-define-config/commit/c975bf4b188adcf5773041369de8937e0ad14637))
+* update stylelint to `16.10.0` ([0ab1ac4](https://github.com/stylelint-types/stylelint-define-config/commit/0ab1ac452d11b0da060c184b20e0ea340a1067f6))
+
+
+
 # [1.6.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.5.0...v1.6.0) (2024-08-18)
 
 
