@@ -1,5 +1,6 @@
-import type { CustomSyntax, Rule, Severity } from 'stylelint'
+import type { CustomSyntax, Formatter, FormatterType, Rule, Severity } from 'stylelint'
 import type { Rules } from '../rules'
+import type { LiteralUnion } from '../utils'
 import type { Plugins } from './plugins'
 import type { KnownCustomSyntax } from './customSyntax'
 import type { KnownExtends } from './extends'
@@ -26,6 +27,13 @@ export interface Override extends Omit<StylelintConfig, 'overrides'> {
  * @see [Stylelint configuration](https://stylelint.io/user-guide/configure)
  */
 export interface StylelintConfig {
+  /**
+   * Specify the formatter to format your results.
+   *
+   * @see [Configure formatter](https://stylelint.io/user-guide/configure#formatter)
+   */
+  formatter?: Formatter | LiteralUnion<FormatterType>
+
   /**
    * Automatically fix, where possible, problems reported by rules.
    *
