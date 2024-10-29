@@ -1,6 +1,6 @@
-import type { RuleConfig } from '../rule-config'
 import type { CSSFunction, CSSPropertiesMap, MediaFeature, Unit } from '../../types'
 import type { RegExpLike } from '../../utils'
+import type { RuleConfig } from '../rule-config'
 
 type UnitDisallowedListIgnoreProperties = Partial<
   Record<

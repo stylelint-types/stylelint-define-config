@@ -1,9 +1,9 @@
 import type { CustomSyntax, Formatter, FormatterType, Rule, Severity } from 'stylelint'
 import type { Rules } from '../rules'
 import type { LiteralUnion } from '../utils'
-import type { Plugins } from './plugins'
 import type { KnownCustomSyntax } from './customSyntax'
 import type { KnownExtends } from './extends'
+import type { Plugins } from './plugins'
 
 export interface PluginFunctions {
   [pluginName: string]: Rule

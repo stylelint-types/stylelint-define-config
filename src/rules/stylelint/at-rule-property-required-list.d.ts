@@ -1,5 +1,5 @@
-import type { RuleConfig } from '../rule-config'
 import type { AtRules, CSSPropertiesMap } from '../../types'
+import type { RuleConfig } from '../rule-config'
 
 export type AtRulePropertyRequiredListPrimaryOptions =
   | Record<AtRules, CSSPropertiesMap | CSSPropertiesMap[]>

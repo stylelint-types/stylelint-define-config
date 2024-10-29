@@ -1,5 +1,5 @@
-import type { RuleConfig } from '../rule-config'
 import type { MediaFeatureLevel5, MediaFeatureNormal } from '../../types'
+import type { RuleConfig } from '../rule-config'
 
 export type MediaFeatureNameValueAllowedListPrimaryOptions = Partial<
   Record<

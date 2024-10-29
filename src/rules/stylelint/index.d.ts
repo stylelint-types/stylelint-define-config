@@ -56,6 +56,7 @@ import type { KeyframeDeclarationNoImportantOptions } from './keyframe-declarati
 import type { KeyframeSelectorNotationOptions } from './keyframe-selector-notation'
 import type { KeyframesNamePatternOptions } from './keyframes-name-pattern'
 import type { LengthZeroNoUnitOptions } from './length-zero-no-unit'
+import type { LightnessNotationOptions } from './lightness-notation'
 import type { MaxNestingDepthOptions } from './max-nesting-depth'
 import type { MediaFeatureNameAllowedListOptions } from './media-feature-name-allowed-list'
 import type { MediaFeatureNameDisallowedListOptions } from './media-feature-name-disallowed-list'
@@ -75,6 +76,7 @@ import type { NoInvalidDoubleSlashCommentsOptions } from './no-invalid-double-sl
 import type { NoInvalidPositionAtImportRuleOptions } from './no-invalid-position-at-import-rule'
 import type { NoIrregularWhitespaceOptions } from './no-irregular-whitespace'
 import type { NoUnknownAnimationsOptions } from './no-unknown-animations'
+import type { NoUnknownCustomMediaOptions } from './no-unknown-custom-media'
 import type { NoUnknownCustomPropertiesOptions } from './no-unknown-custom-properties'
 import type { NumberMaxPrecisionOptions } from './number-max-precision'
 import type { PropertyAllowedListOptions } from './property-allowed-list'
@@ -123,8 +125,6 @@ import type { UnitDisallowedListOptions } from './unit-disallowed-list'
 import type { UnitNoUnknownOptions } from './unit-no-unknown'
 import type { ValueKeywordCaseOptions } from './value-keyword-case'
 import type { ValueNoVendorPrefixOptions } from './value-no-vendor-prefix'
-import type { LightnessNotationOptions } from './lightness-notation'
-import type { NoUnknownCustomMediaOptions } from './no-unknown-custom-media'
 
 /**
  * Rules determine what the linter looks for and complains about.

@@ -1,5 +1,5 @@
-import type { RuleConfig } from '../rule-config'
 import type { CSSPropertiesMap } from '../../types'
+import type { RuleConfig } from '../rule-config'
 
 export type PropertyNoVendorPrefixOptions = RuleConfig<
   true,

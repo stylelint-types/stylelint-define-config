@@ -1,5 +1,5 @@
-import type { RuleConfig } from '../rule-config'
 import type { LiteralUnion } from '../../utils'
+import type { RuleConfig } from '../rule-config'
 
 type SelectorTypeNoUnknownIgnore = LiteralUnion<'custom-elements' | 'default-namespace'>
 
