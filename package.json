@@ -2,7 +2,7 @@
   "name": "stylelint-define-config",
   "type": "module",
   "version": "1.6.0",
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.12.3",
   "description": "Provide a defineConfig function for stylelint.config.js files",
   "author": "pengzhanbo <volodymyr@foxmail.com> (https://github.com/pengzhanbo)",
   "license": "MIT",
@@ -48,7 +48,7 @@
   "scripts": {
     "build": "tsup-node",
     "lint": "eslint .",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "release": "bumpp package.json --execute=\"pnpm release:changelog\" --commit --all --push --tag && pnpm publish --access public"
   },
@@ -59,13 +59,13 @@
     "csstype": "^3.1.3"
   },
   "devDependencies": {
-    "@pengzhanbo/eslint-config": "^1.15.0",
-    "@types/node": "^22.5.4",
-    "bumpp": "^9.5.2",
+    "@pengzhanbo/eslint-config": "^1.18.2",
+    "@types/node": "^22.8.2",
+    "bumpp": "^9.8.0",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.9.1",
-    "stylelint": "^16.9.0",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4"
+    "eslint": "^9.13.0",
+    "stylelint": "^16.10.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
   }
 }
