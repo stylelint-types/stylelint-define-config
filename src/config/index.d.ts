@@ -1,4 +1,4 @@
-import type { CustomSyntax, Formatter, FormatterType, Rule, Severity } from 'stylelint'
+import type { ConfigRuleSettings, CustomSyntax, DisableOptions, Formatter, FormatterType, Rule, Severity } from 'stylelint'
 import type { Rules } from '../rules'
 import type { LiteralUnion } from '../utils'
 import type { KnownCustomSyntax } from './customSyntax'
@@ -23,6 +23,8 @@ export interface Override extends Omit<StylelintConfig, 'overrides'> {
 
   name?: string
 }
+
+export type DisableSettings = ConfigRuleSettings<boolean, DisableOptions>
 
 /**
  * Stylelint configuration
@@ -122,21 +124,28 @@ export interface StylelintConfig {
    *
    * @see [Report descriptionless disables](https://stylelint.io/user-guide/options#reportdescriptionlessdisables)
    */
-  reportDescriptionlessDisables?: boolean
+  reportDescriptionlessDisables?: DisableSettings
 
   /**
    * Report `stylelint-disable` comments that don't match rules that are specified in the configuration object.
    *
    * @see [Report invalid scope disables](https://stylelint.io/user-guide/options#reportinvalidscopedisables)
    */
-  reportInvalidScopeDisables?: boolean
+  reportInvalidScopeDisables?: DisableSettings
 
   /**
    * Report stylelint-disable comments that don't match any lints that need to be disabled.
    *
    * @see [Report needless disables](https://stylelint.io/user-guide/options#reportneedlessdisables)
    */
-  reportNeedlessDisables?: boolean
+  reportNeedlessDisables?: DisableSettings
+
+  /**
+   * Report configuration comments that are not scoped to at least one rule.
+   *
+   * @see [Report unscoped disables](https://stylelint.io/user-guide/options#reportunscopeddisables)
+   */
+  reportUnscopedDisables?: DisableSettings
 
   /**
    * You can set the default severity level for all rules that do not have a severity specified in their secondary options.
