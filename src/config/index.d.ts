@@ -20,6 +20,8 @@ export interface Override extends Omit<StylelintConfig, 'overrides'> {
    * the configuration should be applied to
    */
   files: string | string[]
+
+  name?: string
 }
 
 /**
