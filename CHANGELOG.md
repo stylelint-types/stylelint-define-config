@@ -1,3 +1,15 @@
+# [1.8.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.7.0...v1.8.0) (2024-11-30)
+
+
+### Features
+
+* add `ignoreFunctions: []` to `media-query-no-invalid` ([cca29af](https://github.com/stylelint-types/stylelint-define-config/commit/cca29af8434e528173e3fbc71b7c5f1e913ac8ca))
+* add `name` configuration property under `overrides` ([a9e93b1](https://github.com/stylelint-types/stylelint-define-config/commit/a9e93b148dd03eeee3df4b8e61c259bab96fa9d5))
+* add `reportUnscopedDisables` option ([fe45ded](https://github.com/stylelint-types/stylelint-define-config/commit/fe45ded8059661099b3d18cacb512385f76f01fb))
+* update `stylelint` to `16.11.0` ([b138f97](https://github.com/stylelint-types/stylelint-define-config/commit/b138f97c2eff5c04bd92af81df0c7e56719926a4))
+
+
+
 # [1.7.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.6.0...v1.7.0) (2024-10-29)
 
 
