@@ -1,3 +1,12 @@
+## [1.8.1](https://github.com/stylelint-types/stylelint-define-config/compare/v1.8.0...v1.8.1) (2024-12-15)
+
+
+### Features
+
+* bump `stylelint` to `16.12.0` ([fae3ba4](https://github.com/stylelint-types/stylelint-define-config/commit/fae3ba42750c4fedf0b2d3ed221021366856145c))
+
+
+
 # [1.8.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.7.0...v1.8.0) (2024-11-30)
 
 
