@@ -5,6 +5,7 @@ import type { AtRuleDescriptorNoUnknownOptions } from './at-rule-descriptor-no-u
 import type { AtRuleDescriptorValueNoUnknownOptions } from './at-rule-descriptor-value-no-unknown'
 import type { AtRuleDisallowedListOptions } from './at-rule-disallowed-list'
 import type { AtRuleEmptyLineBeforeOptions } from './at-rule-empty-line-before'
+import type { AtRuleNoDeprecatedOptions } from './at-rule-no-deprecated'
 import type { AtRuleNoUnknownOptions } from './at-rule-no-unknown'
 import type { AtRuleNoVendorPrefixOptions } from './at-rule-no-vendor-prefix'
 import type { AtRulePropertyRequiredListOptions } from './at-rule-property-required-list'
@@ -270,6 +271,27 @@ export interface StyleLintRules {
    * @see [at-rule-empty-line-before](https://stylelint.io/user-guide/rules/at-rule-empty-line-before)
    */
   'at-rule-empty-line-before': AtRuleEmptyLineBeforeOptions
+
+  /**
+   * Disallow deprecated at-rules.
+   *
+   * >``` scss
+   * >@viewport {}
+   * >//^^^^^^^
+   * >//At-rules like this
+   * >```
+   *
+   * This rule flags at-rules that were removed or deprecated after being in the CSS specifications, including editor drafts, and were subsequently either:
+   *
+   * - shipped in a stable version of a browser
+   * - shipped by a developer channel/edition browser
+   * - shipped but behind experimental flags
+   * - polyfilled with some adoption before any browser actually shipped
+   * - had an MDN page at one point in time
+   *
+   * @see [at-rule-no-deprecated](https://stylelint.io/user-guide/rules/at-rule-no-deprecated)
+   */
+  'at-rule-no-deprecated': AtRuleNoDeprecatedOptions
 
   /**
    * Disallow unknown at-rules.
