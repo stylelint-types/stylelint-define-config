@@ -41,9 +41,13 @@ export interface StylelintConfig {
   /**
    * Automatically fix, where possible, problems reported by rules.
    *
+   * Options are:
+   * - "lax" (default) - uses `postcss-safe-parser` to fix as much as possible, even when there are syntax errors
+   * - "strict" - uses PostCSS Parser and only fixes problems when there are no syntax errors
+   *
    * @see [Configure fix](https://stylelint.io/user-guide/configure#fix)
    */
-  fix?: boolean
+  fix?: boolean | 'lax' | 'strict'
 
   /**
    * Store the results of processed files so that Stylelint only operates on the changed ones.
