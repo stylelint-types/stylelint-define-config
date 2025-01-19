@@ -2,6 +2,7 @@ import type { AlphaValueNotationOptions } from './alpha-value-notation'
 import type { AnnotationNoUnknownOptions } from './annotation-no-unknown'
 import type { AtRuleAllowedListOptions } from './at-rule-allowed-list'
 import type { AtRuleDescriptorNoUnknownOptions } from './at-rule-descriptor-no-unknown'
+import type { AtRuleDescriptorValueNoUnknownOptions } from './at-rule-descriptor-value-no-unknown'
 import type { AtRuleDisallowedListOptions } from './at-rule-disallowed-list'
 import type { AtRuleEmptyLineBeforeOptions } from './at-rule-empty-line-before'
 import type { AtRuleNoUnknownOptions } from './at-rule-no-unknown'
@@ -211,6 +212,23 @@ export interface StyleLintRules {
    * @see [at-rule-descriptor-no-unknown](https://stylelint.io/user-guide/rules/at-rule-descriptor-no-unknown)
    */
   'at-rule-descriptor-no-unknown': AtRuleDescriptorNoUnknownOptions
+
+  /**
+   * Disallow unknown values for descriptors within at-rules.
+   *
+   * >``` scss
+   * >@counter-style foo {
+   * >   system: unknown;
+   * >//         ^^^^^^^
+   * >//         Values like this
+   * >}
+   * >```
+   *
+   * This rule considers descriptors and values defined in the CSS Specifications, up to and including Editor's Drafts, to be known.
+   *
+   * @see [at-rule-descriptor-value-no-unknown](https://stylelint.io/user-guide/rules/at-rule-descriptor-value-no-unknown)
+   */
+  'at-rule-descriptor-value-no-unknown': AtRuleDescriptorValueNoUnknownOptions
 
   /**
    * Specify a list of disallowed at-rules.
