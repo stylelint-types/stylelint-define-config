@@ -4,6 +4,7 @@ import type { RuleConfig } from '../rule-config'
 export type NoInvalidPositionAtImportRuleOptions = RuleConfig<
   true,
   {
-    ignoreAtRules: (AtRules | RegExp)[]
+    ignoreAtRules?: (AtRules | RegExp)[]
+    message?: string | (() => string)
   }
 >

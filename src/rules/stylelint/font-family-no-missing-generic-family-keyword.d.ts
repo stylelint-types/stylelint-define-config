@@ -4,5 +4,6 @@ export type FontFamilyNoMissingGenericFamilyKeywordOptions = RuleConfig<
   true,
   {
     ignoreFontFamilies?: (string | RegExp)[]
+    message?: string | (() => string)
   }
 >
