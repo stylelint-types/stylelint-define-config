@@ -1,3 +1,24 @@
+# [16.13.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.8.1...v16.13.0) (2025-01-20)
+
+
+### Features
+
+* add `"ignore": ["at-rule-preludes", "declaration-values"]` to `string-no-newline` ([3d26b39](https://github.com/stylelint-types/stylelint-define-config/commit/3d26b39752ff6feb28f551fbbcff932b99df9e1a))
+* add `at-rule-descriptor-no-unknown` rule ([5dd4057](https://github.com/stylelint-types/stylelint-define-config/commit/5dd4057ae8b3b2e493e9f0399e5b0ecdad3af2a2))
+* add `at-rule-descriptor-value-no-unknown` rule ([df276d1](https://github.com/stylelint-types/stylelint-define-config/commit/df276d14ffb4f1721ac4da5916b2825a470aec89))
+* add `at-rule-no-deprecated` rule ([4b5c52c](https://github.com/stylelint-types/stylelint-define-config/commit/4b5c52c7657a75f621eece9d729d693df23c8233))
+* add `at-rule-prelude-no-invalid` rule ([4208f2d](https://github.com/stylelint-types/stylelint-define-config/commit/4208f2d93b123a4994237d4cb4162984c678bf24))
+* add `declaration-property-value-keyword-no-deprecated` rule ([84e1997](https://github.com/stylelint-types/stylelint-define-config/commit/84e199782eb3681b5126df516bcb529153a2eaab))
+* add `lax` / `strict` values to the `fix` Node.js API option and CLI flag ([4a86a60](https://github.com/stylelint-types/stylelint-define-config/commit/4a86a608428fcd8646c241d136b938675c824b2d))
+* bump stylelint to `16.13.0` ([18d6d83](https://github.com/stylelint-types/stylelint-define-config/commit/18d6d83df0af54fb0dabbc2fa816f5fb1a01a7fc))
+
+
+### Performance Improvements
+
+* update some rules `messageArgs` ([cdec711](https://github.com/stylelint-types/stylelint-define-config/commit/cdec71113b24fbcdb393b2a85058c1f79f56a653))
+
+
+
 ## [1.8.1](https://github.com/stylelint-types/stylelint-define-config/compare/v1.8.0...v1.8.1) (2024-12-15)
 
 
