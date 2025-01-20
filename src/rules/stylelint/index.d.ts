@@ -38,6 +38,7 @@ import type { DeclarationPropertyUnitAllowedListOptions } from './declaration-pr
 import type { DeclarationPropertyUnitDisallowedListOptions } from './declaration-property-unit-disallowed-list'
 import type { DeclarationPropertyValueAllowedListOptions } from './declaration-property-value-allowed-list'
 import type { DeclarationPropertyValueDisallowedListOptions } from './declaration-property-value-disallowed-list'
+import type { DeclarationPropertyValueKeywordNoDeprecatedOptions } from './declaration-property-value-keyword-no-deprecated'
 import type { DeclarationPropertyValueNoUnknownOptions } from './declaration-property-value-no-unknown'
 import type { FontFamilyNameQuotesOptions } from './font-family-name-quotes'
 import type { FontFamilyNoDuplicateNamesOptions } from './font-family-no-duplicate-names'
@@ -986,6 +987,26 @@ export interface StyleLintRules {
    * @see [declaration-property-value-disallowed-list](https://stylelint.io/user-guide/rules/declaration-property-value-disallowed-list)
    */
   'declaration-property-value-disallowed-list': DeclarationPropertyValueDisallowedListOptions
+
+  /**
+   * Disallow deprecated keywords for properties within declarations.
+   *
+   * ```scss
+   * a { color: ThreeDDarkShadow; }
+   * //  ^^^^^  ^^^^^^^^^^^^^^^^
+   * // property and value pairs like these
+   * ```
+   *
+   * This rule flags keywords that were removed or deprecated after being in the CSS specifications, including editor drafts, and were subsequently either:
+   * - shipped in a stable version of a browser
+   * - shipped by a developer channel/edition browser
+   * - shipped but behind experimental flags
+   * - polyfilled with some adoption before any browser actually shipped
+   * - had an MDN page at one point in time
+   *
+   * @see [declaration-property-value-keyword-no-deprecated](https://stylelint.io/user-guide/rules/declaration-property-value-keyword-no-deprecated)
+   */
+  'declaration-property-value-keyword-no-deprecated': DeclarationPropertyValueKeywordNoDeprecatedOptions
 
   /**
    * Disallow unknown values for properties within declarations.
