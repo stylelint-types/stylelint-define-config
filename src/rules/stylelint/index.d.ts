@@ -8,6 +8,7 @@ import type { AtRuleEmptyLineBeforeOptions } from './at-rule-empty-line-before'
 import type { AtRuleNoDeprecatedOptions } from './at-rule-no-deprecated'
 import type { AtRuleNoUnknownOptions } from './at-rule-no-unknown'
 import type { AtRuleNoVendorPrefixOptions } from './at-rule-no-vendor-prefix'
+import type { AtRulePreludeNoInvalidOptions } from './at-rule-prelude-no-invalid'
 import type { AtRulePropertyRequiredListOptions } from './at-rule-property-required-list'
 import type { BlockNoEmptyOptions } from './block-no-empty'
 import type { ColorFunctionNatationOptions } from './color-function-notation'
@@ -333,6 +334,21 @@ export interface StyleLintRules {
    * @see [at-rule-no-vendor-prefix](https://stylelint.io/user-guide/rules/at-rule-no-vendor-prefix)
    */
   'at-rule-no-vendor-prefix': AtRuleNoVendorPrefixOptions
+
+  /**
+   * Disallow invalid preludes for at-rules.
+   *
+   * >```scss
+   * >@property --foo {}
+   * >//        ^^^^^
+   * >//        Preludes like this
+   * >```
+   *
+   * This rule considers preludes for at-rules defined within the CSS specifications, up to and including Editor's Drafts, to be valid.
+   *
+   * @see [at-rule-prelude-no-invalid](https://stylelint.io/user-guide/rules/at-rule-prelude-no-invalid)
+   */
+  'at-rule-prelude-no-invalid': AtRulePreludeNoInvalidOptions
 
   /**
    * Specify a list of required properties for an at-rule.
