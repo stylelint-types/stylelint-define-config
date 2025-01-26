@@ -233,6 +233,12 @@ export interface StylelintConfig {
    * @see [Rules](https://stylelint.io/user-guide/rules)
    */
   rules?: Partial<Rules>
+
+  /**
+   * @experimental
+   * @see [computeEditInfo](https://stylelint.io/user-guide/configure#computeeditinfo)
+   */
+  computeEditInfo?: boolean
 }
 
 export { Severity }

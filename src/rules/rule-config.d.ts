@@ -42,7 +42,7 @@ export interface SecondaryOptions {
  */
 export type RuleConfig<T, S extends Record<string, any> = Record<string, any>>
   = null
-  | undefined
-  | NonNullable<T>
-  | readonly [NonNullable<T>]
-  | readonly [NonNullable<T>, Omit<SecondaryOptions, keyof S> & S]
+    | undefined
+    | NonNullable<T>
+    | readonly [NonNullable<T>]
+    | readonly [NonNullable<T>, Omit<SecondaryOptions, keyof S> & S]
