@@ -1,3 +1,13 @@
+# [16.14.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.13.0...v16.14.0) (2025-01-26)
+
+
+### Features
+
+* add replaced text and corresponding range to `Warning` type ([1790682](https://github.com/stylelint-types/stylelint-define-config/commit/17906821ccfa91a613ab04391501ae3ff71f1c6a))
+* bump stylelint to `16.14.0` ([660ed15](https://github.com/stylelint-types/stylelint-define-config/commit/660ed15650c2b6fc9a8b8931e2c79090732f4e49))
+
+
+
 # [16.13.0](https://github.com/stylelint-types/stylelint-define-config/compare/v1.8.1...v16.13.0) (2025-01-20)
 
 
