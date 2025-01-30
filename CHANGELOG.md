@@ -1,3 +1,12 @@
+## [16.14.1](https://github.com/stylelint-types/stylelint-define-config/compare/v16.14.0...v16.14.1) (2025-01-30)
+
+
+### Bug Fixes
+
+* replace `StandardPropertiesMap` to `KebabCaseStandardPropertiesMap`, close [#1](https://github.com/stylelint-types/stylelint-define-config/issues/1) ([962efb7](https://github.com/stylelint-types/stylelint-define-config/commit/962efb75c2621b0f9f3b816e0b1c19518d3422c3))
+
+
+
 # [16.14.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.13.0...v16.14.0) (2025-01-26)
 
 
