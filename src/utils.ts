@@ -22,7 +22,7 @@ export type LiteralUnion<Union extends Base, Base = string> =
   | Union
   | (Base & { zz_IGNORE_ME?: never })
 
-export type RegExpLike = RegExp | `/${string}/`
+export type RegExpLike = RegExp | `/${string}/` | string
 
 export type KebabCase<S extends string, B extends boolean = true> =
   S extends `${infer F}${infer O}`
