@@ -1,4 +1,4 @@
-import type { Plugin } from 'stylelint'
+import type { Plugin, Rule } from 'stylelint'
 import type { LiteralUnion } from '../utils'
 
 /**
@@ -23,3 +23,7 @@ type KnownPlugins = LiteralUnion<
 >
 
 export type Plugins = KnownPlugins | Plugin | (KnownPlugins | Plugin)[]
+
+export interface PluginFunctions {
+  [pluginName: string]: Rule
+}

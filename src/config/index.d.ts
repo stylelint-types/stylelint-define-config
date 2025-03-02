@@ -1,15 +1,14 @@
-import type { ConfigRuleSettings, CustomSyntax, DisableOptions, Formatter, FormatterType, Rule, Severity } from 'stylelint'
+import type { ConfigRuleSettings, CustomSyntax, DisableOptions, Formatter, FormatterType, Severity } from 'stylelint'
 import type { Rules } from '../rules'
 import type { LiteralUnion } from '../utils'
 import type { KnownCustomSyntax } from './customSyntax'
 import type { KnownExtends } from './extends'
-import type { Plugins } from './plugins'
-
-export interface PluginFunctions {
-  [pluginName: string]: Rule
-}
+import type { LanguageOptions } from './LanguageOptions'
+import type { PluginFunctions, Plugins } from './plugins'
 
 export type Extends = KnownExtends | StylelintConfig
+
+export type DisableSettings = ConfigRuleSettings<boolean, DisableOptions>
 
 /**
  * specify what subset of files to apply a configuration to.
@@ -23,8 +22,6 @@ export interface Override extends Omit<StylelintConfig, 'overrides'> {
 
   name?: string
 }
-
-export type DisableSettings = ConfigRuleSettings<boolean, DisableOptions>
 
 /**
  * Stylelint configuration
@@ -239,6 +236,12 @@ export interface StylelintConfig {
    * @see [computeEditInfo](https://stylelint.io/user-guide/configure#computeeditinfo)
    */
   computeEditInfo?: boolean
+
+  /**
+   * You can customize the syntax to define or extend the syntax for at-rules, properties, types, and CSS-wide keywords.
+   * @see [languageOptions](https://stylelint.io/user-guide/configure#languageoptions)
+   */
+  languageOptions?: LanguageOptions
 }
 
 export { Severity }
