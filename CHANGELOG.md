@@ -1,3 +1,15 @@
+# [16.15.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.14.1...v16.15.0) (2025-03-02)
+
+
+### Features
+
+* add `languageOptions` configuration property ([3b6204f](https://github.com/stylelint-types/stylelint-define-config/commit/3b6204f207f9f6bd548e0eb0f9de3a5bd39087a1))
+* add `syntax-string-no-invalid` rule ([629221e](https://github.com/stylelint-types/stylelint-define-config/commit/629221e8080ec3a9b2eae9a6e7c2612a1073fe02))
+* regex support to `ignoreAtRules` option of `at-rule-empty-line-before` ([8e0592d](https://github.com/stylelint-types/stylelint-define-config/commit/8e0592d372e67ed6f92d07281d81f0426ff07cc3))
+* update stylelint to `16.15.0` ([bba7988](https://github.com/stylelint-types/stylelint-define-config/commit/bba7988a3eb0a0a545c12ba5cf0819e60d798737))
+
+
+
 ## [16.14.1](https://github.com/stylelint-types/stylelint-define-config/compare/v16.14.0...v16.14.1) (2025-01-30)
 
 
