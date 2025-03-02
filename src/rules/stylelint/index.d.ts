@@ -124,6 +124,7 @@ import type { SelectorTypeCaseOptions } from './selector-type-case'
 import type { SelectorTypeNoUnknownOptions } from './selector-type-no-unknown'
 import type { ShorthandPropertyNoRedundantValuesOptions } from './shorthand-property-no-redundant-values'
 import type { StringNoNewlineOptions } from './string-no-newline'
+import type { SyntaxStringNoInvalidOptions } from './syntax-string-no-invalid'
 import type { TimeMinMillisecondsOptions } from './time-min-milliseconds'
 import type { UnitAllowedListOptions } from './unit-allowed-list'
 import type { UnitDisallowedListOptions } from './unit-disallowed-list'
@@ -2877,6 +2878,29 @@ export interface StyleLintRules {
    * @see [string-no-newline](https://stylelint.io/user-guide/rules/string-no-newline)
    */
   'string-no-newline': StringNoNewlineOptions
+
+  /**
+   * Disallow invalid syntax strings.
+   *
+   * ```scss
+   * \@property --foo {
+   *   syntax: "<color>";
+   * //        ^
+   * //        Syntax strings like this
+   * }
+   * ```
+   *
+   * Syntax strings are used for the `syntax` descriptor value of the `@property` at-rule. This rule checks their grammar and flags unsupported type names.
+   *
+   * You can check [§5.1 “Supported Names” of the CSS Properties & Values API](https://drafts.css-houdini.org/css-properties-values-api/#supported-names) for a list of valid syntax component names.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * @see [syntax-string-no-invalid](https://stylelint.io/user-guide/rules/syntax-string-no-invalid)
+   */
+  'syntax-string-no-invalid': SyntaxStringNoInvalidOptions
 
   /**
    * Limit the minimum number of milliseconds for time values.
