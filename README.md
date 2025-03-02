@@ -27,6 +27,7 @@ By default only stylelint's rules are supported. To activate auto-suggestions fo
 Plugins can either support their own types, or they could be supported by the community in the [@stylelint-types](https://www.npmjs.com/org/stylelint-types) repository.
 
 `stylelint.config.js`
+
 ```js
 // @ts-check
 const defineConfig = require('stylelint-define-config')
@@ -49,9 +50,9 @@ Improve your stylelint configuration experience with:
 - type checking (Use `// @ts-check` at the first line in your `stylelint.config.[c,m]js`)
 - documentation
 
-![](./static/rule.png)
+![rule](./static/rule.png)
 
-![](./static/secondary.png)
+![secondary](./static/secondary.png)
 
 ## Community Plugins
 
@@ -82,6 +83,7 @@ declare module 'stylelint-define-config' {
   }
 }
 ```
+
 ```ts
 import { RuleConfig } from 'stylelint-define-config'
 
