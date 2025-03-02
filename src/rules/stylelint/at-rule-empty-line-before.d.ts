@@ -7,7 +7,7 @@ export type AtRuleEmptyLineBeforeOptions = RuleConfig<
   {
     except?: LiteralUnion<'after-same-name' | 'inside-block' | 'blockless-after-same-name-blockless' | 'blockless-after-blockless' | 'first-nested'>[]
     ignore?: LiteralUnion<'after-comment' | 'first-nested' | 'inside-block' | 'blockless-after-same-name-blockless' | 'blockless-after-blockless'>[]
-    ignoreAtRules?: AtRules[]
+    ignoreAtRules?: (AtRules | RegExp | `/${string}/`)[]
     message?: string | ((atRule: string) => string)
   }
 >
