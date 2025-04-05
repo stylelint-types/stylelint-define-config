@@ -1,7 +1,7 @@
 {
   "name": "stylelint-define-config",
   "type": "module",
-  "version": "16.15.0",
+  "version": "16.17.0",
   "packageManager": "pnpm@10.7.1",
   "description": "Provide a defineConfig function for stylelint.config.js files",
   "author": "pengzhanbo <volodymyr@foxmail.com> (https://github.com/pengzhanbo)",

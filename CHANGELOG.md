@@ -1,3 +1,19 @@
+# [16.17.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.15.0...v16.17.0) (2025-04-05)
+
+
+### Bug Fixes
+
+* lint fix ([d788b36](https://github.com/stylelint-types/stylelint-define-config/commit/d788b369e8698a1ef9048b36379ab97863c077ba))
+
+
+### Features
+
+* add `ignorePreludeOfAtRules: []` to `length-zero-no-unit` ([a73ff8c](https://github.com/stylelint-types/stylelint-define-config/commit/a73ff8c553f5f6dfe0a7e21024e973398b499539))
+* add `layer-name-pattern` rule ([ef8984d](https://github.com/stylelint-types/stylelint-define-config/commit/ef8984dbf38d818c29d5dfdda5fcb150d24e0f2e))
+* bump `stylelint` to `16.17.0` ([830ad1b](https://github.com/stylelint-types/stylelint-define-config/commit/830ad1b91a5af101d38999120efef9335fe4c18c))
+
+
+
 # [16.15.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.14.1...v16.15.0) (2025-03-02)
 
 
