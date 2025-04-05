@@ -9,7 +9,7 @@ export type LengthZeroNoUnitOptions = RuleConfig<
      * Ignore units for zero length in custom properties.
      */
     ignore?: ('custom-properties')[]
-  
+
     ignoreFunctions?: (CSSFunction | RegExpLike)[]
     /**
      * Ignore units for zero lengths within the preludes of the specified at-rules.
