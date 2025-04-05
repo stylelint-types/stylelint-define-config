@@ -60,6 +60,7 @@ import type { KeyframeBlockNoDuplicateSelectorsOptions } from './keyframe-block-
 import type { KeyframeDeclarationNoImportantOptions } from './keyframe-declaration-no-important'
 import type { KeyframeSelectorNotationOptions } from './keyframe-selector-notation'
 import type { KeyframesNamePatternOptions } from './keyframes-name-pattern'
+import type { LayerNamePatternOptions } from './layer-name-pattern'
 import type { LengthZeroNoUnitOptions } from './length-zero-no-unit'
 import type { LightnessNotationOptions } from './lightness-notation'
 import type { MaxNestingDepthOptions } from './max-nesting-depth'
@@ -1456,6 +1457,26 @@ export interface StyleLintRules {
    * @see [keyframes-name-pattern](https://stylelint.io/user-guide/rules/keyframes-name-pattern)
    */
   'keyframes-name-pattern': KeyframesNamePatternOptions
+
+  /**
+   * Specify a pattern for layer names.
+   *
+   * >```scss
+   * >@layer foo {}
+   * >//     ^^^
+   * >//   This layer name
+   * >```
+   *
+   * ### Primary Options
+   * `string | RegExp`
+   *
+   * A string will be translated into a RegExp like so new RegExp(yourString) — so be sure to escape properly.
+   *
+   * Given the string: `"^[a-z][a-z0-9.-]*$"`
+   *
+   * @see [layer-name-pattern](https://stylelint.io/user-guide/rules/layer-name-pattern)
+   */
+  'layer-name-pattern': LayerNamePatternOptions
 
   /**
    * Disallow units for zero lengths.
