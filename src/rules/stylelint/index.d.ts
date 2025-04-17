@@ -23,6 +23,7 @@ import type { CommentNoEmptyOptions } from './comment-no-empty'
 import type { CommentPatternOptions } from './comment-pattern'
 import type { CommentWhitespaceInsideOptions } from './comment-whitespace-inside'
 import type { CommentWordDisallowedListOptions } from './comment-word-disallowed-list'
+import type { ContainerNamePatternOptions } from './container-name-pattern'
 import type { CustomMediaPatternOptions } from './custom-media-pattern'
 import type { CustomPropertyEmptyLineBeforeOptions } from './custom-property-empty-line-before'
 import type { CustomPropertyNoMissingVarFunctionOptions } from './custom-property-no-missing-var-function'
@@ -622,6 +623,22 @@ export interface StyleLintRules {
    * @see [comment-word-disallowed-list](https://stylelint.io/user-guide/rules/comment-word-disallowed-list)
    */
   'comment-word-disallowed-list': CommentWordDisallowedListOptions
+
+  /**
+   * Specify a pattern for container names.
+   *
+   * >```scss
+   * >@container foo (width > 400px) {}
+   * >//         ^^^
+   * >//         The pattern of this
+   * >```
+   *
+   * ### Primary Options
+   * `RegExp | string`: A string will be translated into a `RegExp` like so `new RegExp(yourString)` — so be sure to escape properly.
+   *
+   * @see [container-name-pattern](https://stylelint.io/user-guide/rules/container-name-pattern)
+   */
+  'container-name-pattern': ContainerNamePatternOptions
 
   /**
    * Specify a pattern for custom media query names.
