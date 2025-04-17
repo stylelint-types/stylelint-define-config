@@ -11,6 +11,7 @@ import type { AtRuleNoVendorPrefixOptions } from './at-rule-no-vendor-prefix'
 import type { AtRulePreludeNoInvalidOptions } from './at-rule-prelude-no-invalid'
 import type { AtRulePropertyRequiredListOptions } from './at-rule-property-required-list'
 import type { BlockNoEmptyOptions } from './block-no-empty'
+import type { ColorFunctionAliasNatationOptions } from './color-function-alias-notation'
 import type { ColorFunctionNatationOptions } from './color-function-notation'
 import type { ColorHexAlphaOptions } from './color-hex-alpha'
 import type { ColorHexLengthOptions } from './color-hex-length'
@@ -380,6 +381,25 @@ export interface StyleLintRules {
   'block-no-empty': BlockNoEmptyOptions
 
   /**
+   * Specify alias notation for color-functions
+   *
+   * ```scss
+   * a { color: rgb(0 0 0 / 0.2) }
+   * //         ^^^
+   * //         This notation
+   * ```
+   *
+   * Color functions `rgb()` and `hsl()` have aliases `rgba()` and `hsla()`. Those are exactly equivalent, and [it's preferable](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb) to use the first variant without `a`.
+   *
+   * ### Primary Options
+   * - `'without-alpha'`: Applicable color-functions must always use the without alpha notation.
+   * - `'with-alpha'`: Applicable color-functions must always use with alpha notation.
+   *
+   * @see [color-function-alias-notation](https://stylelint.io/user-guide/rules/color-function-alias-notation)
+   */
+  'color-function-alias-notation': ColorFunctionAliasNatationOptions
+
+  /**
    * Specify modern or legacy notation for color-functions.
    *
    * ```scss
@@ -399,7 +419,7 @@ export interface StyleLintRules {
    * - `"modern"`: Applicable color-functions must always use modern notation.
    * - `"legacy"`: Applicable color-functions must always use the legacy notation.
    *
-   * #### Optional Secondary Options
+   * ### Optional Secondary Options
    * - `ignore`
    *
    * @see [color-function-notation](https://stylelint.io/user-guide/rules/color-function-notation)
