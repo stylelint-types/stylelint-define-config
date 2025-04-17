@@ -1,3 +1,14 @@
+# [16.18.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.17.0...v16.18.0) (2025-04-17)
+
+
+### Features
+
+* add `color-function-alias-notation` rule ([d6a4885](https://github.com/stylelint-types/stylelint-define-config/commit/d6a4885722a688a52b2509eb35b76df25a6aa80c))
+* add `container-name-pattern` rule ([b4bb5e1](https://github.com/stylelint-types/stylelint-define-config/commit/b4bb5e10d1945bc28bb9d0c058ffd7442be66d6a))
+* bump `stylelint` to `16.18.0` ([1dc3038](https://github.com/stylelint-types/stylelint-define-config/commit/1dc3038e480857d5b6e5aa9c22345e4da409e236))
+
+
+
 # [16.17.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.15.0...v16.17.0) (2025-04-05)
 
 
