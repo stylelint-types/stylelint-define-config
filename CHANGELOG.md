@@ -1,3 +1,14 @@
+# [16.19.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.18.0...v16.19.0) (2025-04-25)
+
+
+### Features
+
+* add `exceptWithoutPropertyFallback: []` to `function-allowed-list` ([a816c4b](https://github.com/stylelint-types/stylelint-define-config/commit/a816c4ba3a6debb8bb7bb86b0ef30a150542b8a1))
+* add `ignore: ["four-into-three-edge-values"]` to `shorthand-property-no-redundant-values` ([de71c9a](https://github.com/stylelint-types/stylelint-define-config/commit/de71c9a8140e398d518d3d148f5318bf69813e7b))
+* update stylelint to `18.19.0` ([7ffa2ab](https://github.com/stylelint-types/stylelint-define-config/commit/7ffa2ab9530c41237f78c07cf1f4b1d3052b372d))
+
+
+
 # [16.18.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.17.0...v16.18.0) (2025-04-17)
 
 
