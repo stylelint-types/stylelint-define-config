@@ -1,3 +1,13 @@
+# [16.21.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.19.0...v16.21.0) (2025-06-22)
+
+
+### Features
+
+* add `ignore: ["after-custom-property"]` to `custom-property-empty-line-before` ([0363113](https://github.com/stylelint-types/stylelint-define-config/commit/0363113cb70e181520d3d99e6eb030f8f707abf0))
+* update stylelint to `16.21.0` ([3e5ffba](https://github.com/stylelint-types/stylelint-define-config/commit/3e5ffbabec3cf60d90dd089417482bf443b25221))
+
+
+
 # [16.19.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.18.0...v16.19.0) (2025-04-25)
 
 
