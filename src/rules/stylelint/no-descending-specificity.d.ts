@@ -5,6 +5,6 @@ export type NoDescendingSpecificityOptions = RuleConfig<
   true,
   {
     ignore?: [NoDescendingSpecificityIgnore]
-    message?: string | ((selectorA: string, selectorB: string) => string)
+    message?: string | ((selectorA: string, selectorB: string, line: number) => string)
   }
 >
