@@ -1,3 +1,13 @@
+# [16.22.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.21.0...v16.22.0) (2025-07-24)
+
+
+### Features
+
+* add `no-descending-specificity` report message includes line number of the anchoring selector ([69c102e](https://github.com/stylelint-types/stylelint-define-config/commit/69c102e35f021de9bdacb8108dbfc3d55a45b638))
+* update stylelint to `16.22.0` ([ffa832d](https://github.com/stylelint-types/stylelint-define-config/commit/ffa832d8cc666f08c1e9c2d4f5af68cce829f924))
+
+
+
 # [16.21.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.19.0...v16.21.0) (2025-06-22)
 
 
