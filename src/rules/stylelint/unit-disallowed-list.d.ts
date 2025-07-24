@@ -9,9 +9,9 @@ type UnitDisallowedListIgnoreProperties = Partial<
   >
 >
 
-type UnitDisallowedListIgnoreFunctions =
-  | CSSFunction | RegExpLike
-  | (CSSFunction | RegExpLike)[]
+type UnitDisallowedListIgnoreFunctions
+  = | CSSFunction | RegExpLike
+    | (CSSFunction | RegExpLike)[]
 
 type UnitDisallowedListIgnoreMediaFeatureNames = Partial<
   Record<

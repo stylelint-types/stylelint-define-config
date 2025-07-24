@@ -9,9 +9,9 @@ type UnitAllowedListIgnoreProperties = Partial<
   >
 >
 
-type UnitAllowedListIgnoreFunctions =
-  | CSSFunction | RegExpLike
-  | (CSSFunction | RegExpLike)[]
+type UnitAllowedListIgnoreFunctions
+  = | CSSFunction | RegExpLike
+    | (CSSFunction | RegExpLike)[]
 
 export type UnitAllowedListOptions = RuleConfig<
   Unit | Unit[],

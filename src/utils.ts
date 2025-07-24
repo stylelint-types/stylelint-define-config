@@ -18,14 +18,14 @@ export type RenamePrefix<
  *
  * @see [copied from issue](https://github.com/microsoft/TypeScript/issues/29729#issuecomment-471566609)
  */
-export type LiteralUnion<Union extends Base, Base = string> =
-  | Union
-  | (Base & { zz_IGNORE_ME?: never })
+export type LiteralUnion<Union extends Base, Base = string>
+  = | Union
+    | (Base & { zz_IGNORE_ME?: never })
 
 export type RegExpLike = RegExp | `/${string}/` | string
 
-export type KebabCase<S extends string, B extends boolean = true> =
-  S extends `${infer F}${infer O}`
+export type KebabCase<S extends string, B extends boolean = true>
+  = S extends `${infer F}${infer O}`
     ? F extends Uncapitalize<F>
       ? `${F}${KebabCase<O, false>}`
       : B extends true
