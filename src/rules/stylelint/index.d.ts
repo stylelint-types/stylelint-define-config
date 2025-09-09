@@ -97,6 +97,7 @@ import type { PropertyNoDeprecatedOptions } from './property-no-deprecated'
 import type { PropertyNoUnknownOptions } from './property-no-unknown'
 import type { PropertyNoVendorPrefixOptions } from './property-no-vendor-prefix'
 import type { RuleEmptyLineBeforeOptions } from './rule-empty-line-before'
+import type { RuleNestingAtRuleRequiredListOptions } from './rule-nesting-at-rule-required-list'
 import type { RuleSelectorPropertyDisallowedListOptions } from './rule-selector-property-disallowed-list'
 import type { SectorAnbNoUnmatchableOptions } from './selector-anb-no-unmatchable'
 import type { SelectorAttributeNameDisallowedListOptions } from './selector-attribute-name-disallowed-list'
@@ -2260,6 +2261,17 @@ export interface StyleLintRules {
    * @see [rule-empty-line-before](https://stylelint.io/user-guide/rules/rule-empty-line-before)
    */
   'rule-empty-line-before': RuleEmptyLineBeforeOptions
+
+  /**
+   * Require rules to be nested in specific at-rules.
+   *
+   * ```scss
+   *   a { color: red; }
+   * //    ^^^^^
+   * //    This rule
+   * ```
+   */
+  'rule-nesting-at-rule-required-list': RuleNestingAtRuleRequiredListOptions
 
   /**
    * Specify a list of disallowed properties for selectors within rules.
