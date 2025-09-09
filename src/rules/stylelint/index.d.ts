@@ -76,6 +76,7 @@ import type { MediaFeatureNameValueAllowedListOptions } from './media-feature-na
 import type { MediaFeatureNameValueNoUnknownOptions } from './media-feature-name-value-no-unknown'
 import type { MediaFeatureRangeNotationOptions } from './media-feature-range-notation'
 import type { MediaQueryNoInvalidOptions } from './media-query-no-invalid'
+import type { MediaTypeNoDeprecatedOptions } from './media-type-no-deprecated'
 import type { NamedGridAreasNoInvalidOptions } from './named-grid-areas-no-invalid'
 import type { NoDescendingSpecificityOptions } from './no-descending-specificity'
 import type { NoDuplicateAtImportRulesOptions } from './no-duplicate-at-import-rules'
@@ -1791,6 +1792,34 @@ export interface StyleLintRules {
    * @see [media-query-no-invalid](https://stylelint.io/user-guide/rules/media-query-no-invalid)
    */
   'media-query-no-invalid': MediaQueryNoInvalidOptions
+
+  /**
+   * Disallow deprecated media types.
+   *
+   * >```scss
+   * >@media tv {}
+   * >//     ^^
+   * >//     Deprecated media type
+   * >```
+   *
+   * Several CSS media types defined in earlier specifications have been deprecated and should no longer be used. According to the CSS [media queries specification](https://drafts.csswg.org/mediaqueries-5/#media-types), the following media types are recognized as valid but match nothing:
+   * - aural
+   * - braille
+   * - embossed
+   * - handheld
+   * - projection
+   * - speech
+   * - tty
+   * - tv
+   * Currently, the recommended media types are:
+   * - all
+   * - screen
+   * - print
+   * The deprecated media types were removed because they were either never widely implemented or their use cases are now better handled by media features rather than broad device categories.
+   *
+   * @see [media-type-no-deprecated](https://stylelint.io/user-guide/rules/media-type-no-deprecated)
+   */
+  'media-type-no-deprecated': MediaTypeNoDeprecatedOptions
 
   /**
    * Disallow invalid named grid areas.
