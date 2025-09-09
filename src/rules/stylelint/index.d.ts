@@ -11,6 +11,7 @@ import type { AtRuleNoVendorPrefixOptions } from './at-rule-no-vendor-prefix'
 import type { AtRulePreludeNoInvalidOptions } from './at-rule-prelude-no-invalid'
 import type { AtRulePropertyRequiredListOptions } from './at-rule-property-required-list'
 import type { BlockNoEmptyOptions } from './block-no-empty'
+import type { BlockNoRedundantNestedStyleRulesOptions } from './block-no-redundant-nested-style-rules'
 import type { ColorFunctionAliasNatationOptions } from './color-function-alias-notation'
 import type { ColorFunctionNatationOptions } from './color-function-notation'
 import type { ColorHexAlphaOptions } from './color-hex-alpha'
@@ -380,6 +381,19 @@ export interface StyleLintRules {
    * @see [block-no-empty](https://stylelint.io/user-guide/rules/block-no-empty)
    */
   'block-no-empty': BlockNoEmptyOptions
+
+  /**
+   * Disallow redundant nested style rules within blocks.
+   *
+   * ```scss
+   * a { & { color: red; } }
+   * //  ^
+   * //  This nested style rule
+   * ```
+   *
+   * @see [block-no-redundant-nested-style-rules](https://stylelint.io/user-guide/rules/block-no-redundant-nested-style-rules)
+   */
+  'block-no-redundant-nested-style-rules': BlockNoRedundantNestedStyleRulesOptions
 
   /**
    * Specify alias notation for color-functions
