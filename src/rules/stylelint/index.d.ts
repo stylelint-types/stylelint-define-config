@@ -78,6 +78,7 @@ import type { MediaFeatureRangeNotationOptions } from './media-feature-range-not
 import type { MediaQueryNoInvalidOptions } from './media-query-no-invalid'
 import type { MediaTypeNoDeprecatedOptions } from './media-type-no-deprecated'
 import type { NamedGridAreasNoInvalidOptions } from './named-grid-areas-no-invalid'
+import type { NestingSelectorNoMissingScopingRootOptions } from './nesting-selector-no-missing-scoping-root'
 import type { NoDescendingSpecificityOptions } from './no-descending-specificity'
 import type { NoDuplicateAtImportRulesOptions } from './no-duplicate-at-import-rules'
 import type { NoDuplicateSelectorsOptions } from './no-duplicate-selectors'
@@ -1844,6 +1845,23 @@ export interface StyleLintRules {
    * @see [named-grid-areas-no-invalid](https://stylelint.io/user-guide/rules/named-grid-areas-no-invalid)
    */
   'named-grid-areas-no-invalid': NamedGridAreasNoInvalidOptions
+
+  /**
+   * Disallow missing scoping root for nesting selectors.
+   *
+   * ```scss
+   *    & {}
+   * // ^
+   * // This nesting selector
+   * ```
+   *
+   * CSS nesting selectors (`&`) represent the parent selector in nested CSS.
+   * When used at the top level or within certain at-rules without a scoping root,
+   * they can cause unexpected behavior or indicate a mistake in the CSS structure.
+   *
+   * @see [nesting-selector-no-missing-scoping-root](https://stylelint.io/user-guide/rules/nesting-selector-no-missing-scoping-root)
+   */
+  'nesting-selector-no-missing-scoping-root': NestingSelectorNoMissingScopingRootOptions
 
   /**
    * Disallow selectors of lower specificity from coming after overriding selectors of higher specificity.
