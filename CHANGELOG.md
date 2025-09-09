@@ -1,3 +1,13 @@
+# [16.24.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.23.0...v16.24.0) (2025-09-09)
+
+
+### Features
+
+* add `rule-nesting-at-rule-required-list` rule ([337ec5f](https://github.com/stylelint-types/stylelint-define-config/commit/337ec5f3446d11dc6f8e595062ed0e8b697889e3))
+* update stylelint to `16.24.0` ([13f109c](https://github.com/stylelint-types/stylelint-define-config/commit/13f109ce86e6bb1a5da724f3f27832548e403386))
+
+
+
 # [16.23.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.22.0...v16.23.0) (2025-09-09)
 
 
