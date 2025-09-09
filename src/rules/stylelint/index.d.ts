@@ -93,6 +93,7 @@ import type { NoUnknownCustomPropertiesOptions } from './no-unknown-custom-prope
 import type { NumberMaxPrecisionOptions } from './number-max-precision'
 import type { PropertyAllowedListOptions } from './property-allowed-list'
 import type { PropertyDisallowedListOptions } from './property-disallowed-list'
+import type { PropertyNoDeprecatedOptions } from './property-no-deprecated'
 import type { PropertyNoUnknownOptions } from './property-no-unknown'
 import type { PropertyNoVendorPrefixOptions } from './property-no-vendor-prefix'
 import type { RuleEmptyLineBeforeOptions } from './rule-empty-line-before'
@@ -2168,6 +2169,25 @@ export interface StyleLintRules {
    * @see [property-disallowed-list](https://stylelint.io/user-guide/rules/property-disallowed-list)
    */
   'property-disallowed-list': PropertyDisallowedListOptions
+
+  /**
+   * Disallow deprecated properties.
+   *
+   * ```scss
+   *  a { word-wrap: break-word; }
+   * //   ^^^^^^^^^
+   * //   Deprecated property
+   * ```
+   * This rule flags properties that were removed or deprecated after being in the CSS specifications, including editor drafts, and were either:
+   * - shipped in a stable version of a browser
+   * - shipped by a developer channel/edition browser
+   * - shipped but behind experimental flags
+   * - polyfilled with some adoption before any browser actually shipped
+   * - had an MDN page at one point in time
+   *
+   * @see [property-no-deprecated](https://stylelint.io/user-guide/rules/property-no-deprecated)
+   */
+  'property-no-deprecated': PropertyNoDeprecatedOptions
 
   /**
    * Disallow unknown properties.
