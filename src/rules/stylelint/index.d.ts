@@ -85,6 +85,7 @@ import type { NoDuplicateSelectorsOptions } from './no-duplicate-selectors'
 import type { NoEmptySourceOptions } from './no-empty-source'
 import type { NoInvalidDoubleSlashCommentsOptions } from './no-invalid-double-slash-comments'
 import type { NoInvalidPositionAtImportRuleOptions } from './no-invalid-position-at-import-rule'
+import type { NoInvalidPositionDeclarationOptions } from './no-invalid-position-declaration'
 import type { NoIrregularWhitespaceOptions } from './no-irregular-whitespace'
 import type { NoUnknownAnimationsOptions } from './no-unknown-animations'
 import type { NoUnknownCustomMediaOptions } from './no-unknown-custom-media'
@@ -2023,6 +2024,20 @@ export interface StyleLintRules {
    * @see [no-invalid-position-at-import-rule](https://stylelint.io/user-guide/rules/no-invalid-position-at-import-rule)
    */
   'no-invalid-position-at-import-rule': NoInvalidPositionAtImportRuleOptions
+
+  /**
+   * Disallow invalid position declarations.
+   *
+   * ```scss
+   *    color: red;
+   * // ^^^^^
+   * // This declaration
+   * ```
+   * Declarations can only be positioned within the `<declaration-list>`, `<declaration-rule-list>` and `<block-contents>` productions.
+   *
+   * @see [no-invalid-position-declaration](https://stylelint.io/user-guide/rules/no-invalid-position-declaration)
+   */
+  'no-invalid-position-declaration': NoInvalidPositionDeclarationOptions
 
   /**
    * Disallow irregular whitespaces.
