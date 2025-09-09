@@ -1,3 +1,22 @@
+# [16.23.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.22.0...v16.23.0) (2025-09-09)
+
+
+### Features
+
+* add `block-no-redundant-nested-style-rules` rule ([12f6fd6](https://github.com/stylelint-types/stylelint-define-config/commit/12f6fd625e4def1d0f27dbc3fa90a92d9251bbdc))
+* add `except: ["exact-value"]` to `media-feature-range-notation` ([d07d7f0](https://github.com/stylelint-types/stylelint-define-config/commit/d07d7f0b7be344254054e015cd31c10e5986ab19))
+* add `media-type-no-deprecated` rule ([ab2ca61](https://github.com/stylelint-types/stylelint-define-config/commit/ab2ca61db6995ccd46ebeb6dfeca8f0d34326eb2))
+* add `nesting-selector-no-missing-scoping-root` rule ([c3bdb5d](https://github.com/stylelint-types/stylelint-define-config/commit/c3bdb5db3da40e5e288c760a13ef50d8dd62918a))
+* add `no-invalid-position-declaration` rule ([5579b0f](https://github.com/stylelint-types/stylelint-define-config/commit/5579b0f8fae38909d48861f7cc105c57b1c0e877))
+* add `property-no-deprecated` rule ([e8dc7de](https://github.com/stylelint-types/stylelint-define-config/commit/e8dc7de11292c42b4b9529d76f244941961a255d))
+
+
+### Performance Improvements
+
+* update stylelint to `16.23.0` ([438e145](https://github.com/stylelint-types/stylelint-define-config/commit/438e145577d319d47b1df12764441292b6dd0d3f))
+
+
+
 # [16.22.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.21.0...v16.22.0) (2025-07-24)
 
 
