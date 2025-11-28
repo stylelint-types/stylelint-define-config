@@ -48,9 +48,9 @@
   "scripts": {
     "build": "tsup-node",
     "lint": "eslint .",
-    "prepublishOnly": "pnpm run build",
+    "release:publish": "pnpm publish",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "bumpp package.json --execute=\"pnpm release:changelog\" --commit --all --push --tag && pnpm publish --access public"
+    "release": "bumpp package.json --execute=\"pnpm release:changelog\" --commit --all --push --tag"
   },
   "peerDependencies": {
     "stylelint": ">=16.0.0"
@@ -73,5 +73,9 @@
       "esbuild",
       "unrs-resolver"
     ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
