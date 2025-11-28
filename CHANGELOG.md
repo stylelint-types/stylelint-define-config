@@ -1,3 +1,13 @@
+# [16.26.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.24.0...v16.26.0) (2025-11-28)
+
+
+### Features
+
+* add `ignoreAtRules: []` to `no-invalid-position-declaration` ([11523c3](https://github.com/stylelint-types/stylelint-define-config/commit/11523c3e6e24ec7ba1a928ef7a2574df43d9734d))
+* update stylelint to `16.26.0` ([43f2eb8](https://github.com/stylelint-types/stylelint-define-config/commit/43f2eb82d6b4ded7761ce06255cdf67d28df40fd))
+
+
+
 # [16.24.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.23.0...v16.24.0) (2025-09-09)
 
 
