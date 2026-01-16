@@ -1,3 +1,12 @@
+# [17.0.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.26.0...v17.0.0) (2026-01-16)
+
+
+### Features
+
+* support stylelint v17 ([35fb59b](https://github.com/stylelint-types/stylelint-define-config/commit/35fb59bb99f6cfcb2b1faf5979dfed44aa82e33e))
+
+
+
 # [16.26.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.24.0...v16.26.0) (2025-11-28)
 
 
