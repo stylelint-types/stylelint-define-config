@@ -13,6 +13,10 @@ export type RenamePrefix<
   New extends string,
 > = Prefix<Unprefix<T, Old>, New>
 
+export type Prettify<T> = { [K in keyof T]: T[K] } & {}
+
+export type Arrayable<T> = T | T[]
+
 /**
  * A literal type that supports custom further strings but preserves autocompletion in IDEs.
  *
@@ -22,7 +26,7 @@ export type LiteralUnion<Union extends Base, Base = string>
   = | Union
     | (Base & { zz_IGNORE_ME?: never })
 
-export type RegExpLike = RegExp | `/${string}/` | string
+export type RegExpLike = RegExp | string
 
 export type KebabCase<S extends string, B extends boolean = true>
   = S extends `${infer F}${infer O}`

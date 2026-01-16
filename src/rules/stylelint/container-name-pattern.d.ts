@@ -3,7 +3,5 @@ import type { RuleConfig } from '../rule-config'
 
 export type ContainerNamePatternOptions = RuleConfig<
   RegExpLike,
-  {
-    message?: string | ((containerName: string, pattern: string) => string)
-  }
+  [containerName: string, pattern: string]
 >

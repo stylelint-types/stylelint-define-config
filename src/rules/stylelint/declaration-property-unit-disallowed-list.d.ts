@@ -1,9 +1,8 @@
 import type { KebabCaseStandardPropertiesMap, Unit } from '../../types'
+import type { Arrayable } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type DeclarationPropertyUnitDisallowedListOptions = RuleConfig<
-  Record<KebabCaseStandardPropertiesMap | `/${string}/`, Unit | Unit[]>,
-  {
-    message?: string | ((property: string, unit: string) => string)
-  }
+  Partial<Record<KebabCaseStandardPropertiesMap, Arrayable<Unit>>>,
+  [property: string, unit: string]
 >

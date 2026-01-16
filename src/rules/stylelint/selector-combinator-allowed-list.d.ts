@@ -1,9 +1,8 @@
 import type { SelectorCombinator } from '../../types'
+import type { Arrayable } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type SelectorCombinatorAllowedListOptions = RuleConfig<
-  SelectorCombinator | SelectorCombinator[],
-  {
-    message?: string | ((combinator: string) => string)
-  }
+  Arrayable<SelectorCombinator>,
+  [combinator: string]
 >

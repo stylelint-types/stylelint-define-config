@@ -3,7 +3,5 @@ import type { RuleConfig } from '../rule-config'
 
 export type AtRulePropertyRequiredListOptions = RuleConfig<
   Record<AtRules, CSSPropertiesMap | CSSPropertiesMap[]>,
-  {
-    message?: string | ((atRule: string, property: string) => string)
-  }
+  [atRule: string, property: string]
 >

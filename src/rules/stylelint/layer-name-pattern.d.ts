@@ -1,3 +1,4 @@
+import type { RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
-export type LayerNamePatternOptions = RuleConfig<string | RegExp>
+export type LayerNamePatternOptions = RuleConfig<RegExpLike>

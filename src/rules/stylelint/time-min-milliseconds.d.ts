@@ -1,13 +1,13 @@
+import type { LiteralUnion } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
-type TimeMinMillisecondsIgnore = 'delay'
 export type TimeMinMillisecondsOptions = RuleConfig<
   number,
+  [time: number],
   {
     /**
      * Ignore time values for an animation or transition delay.
      */
-    ignore?: TimeMinMillisecondsIgnore[]
-    message?: string | ((time: number) => string)
+    ignore?: LiteralUnion<'delay'>[]
   }
 >

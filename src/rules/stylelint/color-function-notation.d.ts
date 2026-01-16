@@ -1,9 +1,10 @@
+import type { LiteralUnion } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type ColorFunctionNatationOptions = RuleConfig<
   'modern' | 'legacy',
+  [primary: string],
   {
-    ignore?: ('with-var-inside')[]
-    message?: string | ((primary: string) => string)
+    ignore?: LiteralUnion<'with-var-inside'>[]
   }
 >

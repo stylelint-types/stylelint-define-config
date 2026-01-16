@@ -1,12 +1,12 @@
 import type { ConfigRuleSettings, CustomSyntax, DisableOptions, Formatter, FormatterType, Severity } from 'stylelint'
 import type { Rules } from '../rules'
-import type { LiteralUnion } from '../utils'
+import type { Arrayable, LiteralUnion, Prettify } from '../utils'
 import type { KnownCustomSyntax } from './customSyntax'
 import type { KnownExtends } from './extends'
 import type { LanguageOptions } from './LanguageOptions'
 import type { PluginFunctions, Plugins } from './plugins'
 
-export type Extends = KnownExtends | StylelintConfig
+export type Extends = Arrayable<KnownExtends>
 
 export type DisableSettings = ConfigRuleSettings<boolean, DisableOptions>
 
@@ -18,7 +18,7 @@ export interface Override extends Omit<StylelintConfig, 'overrides'> {
    * Which is an array of glob patterns that specify which files
    * the configuration should be applied to
    */
-  files: string | string[]
+  files: Arrayable<string>
 
   name?: string
 }
@@ -29,6 +29,96 @@ export interface Override extends Omit<StylelintConfig, 'overrides'> {
  */
 export interface StylelintConfig {
   /**
+   * You can extend an existing configuration (whether your own or a third-party one).
+   * Configurations can bundle plugins, custom syntaxes, options, and configure rules.
+   * They can also extend other configurations.
+   *
+   * For example, {@link https://github.com/stylelint/stylelint-config-standard stylelint-config-standard} is one of our official configs that you can extend.
+   *
+   * When one configuration extends another,
+   * it starts with the other's properties and then adds to and overrides what's there.
+   *
+   * @see [Configure extends](https://stylelint.io/user-guide/configure#extends)
+   * @example
+   * ```json
+   * {
+   *   "extends": "stylelint-config-standard",
+   * }
+   * ```
+   */
+  extends?: Extends
+  /**
+   * Plugins are custom rules or sets of custom rules built to support methodologies,
+   * toolsets, non-standard CSS features, or very specific use cases.
+   *
+   * @see [Configure plugins](https://stylelint.io/user-guide/configure#plugins)
+   * @example
+   * ```json
+   * {
+   *   "plugins": ["stylelint-scss"],
+   * }
+   * ```
+   */
+  plugins?: Plugins
+
+  /**
+   * plugin functions
+   */
+  pluginFunctions?: PluginFunctions
+  /**
+   * Specify what subset of files to apply a configuration to.
+   * - must contain a `files` property, which is an array of glob patterns that specify which files the configuration should be applied to
+   * - should contain at least one other regular configuration property, such as `customSyntax`, `rules`, `extends`, etc.
+   *
+   * @see [Configure overrides](https://stylelint.io/user-guide/configure#overrides)
+   */
+  overrides?: Override[]
+
+  /**
+   * Specify a custom syntax to use on your code.
+   *
+   * This option allows Stylelint to transform these into something that resembles CSS,
+   * which is the language that:
+   * - underpins all the other styling languages
+   * - is best understood by rules built into Stylelint
+   *
+   * This option should be a string that resolves to a JS module that exports a
+   * {@link https://github.com/postcss/postcss#syntaxes PostCSS-compatible syntax}.
+   * The string can be a module name (like `my-module`)
+   * or a path to a JS file (like `path/to/my-module.js`).
+   *
+   * @see [Configure customSyntax](https://stylelint.io/user-guide/options#customsyntax)
+   */
+  customSyntax?: KnownCustomSyntax | Exclude<CustomSyntax, string>
+
+  /**
+   * Rules determine what the linter looks for and complains about.
+   *
+   * @see [Rules](https://stylelint.io/user-guide/rules)
+   */
+  rules?: Prettify<Partial<Rules>>
+
+  /**
+   * Processors are functions that hook into Stylelint's pipeline.
+   * Currently, processors contains only two properties:
+   * a string `name` and a function `postprocess`.
+   * `postprocess` runs after all rules have been evaluated.
+   * This function receives the `result` object of the linting process and can modify it.
+   *
+   * @experimental
+   *
+   * @example
+   * ```ts
+   * {
+   *   "processors": ["path/to/my-processor.js"]
+   * }
+   * ```
+   *
+   * @see [Configure processors](https://stylelint.io/user-guide/configure#processors)
+   */
+  processors?: string[]
+
+  /**
    * Specify the formatter to format your results.
    *
    * @see [Configure formatter](https://stylelint.io/user-guide/configure#formatter)
@@ -36,15 +126,13 @@ export interface StylelintConfig {
   formatter?: Formatter | LiteralUnion<FormatterType>
 
   /**
-   * Automatically fix, where possible, problems reported by rules.
+   * If true, automatically fix, where possible, problems reported by rules.
    *
-   * Options are:
-   * - "lax" (default) - uses `postcss-safe-parser` to fix as much as possible, even when there are syntax errors
-   * - "strict" - uses PostCSS Parser and only fixes problems when there are no syntax errors
+   * Should not be overridden on a per-file basis
    *
    * @see [Configure fix](https://stylelint.io/user-guide/configure#fix)
    */
-  fix?: boolean | 'lax' | 'strict'
+  fix?: boolean
 
   /**
    * Store the results of processed files so that Stylelint only operates on the changed ones.
@@ -162,78 +250,17 @@ export interface StylelintConfig {
   defaultSeverity?: Severity
 
   /**
-   * You can extend an existing configuration (whether your own or a third-party one).
-   * Configurations can bundle plugins, custom syntaxes, options, and configure rules.
-   * They can also extend other configurations.
+   * Compute edit information for autofixable rules.
    *
-   * For example, {@link https://github.com/stylelint/stylelint-config-standard stylelint-config-standard} is one of our official configs that you can extend.
+   * The edit information will not be computed when:
+   * - the {@link fix} option is enabled
+   * - a rule's fix is disabled:
+   *   - in the configuration object, e.g. `"rule-name": [true, { disableFix: true }]`
+   *   - using configuration comments, e.g. `/* stylelint-disable rule-name *\/`
    *
-   * When one configuration extends another,
-   * it starts with the other's properties and then adds to and overrides what's there.
-   *
-   * @see [Configure extends](https://stylelint.io/user-guide/configure#extends)
-   * @example
-   * ```json
-   * {
-   *   "extends": "stylelint-config-standard",
-   * }
-   * ```
-   */
-  extends?: Extends | Extends[]
-  /**
-   * Plugins are custom rules or sets of custom rules built to support methodologies,
-   * toolsets, non-standard CSS features, or very specific use cases.
-   *
-   * @see [Configure plugins](https://stylelint.io/user-guide/configure#plugins)
-   * @example
-   * ```json
-   * {
-   *   "plugins": ["stylelint-scss"],
-   * }
-   * ```
-   */
-  plugins?: Plugins
-
-  /**
-   * plugin functions
-   */
-  pluginFunctions?: PluginFunctions
-  /**
-   * Specify what subset of files to apply a configuration to.
-   * - must contain a `files` property, which is an array of glob patterns that specify which files the configuration should be applied to
-   * - should contain at least one other regular configuration property, such as `customSyntax`, `rules`, `extends`, etc.
-   *
-   * @see [Configure overrides](https://stylelint.io/user-guide/configure#overrides)
-   */
-  overrides?: Override[]
-
-  /**
-   * Specify a custom syntax to use on your code.
-   *
-   * This option allows Stylelint to transform these into something that resembles CSS,
-   * which is the language that:
-   * - underpins all the other styling languages
-   * - is best understood by rules built into Stylelint
-   *
-   * This option should be a string that resolves to a JS module that exports a
-   * {@link https://github.com/postcss/postcss#syntaxes PostCSS-compatible syntax}.
-   * The string can be a module name (like `my-module`)
-   * or a path to a JS file (like `path/to/my-module.js`).
-   *
-   * @see [Configure customSyntax](https://stylelint.io/user-guide/options#customsyntax)
-   */
-  customSyntax?: KnownCustomSyntax | Exclude<CustomSyntax, string>
-
-  /**
-   * Rules determine what the linter looks for and complains about.
-   *
-   * @see [Rules](https://stylelint.io/user-guide/rules)
-   */
-  rules?: Partial<Rules>
-
-  /**
-   * @experimental
    * @see [computeEditInfo](https://stylelint.io/user-guide/configure#computeeditinfo)
+   * @see https://stylelint.io/user-guide/options#computeeditinfo
+   * @see https://stylelint.io/user-guide/node-api#edit-info
    */
   computeEditInfo?: boolean
 
@@ -241,7 +268,16 @@ export interface StylelintConfig {
    * You can customize the syntax to define or extend the syntax for at-rules, properties, types, and CSS-wide keywords.
    * @see [languageOptions](https://stylelint.io/user-guide/configure#languageoptions)
    */
-  languageOptions?: LanguageOptions
+  languageOptions?: Prettify<LanguageOptions>
+
+  /**
+   * Force enable/disable the validation of the rules' options
+   *
+   * @default true
+   *
+   * @see [validate](https://stylelint.io/user-guide/options/#validate)
+   */
+  validate?: boolean
 }
 
 export { Severity }

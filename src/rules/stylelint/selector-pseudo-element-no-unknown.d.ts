@@ -1,9 +1,10 @@
+import type { RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type SelectorPseudoElementNoUnknownOptions = RuleConfig<
   true,
+  [selector: string],
   {
-    ignorePseudoElements?: (string | RegExp)[]
-    message?: string | ((selector: string) => string)
+    ignorePseudoElements?: RegExpLike[]
   }
 >

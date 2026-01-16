@@ -1,12 +1,11 @@
 import type { MediaFeatureLevel5, MediaFeatureNormal } from '../../types'
+import type { Arrayable, RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type MediaFeatureNameValueAllowedListOptions = RuleConfig<
   Partial<Record<
-    MediaFeatureNormal | MediaFeatureLevel5 | `/${string}/`,
-    string | RegExp | (string | RegExp)[]
+    MediaFeatureNormal | MediaFeatureLevel5,
+    Arrayable<RegExpLike>
   >>,
-  {
-    message?: string | ((name: string, value: string) => string)
-  }
+  [name: string, value: string]
 >

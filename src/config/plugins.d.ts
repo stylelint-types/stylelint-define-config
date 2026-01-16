@@ -1,5 +1,5 @@
 import type { Plugin, Rule } from 'stylelint'
-import type { LiteralUnion } from '../utils'
+import type { Arrayable, LiteralUnion } from '../utils'
 
 /**
  * This is a special exported interface for other packages to declare
@@ -22,7 +22,7 @@ type KnownPlugins = LiteralUnion<
   | keyof CustomPlugins
 >
 
-export type Plugins = KnownPlugins | Plugin | (KnownPlugins | Plugin)[]
+export type Plugins = Arrayable<KnownPlugins | Plugin>
 
 export interface PluginFunctions {
   [pluginName: string]: Rule

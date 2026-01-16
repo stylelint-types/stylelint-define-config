@@ -1,9 +1,8 @@
 import type { SelectorAttributeOperator } from '../../types'
+import type { Arrayable } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type SelectorAttributeOperatorAllowedListOptions = RuleConfig<
-  SelectorAttributeOperator | RegExp | (SelectorAttributeOperator | RegExp)[],
-  {
-    message?: string | ((operator: string) => string)
-  }
+  Arrayable<SelectorAttributeOperator | RegExp>,
+  [operator: string]
 >

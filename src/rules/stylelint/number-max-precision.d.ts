@@ -3,6 +3,7 @@ import type { RuleConfig } from '../rule-config'
 
 export type NumberMaxPrecisionOptions = RuleConfig<
   number,
+  [actual: string, expected: string],
   {
     /**
      * Ignore the precision of numbers for values with the specified units.
@@ -12,7 +13,5 @@ export type NumberMaxPrecisionOptions = RuleConfig<
      * Change a primary option value for specified functions.
      */
     insideFunctions?: Record<string, number>
-
-    message?: string | ((actual: string, expected: string) => string)
   }
 >

@@ -1,11 +1,10 @@
+import type { LiteralUnion } from '../../utils'
 import type { RuleConfig } from '../rule-config'
-
-type SelectorNoQualifyingTypeIgnore = 'attribute' | 'class' | 'id'
 
 export type SelectorNoQualifyingTypeOptions = RuleConfig<
   true,
+  [selector: string],
   {
-    ignore?: SelectorNoQualifyingTypeIgnore[]
-    message?: string | ((selector: string) => string)
+    ignore?: LiteralUnion<'attribute' | 'class' | 'id'>[]
   }
 >

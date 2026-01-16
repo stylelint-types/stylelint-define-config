@@ -1,14 +1,14 @@
-import type { LiteralUnion } from '../../utils'
+import type { LiteralUnion, RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type SelectorMaxTypeOptions = RuleConfig<
   number,
+  [selector: string, max: number | string],
   {
     /**
      * Discount child type selectors.
      */
     Ignore?: LiteralUnion<'child' | 'compounded' | 'custom-elements' | 'descendant' | 'next-sibling'>[]
-    ignoreTypes?: (string | RegExp)[]
-    message?: string | ((selector: string, max: number | string) => string)
+    ignoreTypes?: RegExpLike[]
   }
 >

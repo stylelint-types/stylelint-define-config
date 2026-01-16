@@ -1,11 +1,10 @@
+import type { LiteralUnion } from '../../utils'
 import type { RuleConfig } from '../rule-config'
-
-type FunctionUrlQuotesExcept = 'empty'
 
 export type FunctionUrlQuotesOptions = RuleConfig<
   'always' | 'never',
+  [functionName: string],
   {
-    except?: [FunctionUrlQuotesExcept]
-    message?: string | ((functionName: string) => string)
+    except?: LiteralUnion<'empty'>[]
   }
 >

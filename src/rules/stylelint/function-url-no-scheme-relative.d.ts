@@ -3,6 +3,7 @@ import type { RuleConfig } from '../rule-config'
 
 export type FunctionUrlNoSchemeRelativeOptions = RuleConfig<
   true,
+  [],
   {
     ignoreFunctions?: RegExpLike[]
   }

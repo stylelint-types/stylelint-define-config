@@ -1,6 +1,7 @@
 import type { Severity } from 'stylelint'
+import type { Prettify } from '../utils'
 
-export interface SecondaryOptions {
+export interface SecondaryOptions<MessageParams extends readonly any[]> {
   /**
    * You can set the `disableFix` secondary option to disable autofix on a per-rule basis.
    * @see [configure disable fix](https://stylelint.io/user-guide/configure#disablefix)
@@ -25,7 +26,7 @@ export interface SecondaryOptions {
    * You can use the message secondary option to deliver a custom message when a rule is violated.
    * @see [configure message](https://stylelint.io/user-guide/configure#message)
    */
-  message?: string | ((...args: any[]) => string)
+  message?: string | ((...args: MessageParams) => string)
 
   /**
    * You can use the url secondary option to provide a custom link to external docs.
@@ -40,9 +41,13 @@ export interface SecondaryOptions {
  *
  * `RuleConfig<PrimaryOptions, SecondaryOptions>`
  */
-export type RuleConfig<T, S extends Record<string, any> = Record<string, any>>
-  = null
+export type RuleConfig<
+  Primary,
+  MessageParams extends any[] = [],
+  Secondary extends object = object,
+>
+  = | null
     | undefined
-    | NonNullable<T>
-    | readonly [NonNullable<T>]
-    | readonly [NonNullable<T>, Omit<SecondaryOptions, keyof S> & S]
+    | Primary
+    | readonly [Primary]
+    | readonly [Primary, Prettify<Omit<SecondaryOptions<MessageParams>, keyof Secondary> & Secondary>]

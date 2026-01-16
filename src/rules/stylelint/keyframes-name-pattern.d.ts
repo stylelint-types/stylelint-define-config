@@ -1,8 +1,7 @@
+import type { RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type KeyframesNamePatternOptions = RuleConfig<
-  string | RegExp,
-  {
-    message?: string | ((keyframeName: string, pattern: string) => string)
-  }
+  RegExpLike,
+  [keyframeName: string, pattern: string]
 >

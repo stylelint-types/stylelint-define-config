@@ -1,14 +1,16 @@
 import type { AtRules } from '../../types'
+import type { RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type PropertyNoUnknownOptions = RuleConfig<
   true,
+  [property: string],
   {
-    ignoreProperties?: (string | RegExp)[]
+    ignoreProperties?: RegExpLike[]
     /**
      * Skips checking properties of the given selectors against this rule.
      */
-    ignoreSelectors?: (string | RegExp)[]
+    ignoreSelectors?: RegExpLike[]
     /**
      * Ignores properties nested within specified at-rules.
      */
@@ -18,7 +20,5 @@ export type PropertyNoUnknownOptions = RuleConfig<
      * @default false
      */
     checkPrefixed?: boolean
-
-    message?: string | ((property: string) => string)
   }
 >

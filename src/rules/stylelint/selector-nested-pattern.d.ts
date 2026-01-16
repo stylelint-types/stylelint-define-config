@@ -1,13 +1,14 @@
+import type { RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type SelectorNestedPatternOptions = RuleConfig<
-  string | RegExp,
+  RegExpLike,
+  [selector: string],
   {
     /**
      * Split selector lists into individual selectors.
      * @default false
      */
     splitList?: boolean
-    message?: string | ((selector: string) => string)
   }
 >

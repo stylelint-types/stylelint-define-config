@@ -1,8 +1,7 @@
+import type { Arrayable, RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type SelectorAttributeNameDisallowedListOptions = RuleConfig<
-  string | RegExp | (string | RegExp)[],
-  {
-    message?: string | ((name: string) => string)
-  }
+  Arrayable<RegExpLike>,
+  [name: string]
 >

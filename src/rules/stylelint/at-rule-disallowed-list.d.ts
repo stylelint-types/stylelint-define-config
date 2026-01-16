@@ -3,7 +3,5 @@ import type { RuleConfig } from '../rule-config'
 
 export type AtRuleDisallowedListOptions = RuleConfig<
   AtRules[] | string[],
-  {
-    message?: string | ((atRule: string) => string)
-  }
+  [atRule: string]
 >

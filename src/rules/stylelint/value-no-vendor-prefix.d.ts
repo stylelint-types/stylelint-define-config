@@ -1,9 +1,10 @@
+import type { Arrayable, RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type ValueNoVendorPrefixOptions = RuleConfig<
   true,
+  [actual: number, expected: string],
   {
-    ignoreValues: string | RegExp | (string | RegExp)[]
-    message?: string | ((actual: number, expected: string) => string)
+    ignoreValues: Arrayable<RegExpLike>
   }
 >

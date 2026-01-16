@@ -1,23 +1,14 @@
 import type { CSSFunction, CSSPropertiesMap, Unit } from '../../types'
-import type { RegExpLike } from '../../utils'
+import type { Arrayable } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
-type UnitAllowedListIgnoreProperties = Partial<
-  Record<
-    Unit,
-    CSSPropertiesMap | RegExp | (CSSPropertiesMap | RegExp)[]
-  >
->
-
-type UnitAllowedListIgnoreFunctions
-  = | CSSFunction | RegExpLike
-    | (CSSFunction | RegExpLike)[]
+type UnitAllowedListIgnoreProperties = Partial<Record<Unit, Arrayable<CSSPropertiesMap | RegExp>>>
 
 export type UnitAllowedListOptions = RuleConfig<
-  Unit | Unit[],
+  Arrayable<Unit>,
+  [unit: number],
   {
-    ignoreProperties?: UnitAllowedListIgnoreProperties
-    ignoreFunctions?: UnitAllowedListIgnoreFunctions
-    message?: string | ((unit: number) => string)
+    ignoreProperties?: Partial<Record<Unit, Arrayable<CSSPropertiesMap | RegExp>>>
+    ignoreFunctions?: Arrayable<CSSFunction | RegExp>
   }
 >

@@ -1,3 +1,4 @@
+import type { RegExpLike } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
-export type RuleNestingAtRuleRequiredListOptions = RuleConfig<(string | RegExp)[]>
+export type RuleNestingAtRuleRequiredListOptions = RuleConfig<RegExpLike[]>

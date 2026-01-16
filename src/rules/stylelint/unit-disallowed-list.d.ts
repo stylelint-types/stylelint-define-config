@@ -1,41 +1,23 @@
 import type { CSSFunction, CSSPropertiesMap, MediaFeature, Unit } from '../../types'
-import type { RegExpLike } from '../../utils'
+import type { Arrayable } from '../../utils'
 import type { RuleConfig } from '../rule-config'
-
-type UnitDisallowedListIgnoreProperties = Partial<
-  Record<
-    Unit,
-    CSSPropertiesMap | RegExp | (CSSPropertiesMap | RegExp)[]
-  >
->
-
-type UnitDisallowedListIgnoreFunctions
-  = | CSSFunction | RegExpLike
-    | (CSSFunction | RegExpLike)[]
-
-type UnitDisallowedListIgnoreMediaFeatureNames = Partial<
-  Record<
-    Unit,
-    MediaFeature | RegExpLike | (MediaFeature | RegExpLike)[]
-  >
->
 
 export type UnitDisallowedListOptions = RuleConfig<
   Unit | Unit[],
+  [unit: number],
   {
     /**
      * Ignore units in the values of declarations with the specified properties.
      */
-    ignoreProperties?: UnitDisallowedListIgnoreProperties
+    ignoreProperties?: Partial<Record<Unit, Arrayable<CSSPropertiesMap | RegExp>>>
     /**
      * Ignore units for specific feature names.
      */
-    ignoreFunctions?: UnitDisallowedListIgnoreFunctions
+    ignoreFunctions?: Arrayable<CSSFunction | RegExp>
     /**
      * Ignore units that are inside of the specified functions.
      */
-    ignoreMediaFeatureNames?: UnitDisallowedListIgnoreMediaFeatureNames
-
-    message?: string | ((unit: number) => string)
+    ignoreMediaFeatureNames?: Partial<Record<Unit, Arrayable<MediaFeature | RegExp>>
+    >
   }
 >

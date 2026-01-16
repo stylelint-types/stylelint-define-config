@@ -1,10 +1,10 @@
+import type { LiteralUnion } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
-type NoDescendingSpecificityIgnore = 'selectors-within-list'
 export type NoDescendingSpecificityOptions = RuleConfig<
   true,
+  [selectorA: string, selectorB: string, line: number],
   {
-    ignore?: [NoDescendingSpecificityIgnore]
-    message?: string | ((selectorA: string, selectorB: string, line: number) => string)
+    ignore?: LiteralUnion<'selectors-within-list'>[]
   }
 >

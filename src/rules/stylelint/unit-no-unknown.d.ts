@@ -4,9 +4,9 @@ import type { RuleConfig } from '../rule-config'
 
 export type UnitNoUnknownOptions = RuleConfig<
   true,
+  [unit: number],
   {
-    ignoreUnits?: (RegExp | string)[]
-    ignoreFunctions?: (MediaFeature | RegExpLike)[]
-    message?: string | ((unit: number) => string)
+    ignoreUnits?: RegExpLike[]
+    ignoreFunctions?: (MediaFeature | RegExp)[]
   }
 >

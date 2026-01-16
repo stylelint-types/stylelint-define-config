@@ -1,10 +1,11 @@
 import type { KebabCaseStandardPropertiesMap, Unit } from '../../types'
+import type { Arrayable, LiteralUnion } from '../../utils'
 import type { RuleConfig } from '../rule-config'
 
 export type DeclarationPropertyUnitAllowedListOptions = RuleConfig<
-  Record<KebabCaseStandardPropertiesMap | `/${string}/`, Unit | Unit[]>,
+  Partial<Record<KebabCaseStandardPropertiesMap, Arrayable<Unit>>>,
+  [property: string, unit: string],
   {
-    ignore?: ['inside-function']
-    message?: string | ((property: string, unit: string) => string)
+    ignore?: LiteralUnion<'inside-function'>[]
   }
 >
