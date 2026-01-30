@@ -43,6 +43,7 @@ import type { DeclarationPropertyValueAllowedListOptions } from './declaration-p
 import type { DeclarationPropertyValueDisallowedListOptions } from './declaration-property-value-disallowed-list'
 import type { DeclarationPropertyValueKeywordNoDeprecatedOptions } from './declaration-property-value-keyword-no-deprecated'
 import type { DeclarationPropertyValueNoUnknownOptions } from './declaration-property-value-no-unknown'
+import type { DisplayNotationOptions } from './display-notation'
 import type { FontFamilyNameQuotesOptions } from './font-family-name-quotes'
 import type { FontFamilyNoDuplicateNamesOptions } from './font-family-no-duplicate-names'
 import type { FontFamilyNoMissingGenericFamilyKeywordOptions } from './font-family-no-missing-generic-family-keyword'
@@ -1103,6 +1104,37 @@ export interface StyleLintRules {
    */
   'declaration-property-value-no-unknown': DeclarationPropertyValueNoUnknownOptions
 
+  /**
+   * Specify short or full notation for the display property.
+   * ```scss
+   * a { display: block; }
+   * //           ^^^^^
+   * //           This notation
+   * ```
+   *
+   * Modern `display` property values allow you to define both the
+   * [outer and inner display type](https://drafts.csswg.org/css-display-3/#the-display-properties)
+   * separately (e.g. `inline flex`). While CSS 2 used a single-keyword,
+   * precomposed syntax for the display property (e.g. `inline-flex`).
+   *
+   * In the Display Module Level 3 specification the following precomposed values are defined:
+   * - inline-block
+   * - inline-flex
+   * - inline-grid
+   * - inline-table
+   *
+   * More recent and future inner display types (e.g. `grid-lanes`) can only be combined with the
+   * [modern, multi-keyword syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Multi-keyword_syntax).
+   *
+   * The full notation explicitly describes the inner and outer display types of elements. This notation makes it easier to understand how an element will behave and to learn about the various display types.
+   *
+   * The short notation omits defaults or switches to precomposed values, and doesn't follow the modern principle of value composition.
+   *
+   * This rule ignores `$sass`, `@less`, and `var(--custom-property)` variable syntaxes.
+   *
+   * @see [font-family-name-quotes](https://stylelint.io/user-guide/rules/display-notation)
+   */
+  'display-notation': DisplayNotationOptions
   /**
    * Require or disallow quotes for font family names.
    *
