@@ -1,3 +1,12 @@
+# [17.1.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.0.0...v17.1.0) (2026-01-30)
+
+
+### Features
+
+* add `display-notation` rule ([99ffbb7](https://github.com/stylelint-types/stylelint-define-config/commit/99ffbb7e15acd4fde2c328f3fbc11b66b29fa7e8))
+
+
+
 # [17.0.0](https://github.com/stylelint-types/stylelint-define-config/compare/v16.26.0...v17.0.0) (2026-01-16)
 
 
