@@ -1,3 +1,12 @@
+# [17.2.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.1.0...v17.2.0) (2026-02-13)
+
+
+### Features
+
+* bump stylelint to `17.2.0` ([b9f2dca](https://github.com/stylelint-types/stylelint-define-config/commit/b9f2dca699980e5834160b74c6b924dee36de5d1))
+
+
+
 # [17.1.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.0.0...v17.1.0) (2026-01-30)
 
 
