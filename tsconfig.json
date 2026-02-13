@@ -6,9 +6,11 @@
     "strict": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
+    "declaration": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "isolatedDeclarations": true
   },
   "exclude": [
     "node_modules",

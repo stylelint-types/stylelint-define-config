@@ -6,6 +6,6 @@ import type { StylelintConfig } from './config'
  * @param config - Stylelint config
  * @returns Stylelint config
  */
-export function defineConfig(config: StylelintConfig) {
+export function defineConfig(config: StylelintConfig): StylelintConfig {
   return config
 }
