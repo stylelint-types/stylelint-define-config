@@ -5,6 +5,6 @@ export type AtRuleNoVendorPrefixOptions = RuleConfig<
   true,
   [atRule: string],
   {
-    ignoreAtRules: (AtRules | RegExp)[]
+    ignoreAtRules?: (AtRules | RegExp)[]
   }
 >
