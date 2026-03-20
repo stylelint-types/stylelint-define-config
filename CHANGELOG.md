@@ -1,3 +1,15 @@
+# [17.5.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.2.0...v17.5.0) (2026-03-20)
+
+
+### Features
+
+* added `ignoreAtRules: []` to `at-rule-no-vendor-prefix` ([b108b32](https://github.com/stylelint-types/stylelint-define-config/commit/b108b32aa79fffc49cc9743d51c76b21c32e0443))
+* added `ignoreMediaFeatureNames: []` to `media-feature-name-no-vendor-prefix` ([44b0dac](https://github.com/stylelint-types/stylelint-define-config/commit/44b0dacd365860070be01de1174687563986b151))
+* added `ignoreMediaFeatureNameValues: {}` to `media-feature-name-value-no-unknown` ([f47b95e](https://github.com/stylelint-types/stylelint-define-config/commit/f47b95e1bf978916734c1d92c0287ae533c58224))
+* deprecated `*syntax` options from `declaration-property-value-no-unknown` ([264493a](https://github.com/stylelint-types/stylelint-define-config/commit/264493a39aa90c1aa033f654d1cac04e4b50b01e))
+
+
+
 # [17.2.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.1.0...v17.2.0) (2026-02-13)
 
 
