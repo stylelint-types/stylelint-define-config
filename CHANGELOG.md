@@ -1,3 +1,12 @@
+# [17.6.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.5.0...v17.6.0) (2026-04-21)
+
+
+### Features
+
+* added support for extending units to `languageOptions` ([0286dd2](https://github.com/stylelint-types/stylelint-define-config/commit/0286dd2bb5a62a62d6a935e1da59c0a9038f2291))
+
+
+
 # [17.5.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.2.0...v17.5.0) (2026-03-20)
 
 
