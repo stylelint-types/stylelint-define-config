@@ -98,6 +98,7 @@ import type { PropertyLayoutMappingsOptions } from './property-layout-mappings'
 import type { PropertyNoDeprecatedOptions } from './property-no-deprecated'
 import type { PropertyNoUnknownOptions } from './property-no-unknown'
 import type { PropertyNoVendorPrefixOptions } from './property-no-vendor-prefix'
+import type { RelativeSelectorNestingNotationOptions } from './relative-selector-nesting-notation'
 import type { RuleEmptyLineBeforeOptions } from './rule-empty-line-before'
 import type { RuleNestingAtRuleRequiredListOptions } from './rule-nesting-at-rule-required-list'
 import type { RuleSelectorPropertyDisallowedListOptions } from './rule-selector-property-disallowed-list'
@@ -2298,6 +2299,28 @@ export interface StyleLintRules {
    */
   'property-no-vendor-prefix': PropertyNoVendorPrefixOptions
 
+  /**
+   * Specify explicit or implicit nesting notation for relative selectors.
+   *
+   * ```scss
+   * a { & > b {} }
+   * //  ^
+   * // This notation
+   * ```
+   *
+   * When a relative selector starts with a combinator (like ` `, `>`, `+`, `~`),
+   * you can either use an explicit nesting selector (`&`) or rely on implicit nesting behavior.
+   * Implicit notation is more concise, but explicit notation can be more readable.
+   *
+   * ### Primary Options:
+   * `explicit` | `implicit`
+   *
+   * - `explicit`: Relative selectors _must always_ use explicit nesting selector notation.
+   * - `implicit`: Relative selectors _must always_ use implicit nesting selector notation.
+   *
+   * @see [relative-selector-nesting-notation](https://stylelint.io/user-guide/rules/relative-selector-nesting-notation)
+   */
+  'relative-selector-nesting-notation': RelativeSelectorNestingNotationOptions
   /**
    * Require or disallow an empty line before rules.
    *
