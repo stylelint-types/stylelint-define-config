@@ -94,6 +94,7 @@ import type { NoUnknownCustomPropertiesOptions } from './no-unknown-custom-prope
 import type { NumberMaxPrecisionOptions } from './number-max-precision'
 import type { PropertyAllowedListOptions } from './property-allowed-list'
 import type { PropertyDisallowedListOptions } from './property-disallowed-list'
+import type { PropertyLayoutMappingsOptions } from './property-layout-mappings'
 import type { PropertyNoDeprecatedOptions } from './property-no-deprecated'
 import type { PropertyNoUnknownOptions } from './property-no-unknown'
 import type { PropertyNoVendorPrefixOptions } from './property-no-vendor-prefix'
@@ -2202,6 +2203,34 @@ export interface StyleLintRules {
    * @see [property-disallowed-list](https://stylelint.io/user-guide/rules/property-disallowed-list)
    */
   'property-disallowed-list': PropertyDisallowedListOptions
+
+  /**
+   * Specify flow-relative or physical layout mappings for properties.
+   *
+   * ```scss
+   * a { margin-left: 0; }
+   * //  ^^^^^^^^^
+   * //  This property
+   * ```
+   *
+   * Physical layout properties like `margin-left` are tied to the physical dimensions
+   * of the screen. Flow-relative properties like `margin-inline-start` adapt to different
+   * writing modes and text directions, making them useful for internationalization.
+   * They are also consistent with other layout concepts like flexbox and grid,
+   * which already use flow-relative logic.
+   *
+   * ### Primary Options:
+   * `flow-relative` | `physical`
+   *
+   * - `flow-relative`: Layout mappings for properties _must always_ be flow-relative.
+   * - `physical`: Layout mappings for properties _must always_ be physical.
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreProperties`: Ignore the specified properties.
+   *
+   * @see [property-layout-mappings](https://stylelint.io/user-guide/rules/property-layout-mappings)
+   */
+  'property-layout-mappings': PropertyLayoutMappingsOptions
 
   /**
    * Disallow deprecated properties.
