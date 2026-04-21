@@ -1,3 +1,13 @@
+# [17.8.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.6.0...v17.8.0) (2026-04-21)
+
+
+### Features
+
+* added `languageOptions.directionality` configuration property ([9ca4037](https://github.com/stylelint-types/stylelint-define-config/commit/9ca403763daf02f9416fc093365b22242bd9ce01))
+* added `property-layout-mappings` rule ([1f76d65](https://github.com/stylelint-types/stylelint-define-config/commit/1f76d658d814dc096d5deeafafcc80ffd51b30de))
+* added `relative-selector-nesting-notation` rule ([6f4ea6d](https://github.com/stylelint-types/stylelint-define-config/commit/6f4ea6dc9d92e7ef18fe9c216f1947a2f00d47fd))
+* added `selector-no-deprecated` rule ([1164da7](https://github.com/stylelint-types/stylelint-define-config/commit/1164da74f9af7f4dd8f57fc76edd2cb8b9f4493d))
+
 # [17.6.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.5.0...v17.6.0) (2026-04-21)
 
 
