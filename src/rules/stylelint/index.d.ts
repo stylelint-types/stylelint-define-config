@@ -122,6 +122,7 @@ import type { SelectorMaxSpecificityOptions } from './selector-max-specificity'
 import type { SelectorMaxTypeOptions } from './selector-max-type'
 import type { SelectorMaxUniversalOptions } from './selector-max-universal'
 import type { SelectorNestedPatternOptions } from './selector-nested-pattern'
+import type { SelectorNoDeprecatedOptions } from './selector-no-deprecated'
 import type { SelectorNoQualifyingTypeOptions } from './selector-no-qualifying-type'
 import type { SelectorNoVendorPrefixOptions } from './selector-no-vendor-prefix'
 import type { SelectorNotNotationOptions } from './selector-not-notation'
@@ -2818,6 +2819,34 @@ export interface StyleLintRules {
    */
   'selector-nested-pattern': SelectorNestedPatternOptions
 
+  /**
+   * Disallow deprecated selectors.
+   *
+   * ```scss
+   *    nobr {}
+   * // ^^^^
+   * // This selector
+   * ```
+   *
+   * This rule flags selectors that were removed or deprecated after being in the CSS specifications, including Editor Drafts, and were either:
+   * - shipped in a release browser version
+   * - shipped in a pre-release browser version
+   * - shipped but behind feature flags
+   * - polyfilled with some adoption before any browser shipped
+   * - given an MDN page
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreSelectors`
+   *
+   * @see [selector-no-deprecated](https://stylelint.io/user-guide/rules/selector-no-deprecated)
+   *
+   */
+  'selector-no-deprecated': SelectorNoDeprecatedOptions
   /**
    * Disallow qualifying a selector by type.
    *
