@@ -37,7 +37,7 @@
   "engines": {
     "node": ">=20.19.0",
     "npm": ">=9",
-    "pnpm": ">=9"
+    "pnpm": ">=10"
   },
   "scripts": {
     "build": "tsdown",
@@ -58,7 +58,7 @@
     "bumpp": "^11.0.1",
     "conventional-changelog-cli": "^5.0.0",
     "eslint": "^10.0.3",
-    "stylelint": "^17.5.0",
+    "stylelint": "^17.6.0",
     "tsdown": "^0.21.4",
     "typescript": "^5.9.3"
   },
