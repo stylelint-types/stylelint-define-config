@@ -28,5 +28,14 @@ export interface LanguageOptions {
      * Extend unit categories with custom units
      */
     units?: Record<string, string[]>
+
+    /**
+     * Specify the direction of the block and inline axes.
+     * This is used by rules to provide direction-aware problem messages and autofixes.
+     */
+    directionality?: {
+      block?: 'top-to-bottom' | 'bottom-to-top' | 'left-to-right' | 'right-to-left'
+      inline?: 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top'
+    }
   }
 }
