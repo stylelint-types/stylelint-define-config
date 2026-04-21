@@ -23,5 +23,10 @@ export interface LanguageOptions {
      * Extend or modify type definitions used in property values
      */
     types?: Record<string, string>
+
+    /**
+     * Extend unit categories with custom units
+     */
+    units?: Record<string, string[]>
   }
 }
