@@ -1,3 +1,12 @@
+# [17.9.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.8.0...v17.9.0) (2026-04-26)
+
+
+### Features
+
+* add `maxWarnings` to configuration object ([11023be](https://github.com/stylelint-types/stylelint-define-config/commit/11023be730f7d62559f2aec9def5802a5a15d757))
+* add experimental `referenceFiles` to configuration object ([df371c9](https://github.com/stylelint-types/stylelint-define-config/commit/df371c90f330f5f015e05422f89a1a24e73c5281))
+* update stylelint to `17.9.0` ([d62725d](https://github.com/stylelint-types/stylelint-define-config/commit/d62725d83211e1bc875891007c653141f784129b))
+
 # [17.8.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.6.0...v17.8.0) (2026-04-21)
 
 
