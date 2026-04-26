@@ -1,4 +1,4 @@
-import type { ConfigRuleSettings, CustomSyntax, DisableOptions, Formatter, FormatterType, Severity } from 'stylelint'
+import type { ConfigReferenceFiles, ConfigRuleSettings, CustomSyntax, DisableOptions, Formatter, FormatterType, Severity } from 'stylelint'
 import type { Rules } from '../rules'
 import type { Arrayable, LiteralUnion, Prettify } from '../utils'
 import type { KnownCustomSyntax } from './customSyntax'
@@ -278,6 +278,15 @@ export interface StylelintConfig {
    * @see [validate](https://stylelint.io/user-guide/options/#validate)
    */
   validate?: boolean
+
+  /**
+   * An array of globs or objects to specify what files to get reference information from
+   *
+   * @experimental This is an experimental feature. The API may change in the future.
+   *
+   * @see [referenceFiles](https://stylelint.io/user-guide/configure#referencefiles)
+   */
+  referenceFiles?: ConfigReferenceFiles
 }
 
 export { Severity }
