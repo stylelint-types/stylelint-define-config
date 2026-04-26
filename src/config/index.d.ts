@@ -287,6 +287,13 @@ export interface StylelintConfig {
    * @see [referenceFiles](https://stylelint.io/user-guide/configure#referencefiles)
    */
   referenceFiles?: ConfigReferenceFiles
+
+  /**
+   * Set a limit to the number of warnings accepted.
+   *
+   * @see [maxWarnings](https://stylelint.io/user-guide/configure#maxwarnings)
+   */
+  maxWarnings?: number
 }
 
 export { Severity }
