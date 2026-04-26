@@ -2,7 +2,7 @@
   "name": "stylelint-define-config",
   "type": "module",
   "version": "17.8.0",
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.2",
   "description": "Provide a defineConfig function for stylelint.config.js files",
   "author": "pengzhanbo <volodymyr@foxmail.com> (https://github.com/pengzhanbo)",
   "license": "MIT",
@@ -59,8 +59,8 @@
     "conventional-changelog": "^7.2.0",
     "conventional-changelog-angular": "^8.3.1",
     "eslint": "^10.2.1",
-    "stylelint": "^17.8.0",
-    "tsdown": "^0.21.9",
+    "stylelint": "^17.9.0",
+    "tsdown": "^0.21.10",
     "typescript": "^6.0.3"
   },
   "pnpm": {
@@ -70,7 +70,7 @@
     ]
   },
   "resolutions": {
-    "baseline-browser-mapping": "^2.10.20"
+    "baseline-browser-mapping": "^2.10.22"
   },
   "publishConfig": {
     "access": "public",
