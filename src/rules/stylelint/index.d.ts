@@ -123,6 +123,7 @@ import type { SelectorMaxTypeOptions } from './selector-max-type'
 import type { SelectorMaxUniversalOptions } from './selector-max-universal'
 import type { SelectorNestedPatternOptions } from './selector-nested-pattern'
 import type { SelectorNoDeprecatedOptions } from './selector-no-deprecated'
+import type { SelectorNoInvalidOptions } from './selector-no-invalid'
 import type { SelectorNoQualifyingTypeOptions } from './selector-no-qualifying-type'
 import type { SelectorNoVendorPrefixOptions } from './selector-no-vendor-prefix'
 import type { SelectorNotNotationOptions } from './selector-not-notation'
@@ -2847,6 +2848,21 @@ export interface StyleLintRules {
    *
    */
   'selector-no-deprecated': SelectorNoDeprecatedOptions
+
+  /**
+   * Disallow invalid selectors.
+   *
+   * ```scss
+   * a ) b {}
+   * //^
+   * // Selectors like this
+   * ```
+   *
+   * This rule considers selectors defined within the CSS specifications, up to and including Editor's Drafts, to be valid.
+   *
+   * @see [selector-no-invalid](https://stylelint.io/user-guide/rules/selector-no-invalid)
+   */
+  'selector-no-invalid': SelectorNoInvalidOptions
   /**
    * Disallow qualifying a selector by type.
    *
