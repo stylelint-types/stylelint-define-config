@@ -58,8 +58,8 @@
     "bumpp": "^11.0.1",
     "conventional-changelog": "^7.2.0",
     "conventional-changelog-angular": "^8.3.1",
-    "eslint": "^10.2.1",
-    "stylelint": "^17.9.0",
+    "eslint": "^10.3.0",
+    "stylelint": "^17.10.0",
     "tsdown": "^0.21.10",
     "typescript": "^6.0.3"
   },
@@ -70,7 +70,7 @@
     ]
   },
   "resolutions": {
-    "baseline-browser-mapping": "^2.10.22"
+    "baseline-browser-mapping": "^2.10.27"
   },
   "publishConfig": {
     "access": "public",
