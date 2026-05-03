@@ -145,6 +145,7 @@ import type { UnitDisallowedListOptions } from './unit-disallowed-list'
 import type { UnitLayoutMappingsOptions } from './unit-layout-mappings'
 import type { UnitNoUnknownOptions } from './unit-no-unknown'
 import type { ValueKeywordCaseOptions } from './value-keyword-case'
+import type { ValueKeywordLayoutMappingsOptions } from './value-keyword-layout-mappings'
 import type { ValueNoVendorPrefixOptions } from './value-no-vendor-prefix'
 
 /**
@@ -3341,6 +3342,32 @@ export interface StyleLintRules {
    * @see [value-keyword-case](https://stylelint.io/user-guide/rules/value-keyword-case)
    */
   'value-keyword-case': ValueKeywordCaseOptions
+
+  /**
+   * Specify flow-relative or physical layout mappings for value keywords.
+   *
+   * ```scss
+   * a { float: left; }
+   * //         ^^^^
+   * //         This keyword
+   * ```
+   *
+   * Physical keywords like `left`, `top` and `horizontal` are tied to the physical dimensions of
+   * the screen. Flow-relative keywords like `inline-start`, `block-start` and `inline` adapt to
+   * different writing modes and text directions, making them useful for internationalization.
+   * They are the keyword-level counterpart to flow-relative properties and units.
+   *
+   * ### Primary Options:
+   * - `"flow-relative"`: Layout mappings for value keywords _must always_ be flow-relative.
+   * - `"physical"`: Layout mappings for value keywords _must always_ be physical.
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreProperties`: Ignore the specified properties.
+   * - `ignoreKeywords`: Ignore the specified keywords.
+   *
+   * @see [value-keyword-layout-mappings](https://stylelint.io/user-guide/rules/value-keyword-layout-mappings)
+   */
+  'value-keyword-layout-mappings': ValueKeywordLayoutMappingsOptions
 
   /**
    * Disallow vendor prefixes for values.
