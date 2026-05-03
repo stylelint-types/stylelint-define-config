@@ -142,6 +142,7 @@ import type { SyntaxStringNoInvalidOptions } from './syntax-string-no-invalid'
 import type { TimeMinMillisecondsOptions } from './time-min-milliseconds'
 import type { UnitAllowedListOptions } from './unit-allowed-list'
 import type { UnitDisallowedListOptions } from './unit-disallowed-list'
+import type { UnitLayoutMappingsOptions } from './unit-layout-mappings'
 import type { UnitNoUnknownOptions } from './unit-no-unknown'
 import type { ValueKeywordCaseOptions } from './value-keyword-case'
 import type { ValueNoVendorPrefixOptions } from './value-no-vendor-prefix'
@@ -3263,6 +3264,31 @@ export interface StyleLintRules {
    * @see [unit-disallowed-list](https://stylelint.io/user-guide/rules/unit-disallowed-list)
    */
   'unit-disallowed-list': UnitDisallowedListOptions
+
+  /**
+   * Specify flow-relative or physical layout mappings for units.
+   *
+   * ```scss
+   * a { width: 100vw; }
+   * //            ^^
+   * //         This unit
+   * ```
+   *
+   * Physical units like `vw` and `vh` are tied to the physical dimensions of the viewport
+   * Flow-relative units like `vi` and `vb` adapt to different writing modes and text directions,
+   * making themuseful for internationalization.
+   * They are the unit-level counterpart to flow-relative properties like `inline-size` and `block-size`.
+   *
+   * ### Primary Options:
+   * - `"flow-relative"`: Layout mappings for units _must always_ be flow-relative.
+   * - `"physical"`: Layout mappings for units _must always_ be physical.
+   *
+   * ### Optional Secondary Options:
+   * - `ignoreUnits`: Ignore the specified units.
+   *
+   * @see [unit-layout-mappings](https://stylelint.io/user-guide/rules/unit-layout-mappings)
+   */
+  'unit-layout-mappings': UnitLayoutMappingsOptions
 
   /**
    * Disallow unknown units.
