@@ -1,3 +1,18 @@
+# [17.10.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.9.0...v17.10.0) (2026-05-03)
+
+
+### Bug Fixes
+
+* incorrect type for `languageOptions`, close [#2](https://github.com/stylelint-types/stylelint-define-config/issues/2) ([#3](https://github.com/stylelint-types/stylelint-define-config/issues/3)) ([12c0e79](https://github.com/stylelint-types/stylelint-define-config/commit/12c0e795771384dbc0e38fc6e9ef67948d27d5f1))
+
+
+### Features
+
+* add `selector-no-invalid` rule ([204462b](https://github.com/stylelint-types/stylelint-define-config/commit/204462b7f514a864b12226149283ea8660ab6b6d))
+* add `unit-layout-mappings` rule ([abbdcce](https://github.com/stylelint-types/stylelint-define-config/commit/abbdcce73e0903872b904c0c553f38e04401edde))
+* add `value-keyword-layout-mappings` rule ([bfa33c5](https://github.com/stylelint-types/stylelint-define-config/commit/bfa33c5e66aa1522860f98e9eaf95a4fa34f6b4c))
+* update stylelint to `17.10.0` ([472ac61](https://github.com/stylelint-types/stylelint-define-config/commit/472ac6173c491ce8e563d2753431ddf4e5f48aab))
+
 # [17.9.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.8.0...v17.9.0) (2026-04-26)
 
 
