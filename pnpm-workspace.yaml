@@ -1,0 +1,8 @@
+shellEmulator: true
+trustPolicy: no-downgrade
+
+overrides:
+  baseline-browser-mapping: ^2.10.27
+
+onlyBuiltDependencies:
+  - unrs-resolver
