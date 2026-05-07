@@ -1,3 +1,10 @@
+# [17.11.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.10.0...v17.11.0) (2026-05-07)
+
+
+### Features
+
+* update stylelint to `17.11.0` ([1fb73e3](https://github.com/stylelint-types/stylelint-define-config/commit/1fb73e380ec54a2ce6017e35ddad8ddca88e4bef))
+
 # [17.10.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.9.0...v17.10.0) (2026-05-03)
 
 
