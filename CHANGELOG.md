@@ -1,3 +1,5 @@
+# [17.14.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.11.0...v17.14.0) (2026-07-24)
+
 # [17.11.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.10.0...v17.11.0) (2026-05-07)
 
 
