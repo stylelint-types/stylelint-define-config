@@ -1,4 +1,6 @@
 import type { UserConfig } from 'tsdown'
+import fs from 'node:fs'
+import path from 'node:path'
 import { defineConfig } from 'tsdown'
 
 const config: UserConfig = defineConfig({
@@ -8,6 +10,17 @@ const config: UserConfig = defineConfig({
   sourcemap: false,
   dts: true,
   fixedExtension: false,
+  onSuccess: (config) => {
+    for (const name of Object.keys(config.entry)) {
+      const file = path.join(config.outDir, `${name}.d.ts`)
+      const content = fs.readFileSync(file, 'utf-8')
+        .split('\n')
+        .filter(line => !line.startsWith('//#region') && !line.startsWith('//#endregion'))
+        .join('\n')
+
+      fs.writeFileSync(file, content)
+    }
+  },
 })
 
 export default config
