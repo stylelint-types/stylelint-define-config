@@ -7,5 +7,9 @@ export type ColorNamedOptions = RuleConfig<
   {
     ignoreProperties?: RegExpLike[]
     ignore?: LiteralUnion<'inside-function'>[]
+    /**
+     * Ignore named colors within the specified functions.
+     */
+    ignoreFunctions?: RegExpLike[]
   }
 >
