@@ -125,6 +125,7 @@ import type { SelectorNestedPatternOptions } from './selector-nested-pattern'
 import type { SelectorNoDeprecatedOptions } from './selector-no-deprecated'
 import type { SelectorNoInvalidOptions } from './selector-no-invalid'
 import type { SelectorNoQualifyingTypeOptions } from './selector-no-qualifying-type'
+import type { SelectorNoUnmatchableOptions } from './selector-no-unmatchable'
 import type { SelectorNoVendorPrefixOptions } from './selector-no-vendor-prefix'
 import type { SelectorNotNotationOptions } from './selector-not-notation'
 import type { SelectorPseudoClassAllowedListOptions } from './selector-pseudo-class-allowed-list'
@@ -2889,6 +2890,34 @@ export interface StyleLintRules {
    */
   'selector-no-qualifying-type': SelectorNoQualifyingTypeOptions
 
+  /**
+   * Disallow unmatchable selectors.
+   *
+   * ```scss
+   * label:enabled {}
+   * //   ^^^^^^^^
+   * //   Selectors like this
+   * ```
+   *
+   * Unmatchable selectors are valid, but can never match anything.
+   *
+   * This rule flags selectors that:
+   * - pair a pseudo-class with elements it never matches, e.g. `label:enabled`
+   * - pair pseudo-classes that never match the same element, e.g. `:any-link:checked`
+   * - combine a pseudo-element with tree-structural pseudo-classes, e.g. `::before:first-child`
+   * - contain pseudo-elements within `:is()` or `:where()`, which cannot represent them, e.g. `:is(::before)`
+   * - contain the nesting selector (`&`) where it cannot represent its pseudo-element ancestor rules
+   * - select around the shadow host in ways its tree does not allow, e.g. `a :host` and `::slotted(:host)`
+   *
+   * This rule resolves nested selectors according to the [CSS Nesting specification](https://drafts.csswg.org/css-nesting/).
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * @see [selector-no-unmatchable](https://stylelint.io/user-guide/rules/selector-no-unmatchable)
+   */
+  'selector-no-unmatchable': SelectorNoUnmatchableOptions
   /**
    * Disallow vendor prefixes for selectors.
    *
