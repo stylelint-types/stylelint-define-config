@@ -1,10 +1,10 @@
-shellEmulator: true
+minimumReleaseAgeExcludePrune: true
+
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - cached-factory
 
-overrides:
-  baseline-browser-mapping: ^2.11.1
+shellEmulator: true
 
-onlyBuiltDependencies:
-  - unrs-resolver
+overrides:
+  baseline-browser-mapping: ^2.11.21
