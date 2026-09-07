@@ -1,3 +1,10 @@
+# [17.15.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.14.0...v17.15.0) (2026-09-07)
+
+### Features
+
+- add `ignoreFunctions: []` to `color-named` and `color-no-hex` ([b04d7d9](https://github.com/stylelint-types/stylelint-define-config/commit/b04d7d99717a41ad0a2af08668cb342a5fa330ff))
+- add `selector-no-unmatchable` rule ([b42772b](https://github.com/stylelint-types/stylelint-define-config/commit/b42772bb02d5737990852984be4503e085788607))
+
 # [17.14.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.11.0...v17.14.0) (2026-07-24)
 
 # [17.11.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.10.0...v17.11.0) (2026-05-07)
