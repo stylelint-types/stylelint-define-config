@@ -1,10 +1,18 @@
-import type { ConfigReferenceFiles, ConfigRuleSettings, CustomSyntax, DisableOptions, Formatter, FormatterType, Severity } from 'stylelint'
-import type { Rules } from '../rules'
-import type { Arrayable, LiteralUnion, Prettify } from '../utils'
-import type { KnownCustomSyntax } from './customSyntax'
-import type { KnownExtends } from './extends'
-import type { LanguageOptions } from './LanguageOptions'
-import type { PluginFunctions, Plugins } from './plugins'
+import type {
+  ConfigReferenceFiles,
+  ConfigRuleSettings,
+  CustomSyntax,
+  DisableOptions,
+  Formatter,
+  FormatterType,
+  Severity,
+} from 'stylelint'
+import type { Rules } from '../rules/index.js'
+import type { Arrayable, LiteralUnion, Prettify } from '../utils.js'
+import type { KnownCustomSyntax } from './customSyntax.js'
+import type { KnownExtends } from './extends.js'
+import type { LanguageOptions } from './LanguageOptions.js'
+import type { PluginFunctions, Plugins } from './plugins.js'
 
 export type Extends = Arrayable<KnownExtends>
 
@@ -296,4 +304,4 @@ export interface StylelintConfig {
   maxWarnings?: number
 }
 
-export { Severity }
+export type { Severity }

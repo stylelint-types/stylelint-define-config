@@ -1,4 +1,4 @@
-import type { StylelintConfig } from './config'
+import type { StylelintConfig } from './config/index.js'
 
 /**
  * Define a Stylelint config.

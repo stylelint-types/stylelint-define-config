@@ -1,5 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type NoUnknownCustomPropertiesOptions = RuleConfig<
-  true
->
+export type NoUnknownCustomPropertiesOptions = RuleConfig<true>

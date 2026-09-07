@@ -1,5 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type KeyframeDeclarationNoImportantOptions = RuleConfig<
-  true
->
+export type KeyframeDeclarationNoImportantOptions = RuleConfig<true>

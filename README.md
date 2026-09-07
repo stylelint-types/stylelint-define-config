@@ -39,7 +39,7 @@ module.exports = defineConfig({
   extends: 'stylelint-config-standard',
   rules: {
     // ...rules
-  }
+  },
 })
 ```
 
@@ -88,9 +88,12 @@ declare module 'stylelint-define-config' {
 ```ts
 import { RuleConfig } from 'stylelint-define-config'
 
-export type AtElseClosingBraceNewlineAfterOptions = RuleConfig<'always-last-in-chain', {
-  disableFix?: boolean
-}>
+export type AtElseClosingBraceNewlineAfterOptions = RuleConfig<
+  'always-last-in-chain',
+  {
+    disableFix?: boolean
+  }
+>
 ```
 
 There are other interfaces that can be extended.

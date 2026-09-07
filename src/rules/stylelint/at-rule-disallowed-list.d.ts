@@ -1,7 +1,4 @@
-import type { AtRules } from '../../types'
-import type { RuleConfig } from '../rule-config'
+import type { AtRules } from '../../types/index.js'
+import type { RuleConfig } from '../rule-config.js'
 
-export type AtRuleDisallowedListOptions = RuleConfig<
-  AtRules[] | string[],
-  [atRule: string]
->
+export type AtRuleDisallowedListOptions = RuleConfig<AtRules[] | string[], [atRule: string]>

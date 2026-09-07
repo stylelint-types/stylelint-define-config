@@ -1,6 +1,6 @@
-import type { CSSFunction } from '../../types'
-import type { LiteralUnion, RegExpLike } from '../../utils'
-import type { RuleConfig } from '../rule-config'
+import type { CSSFunction } from '../../types/index.js'
+import type { LiteralUnion, RegExpLike } from '../../utils.js'
+import type { RuleConfig } from '../rule-config.js'
 
 export type LengthZeroNoUnitOptions = RuleConfig<
   true,
@@ -11,7 +11,7 @@ export type LengthZeroNoUnitOptions = RuleConfig<
      */
     ignore?: LiteralUnion<'custom-properties'>[]
 
-    ignoreFunctions?: (CSSFunction | RegExpLike)[]
+    ignoreFunctions?: LiteralUnion<CSSFunction> | RegExp
     /**
      * Ignore units for zero lengths within the preludes of the specified at-rules.
      */

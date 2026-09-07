@@ -1,5 +1,5 @@
 import type { Severity } from 'stylelint'
-import type { Prettify } from '../utils'
+import type { Prettify } from '../utils.js'
 
 export interface SecondaryOptions<MessageParams extends readonly any[]> {
   /**
@@ -7,12 +7,14 @@ export interface SecondaryOptions<MessageParams extends readonly any[]> {
    * @see [configure disable fix](https://stylelint.io/user-guide/configure#disablefix)
    */
   disableFix?: boolean
+
   /**
    * You can set the reportDisables secondary option to report any stylelint-disable comments
    * for this rule, effectively disallowing authors to opt-out of it.
    * @see [configure report disables](https://stylelint.io/user-guide/configure#reportdisables)
    */
   reportDisables?: boolean
+
   /**
    * You can use the severity secondary option to adjust any specific rule's severity.
    *
@@ -22,6 +24,7 @@ export interface SecondaryOptions<MessageParams extends readonly any[]> {
    * @see [configure severity](https://stylelint.io/user-guide/configure#severity)
    */
   severity?: Severity
+
   /**
    * You can use the message secondary option to deliver a custom message when a rule is violated.
    * @see [configure message](https://stylelint.io/user-guide/configure#message)
@@ -45,9 +48,9 @@ export type RuleConfig<
   Primary,
   MessageParams extends any[] = [],
   Secondary extends object = object,
->
-  = | null
-    | undefined
-    | Primary
-    | readonly [Primary]
-    | readonly [Primary, Prettify<Omit<SecondaryOptions<MessageParams>, keyof Secondary> & Secondary>]
+> =
+  | null
+  | undefined
+  | Primary
+  | readonly [Primary]
+  | readonly [Primary, Prettify<Omit<SecondaryOptions<MessageParams>, keyof Secondary> & Secondary>]

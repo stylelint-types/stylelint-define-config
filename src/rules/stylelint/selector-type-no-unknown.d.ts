@@ -1,5 +1,5 @@
-import type { LiteralUnion, RegExpLike } from '../../utils'
-import type { RuleConfig } from '../rule-config'
+import type { LiteralUnion, RegExpLike } from '../../utils.js'
+import type { RuleConfig } from '../rule-config.js'
 
 type SelectorTypeNoUnknownIgnore = LiteralUnion<'custom-elements' | 'default-namespace'>
 

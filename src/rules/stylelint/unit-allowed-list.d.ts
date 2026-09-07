@@ -1,6 +1,6 @@
-import type { CSSFunction, CSSPropertiesMap, Unit } from '../../types'
-import type { Arrayable } from '../../utils'
-import type { RuleConfig } from '../rule-config'
+import type { CSSFunction, CSSPropertiesMap, Unit } from '../../types/index.js'
+import type { Arrayable } from '../../utils.js'
+import type { RuleConfig } from '../rule-config.js'
 
 type UnitAllowedListIgnoreProperties = Partial<Record<Unit, Arrayable<CSSPropertiesMap | RegExp>>>
 

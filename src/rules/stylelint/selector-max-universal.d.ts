@@ -1,5 +1,5 @@
-import type { SelectorCombinator } from '../../types'
-import type { RuleConfig } from '../rule-config'
+import type { SelectorCombinator } from '../../types/index.js'
+import type { RuleConfig } from '../rule-config.js'
 
 export type SelectorMaxUniversalOptions = RuleConfig<
   number,

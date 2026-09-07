@@ -1,6 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type ColorNoInvalidHexOptions = RuleConfig<
-  true,
-  [hex: string, expected: string]
->
+export type ColorNoInvalidHexOptions = RuleConfig<true, [hex: string, expected: string]>

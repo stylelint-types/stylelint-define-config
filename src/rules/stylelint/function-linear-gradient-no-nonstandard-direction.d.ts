@@ -1,5 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type FunctionLinearGradientNoNonstandardDirectionOptions = RuleConfig<
-  true
->
+export type FunctionLinearGradientNoNonstandardDirectionOptions = RuleConfig<true>

@@ -1,5 +1,5 @@
-import type { CSSPropertiesMap } from '../../types'
-import type { RuleConfig } from '../rule-config'
+import type { CSSPropertiesMap } from '../../types/index.js'
+import type { RuleConfig } from '../rule-config.js'
 
 export type PropertyNoDeprecatedOptions = RuleConfig<
   true,

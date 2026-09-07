@@ -1,6 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type SectorAnbNoUnmatchableOptions = RuleConfig<
-  true,
-  [pseudoClass: string]
->
+export type SectorAnbNoUnmatchableOptions = RuleConfig<true, [pseudoClass: string]>

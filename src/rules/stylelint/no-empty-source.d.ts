@@ -1,5 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type NoEmptySourceOptions = RuleConfig<
-  true
->
+export type NoEmptySourceOptions = RuleConfig<true>

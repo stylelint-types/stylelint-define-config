@@ -1,10 +1,10 @@
 export type Unprefix<T extends Record<string, any>, Pre extends string> = {
-  [K in keyof T as K extends `${Pre}${infer U}` ? U : never]: T[K];
+  [K in keyof T as K extends `${Pre}${infer U}` ? U : never]: T[K]
 }
 
 export type Prefix<T extends Record<string, any>, Pre extends string> = {
   // @ts-expect-error K in keyof T
-  [K in keyof T as `${Pre}${K}`]: T[K];
+  [K in keyof T as `${Pre}${K}`]: T[K]
 }
 
 export type RenamePrefix<
@@ -22,17 +22,16 @@ export type Arrayable<T> = T | T[]
  *
  * @see [copied from issue](https://github.com/microsoft/TypeScript/issues/29729#issuecomment-471566609)
  */
-export type LiteralUnion<Union extends Base, Base = string>
-  = | Union
-    | (Base & { zz_IGNORE_ME?: never })
+export type LiteralUnion<Union extends Base, Base = string> =
+  | Union
+  | (Base & { zz_IGNORE_ME?: never })
 
 export type RegExpLike = RegExp | string
 
-export type KebabCase<S extends string, B extends boolean = true>
-  = S extends `${infer F}${infer O}`
-    ? F extends Uncapitalize<F>
-      ? `${F}${KebabCase<O, false>}`
-      : B extends true
-        ? `${Uncapitalize<F>}${KebabCase<O, false>}`
-        : `-${Uncapitalize<F>}${KebabCase<O, false>}`
-    : S
+export type KebabCase<S extends string, B extends boolean = true> = S extends `${infer F}${infer O}`
+  ? F extends Uncapitalize<F>
+    ? `${F}${KebabCase<O, false>}`
+    : B extends true
+      ? `${Uncapitalize<F>}${KebabCase<O, false>}`
+      : `-${Uncapitalize<F>}${KebabCase<O, false>}`
+  : S

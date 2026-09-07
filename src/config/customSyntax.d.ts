@@ -1,4 +1,4 @@
-import type { LiteralUnion } from '../utils'
+import type { LiteralUnion } from '../utils.js'
 
 /**
  * This is a special exported interface for other packages to declare
@@ -28,5 +28,5 @@ export type KnownCustomSyntax = LiteralUnion<
   | 'postcss-scss'
   | 'postcss-styled-components'
   | 'postcss-styled-syntax'
-  | keyof CustomSyntax
+  | LiteralUnion<keyof CustomSyntax>
 >

@@ -1,4 +1,4 @@
-import type { LiteralUnion } from '../utils'
+import type { LiteralUnion } from '../utils.js'
 
 /**
  * This is a special exported interface for other packages to declare
@@ -23,5 +23,5 @@ export type KnownExtends = LiteralUnion<
   | 'stylelint-config-prettier'
   | 'stylelint-config-prettier-scss'
   | 'stylelint-config-recommended-vue'
-  | keyof CustomExtends
+  | LiteralUnion<keyof CustomExtends>
 >

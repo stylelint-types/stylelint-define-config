@@ -10,12 +10,13 @@ const config: UserConfig = defineConfig({
   sourcemap: false,
   dts: true,
   fixedExtension: false,
-  onSuccess: (config) => {
-    for (const name of Object.keys(config.entry)) {
-      const file = path.join(config.outDir, `${name}.d.ts`)
-      const content = fs.readFileSync(file, 'utf-8')
+  onSuccess: (resolvedConfig) => {
+    for (const name of Object.keys(resolvedConfig.entry)) {
+      const file = path.join(resolvedConfig.outDir, `${name}.d.ts`)
+      const content = fs
+        .readFileSync(file, 'utf-8')
         .split('\n')
-        .filter(line => !line.startsWith('//#region') && !line.startsWith('//#endregion'))
+        .filter((line) => !line.startsWith('//#region') && !line.startsWith('//#endregion'))
         .join('\n')
 
       fs.writeFileSync(file, content)

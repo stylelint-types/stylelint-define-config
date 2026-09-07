@@ -1,5 +1,5 @@
-import type { RuleConfig } from './rule-config'
-import type { StyleLintRules } from './stylelint'
+import type { RuleConfig } from './rule-config.js'
+import type { StyleLintRules } from './stylelint/index.js'
 
 /**
  * This is a special exported interface for other packages to declare
@@ -30,7 +30,4 @@ type CustomRules = {
  * Rules determine what the linter looks for and complains about.
  * There are {@link https://stylelint.io/user-guide/rules over 100 rules} built into Stylelint. No rules are turned on by default.
  */
-export interface Rules extends
-  StyleLintRules,
-  CustomRules,
-  Record<string, RuleConfig<any>> {}
+export interface Rules extends StyleLintRules, CustomRules, Record<string, RuleConfig<any>> {}

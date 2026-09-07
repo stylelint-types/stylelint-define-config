@@ -1,5 +1,5 @@
 import type { Plugin, Rule } from 'stylelint'
-import type { Arrayable, LiteralUnion } from '../utils'
+import type { Arrayable, LiteralUnion } from '../utils.js'
 
 /**
  * This is a special exported interface for other packages to declare
@@ -17,9 +17,13 @@ import type { Arrayable, LiteralUnion } from '../utils'
 export interface CustomPlugins {}
 
 type KnownPlugins = LiteralUnion<
-  | 'stylelint-order' | 'stylelint-scss' | '@stylistic/stylelint-plugin' | 'stylelint-stylus'
-  | 'stylelint-suitcss' | 'stylelint-react-native'
-  | keyof CustomPlugins
+  | 'stylelint-order'
+  | 'stylelint-scss'
+  | '@stylistic/stylelint-plugin'
+  | 'stylelint-stylus'
+  | 'stylelint-suitcss'
+  | 'stylelint-react-native'
+  | LiteralUnion<keyof CustomPlugins>
 >
 
 export type Plugins = Arrayable<KnownPlugins | Plugin>

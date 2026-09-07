@@ -1,6 +1,6 @@
-import type { AtRules } from '../../types'
-import type { RegExpLike } from '../../utils'
-import type { RuleConfig } from '../rule-config'
+import type { AtRules } from '../../types/index.js'
+import type { RegExpLike } from '../../utils.js'
+import type { RuleConfig } from '../rule-config.js'
 
 export type PropertyNoUnknownOptions = RuleConfig<
   true,

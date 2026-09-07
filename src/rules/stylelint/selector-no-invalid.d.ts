@@ -1,6 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type SelectorNoInvalidOptions = RuleConfig<
-  true,
-  [selector: string, season: string]
->
+export type SelectorNoInvalidOptions = RuleConfig<true, [selector: string, season: string]>

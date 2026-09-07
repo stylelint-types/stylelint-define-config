@@ -1,6 +1,6 @@
-import type { CSSFunction, CSSPropertiesMap, MediaFeature, Unit } from '../../types'
-import type { Arrayable } from '../../utils'
-import type { RuleConfig } from '../rule-config'
+import type { CSSFunction, CSSPropertiesMap, MediaFeature, Unit } from '../../types/index.js'
+import type { Arrayable } from '../../utils.js'
+import type { RuleConfig } from '../rule-config.js'
 
 export type UnitDisallowedListOptions = RuleConfig<
   Unit | Unit[],
@@ -17,7 +17,6 @@ export type UnitDisallowedListOptions = RuleConfig<
     /**
      * Ignore units that are inside of the specified functions.
      */
-    ignoreMediaFeatureNames?: Partial<Record<Unit, Arrayable<MediaFeature | RegExp>>
-    >
+    ignoreMediaFeatureNames?: Partial<Record<Unit, Arrayable<MediaFeature | RegExp>>>
   }
 >

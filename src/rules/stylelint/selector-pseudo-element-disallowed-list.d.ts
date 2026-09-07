@@ -1,8 +1,8 @@
-import type { SelectorPseudoElement } from '../../types'
-import type { Arrayable, RegExpLike } from '../../utils'
-import type { RuleConfig } from '../rule-config'
+import type { SelectorPseudoElement } from '../../types/index.js'
+import type { Arrayable, LiteralUnion } from '../../utils.js'
+import type { RuleConfig } from '../rule-config.js'
 
-type SelectorPseudoElementDisallowed = SelectorPseudoElement | RegExpLike
+type SelectorPseudoElementDisallowed = LiteralUnion<SelectorPseudoElement> | RegExp
 
 export type SelectorPseudoElementDisallowedListOptions = RuleConfig<
   Arrayable<SelectorPseudoElementDisallowed>,

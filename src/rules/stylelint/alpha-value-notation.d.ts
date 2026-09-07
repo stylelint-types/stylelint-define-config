@@ -1,6 +1,6 @@
-import type { CSSPropertiesMap } from '../../types'
-import type { RegExpLike } from '../../utils'
-import type { RuleConfig } from '../rule-config'
+import type { CSSPropertiesMap } from '../../types/index.js'
+import type { LiteralUnion } from '../../utils.js'
+import type { RuleConfig } from '../rule-config.js'
 
 export type AlphaValueNotationOptions = RuleConfig<
   'number' | 'percentage',
@@ -10,6 +10,6 @@ export type AlphaValueNotationOptions = RuleConfig<
      * Reverse the primary option for matching properties.
      * @see [optional secondary options](https://stylelint.io/user-guide/rules/alpha-value-notation#optional-secondary-options)
      */
-    exceptProperties?: (CSSPropertiesMap | RegExpLike)[]
+    exceptProperties?: (LiteralUnion<CSSPropertiesMap> | RegExp)[]
   }
 >

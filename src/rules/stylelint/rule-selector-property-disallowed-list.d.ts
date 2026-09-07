@@ -1,8 +1,8 @@
-import type { CSSPropertiesMap } from '../../types'
-import type { Arrayable, LiteralUnion, RegExpLike } from '../../utils'
-import type { RuleConfig } from '../rule-config'
+import type { CSSPropertiesMap } from '../../types/index.js'
+import type { Arrayable, LiteralUnion } from '../../utils.js'
+import type { RuleConfig } from '../rule-config.js'
 
-type RuleSelectorPropertyDisallowed = CSSPropertiesMap | RegExpLike
+type RuleSelectorPropertyDisallowed = LiteralUnion<CSSPropertiesMap> | RegExp
 
 export type RuleSelectorPropertyDisallowedListOptions = RuleConfig<
   Record<string, Arrayable<RuleSelectorPropertyDisallowed>>,

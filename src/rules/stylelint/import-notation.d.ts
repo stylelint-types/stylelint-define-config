@@ -1,6 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type ImportNotationOptions = RuleConfig<
-  'string' | 'url',
-  [unfixed: string, fixed: string]
->
+export type ImportNotationOptions = RuleConfig<'string' | 'url', [unfixed: string, fixed: string]>

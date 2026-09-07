@@ -1,5 +1,5 @@
-import type { Unit } from '../../types'
-import type { RuleConfig } from '../rule-config'
+import type { Unit } from '../../types/index.js'
+import type { RuleConfig } from '../rule-config.js'
 
 export type UnitLayoutMappingsOptions = RuleConfig<
   'flow-relative' | 'physical',

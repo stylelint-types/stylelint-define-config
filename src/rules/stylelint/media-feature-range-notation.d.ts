@@ -1,4 +1,4 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
 export type MediaFeatureRangeNotationOptions = RuleConfig<
   'context' | 'prefix',
@@ -7,6 +7,6 @@ export type MediaFeatureRangeNotationOptions = RuleConfig<
     /**
      * - `'exact-value'`: Reverse the primary option for media features with exact values.
      */
-    except?: ('exact-value')[]
+    except?: 'exact-value'[]
   }
 >

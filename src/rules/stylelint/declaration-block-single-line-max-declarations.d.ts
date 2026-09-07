@@ -1,6 +1,3 @@
-import type { RuleConfig } from '../rule-config'
+import type { RuleConfig } from '../rule-config.js'
 
-export type DeclarationBlockSingleLineMaxDeclarationsOptions = RuleConfig<
-  number,
-  [max: number]
->
+export type DeclarationBlockSingleLineMaxDeclarationsOptions = RuleConfig<number, [max: number]>
