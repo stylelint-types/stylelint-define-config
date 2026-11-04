@@ -1,5 +1,6 @@
 import type { AlphaValueNotationOptions } from './alpha-value-notation.js'
 import type { AnnotationNoUnknownOptions } from './annotation-no-unknown.js'
+import type { AtCharsetRuleNoInvalidOptions } from './at-charset-rule-no-invalid.js'
 import type { AtRuleAllowedListOptions } from './at-rule-allowed-list.js'
 import type { AtRuleDescriptorNoUnknownOptions } from './at-rule-descriptor-no-unknown.js'
 import type { AtRuleDescriptorValueNoUnknownOptions } from './at-rule-descriptor-value-no-unknown.js'
@@ -36,6 +37,7 @@ import type { DeclarationBlockNoShorthandPropertyOverridesOptions } from './decl
 import type { DeclarationBlockSingleLineMaxDeclarationsOptions } from './declaration-block-single-line-max-declarations.js'
 import type { DeclarationEmptyLineBeforeOptions } from './declaration-empty-line-before.js'
 import type { DeclarationNoImportantOptions } from './declaration-no-important.js'
+import type { DeclarationPropertyCustomPropertyAllowedListOptions } from './declaration-property-custom-property-allowed-list.js'
 import type { DeclarationPropertyMaxValuesOptions } from './declaration-property-max-values.js'
 import type { DeclarationPropertyUnitAllowedListOptions } from './declaration-property-unit-allowed-list.js'
 import type { DeclarationPropertyUnitDisallowedListOptions } from './declaration-property-unit-disallowed-list.js'
@@ -147,7 +149,9 @@ import type { UnitLayoutMappingsOptions } from './unit-layout-mappings.js'
 import type { UnitNoUnknownOptions } from './unit-no-unknown.js'
 import type { ValueKeywordCaseOptions } from './value-keyword-case.js'
 import type { ValueKeywordLayoutMappingsOptions } from './value-keyword-layout-mappings.js'
+import type { ValueNoInvalidOptions } from './value-no-invalid.js'
 import type { ValueNoVendorPrefixOptions } from './value-no-vendor-prefix.js'
+import type { ValueTypeCustomPropertyRequiredListOptions } from './value-type-custom-property-required-list.js'
 
 /**
  * Rules determine what the linter looks for and complains about.
@@ -202,6 +206,18 @@ export interface StyleLintRules {
    * @see [annotation-no-unknown](https://stylelint.io/user-guide/rules/annotation-no-unknown)
    */
   'annotation-no-unknown': AnnotationNoUnknownOptions
+
+  /**
+   * Disallow malformed or misplaced `@charset` declarations.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * @see [at-charset-rule-no-invalid](https://stylelint.io/user-guide/rules/at-charset-rule-no-invalid)
+   */
+  'at-charset-rule-no-invalid': AtCharsetRuleNoInvalidOptions
+
   /**
    * Specify a list of allowed at-rules.
    *
@@ -895,6 +911,18 @@ export interface StyleLintRules {
    * @see [declaration-no-important](https://stylelint.io/user-guide/rules/declaration-no-important)
    */
   'declaration-no-important': DeclarationNoImportantOptions
+
+  /**
+   * Restrict custom properties to the allowed names or patterns for each CSS property.
+   *
+   * ### Primary Options:
+   *
+   * An object mapping property names or regex patterns to custom-property names or patterns.
+   * Each mapping accepts one matcher or an array of matchers.
+   *
+   * @see [declaration-property-custom-property-allowed-list](https://stylelint.io/user-guide/rules/declaration-property-custom-property-allowed-list)
+   */
+  'declaration-property-custom-property-allowed-list': DeclarationPropertyCustomPropertyAllowedListOptions
 
   /**
    * Limit the number of values for a list of properties within declarations.
@@ -3399,6 +3427,17 @@ export interface StyleLintRules {
   'value-keyword-layout-mappings': ValueKeywordLayoutMappingsOptions
 
   /**
+   * Disallow invalid value syntax and incompatible operands in CSS math functions.
+   *
+   * ### Primary Options:
+   *
+   * `true`
+   *
+   * @see [value-no-invalid](https://stylelint.io/user-guide/rules/value-no-invalid)
+   */
+  'value-no-invalid': ValueNoInvalidOptions
+
+  /**
    * Disallow vendor prefixes for values.
    *
    * ```scss
@@ -3420,4 +3459,23 @@ export interface StyleLintRules {
    * @see [value-no-vendor-prefix](https://stylelint.io/user-guide/rules/value-no-vendor-prefix)
    */
   'value-no-vendor-prefix': ValueNoVendorPrefixOptions
+
+  /**
+   * Require custom properties for values matching selected CSS value types.
+   *
+   * ### Primary Options:
+   *
+   * A CSS value-type name or an array of names, such as `"color"` or `["color", "length"]`.
+   *
+   * ### Optional Secondary Options:
+   *
+   * - `ignoreValues`: Exempt matching literal values.
+   * - `ignoreFunctions`: Exempt functions, grouped by CSS value type.
+   * - `ignoreProperties`: Exempt properties, grouped by CSS value type.
+   *
+   * @experimental
+   *
+   * @see [value-type-custom-property-required-list](https://stylelint.io/user-guide/rules/value-type-custom-property-required-list)
+   */
+  'value-type-custom-property-required-list': ValueTypeCustomPropertyRequiredListOptions
 }
