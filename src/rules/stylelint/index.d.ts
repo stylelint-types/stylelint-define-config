@@ -1359,9 +1359,16 @@ export interface StyleLintRules {
    * //            Functions like this
    * ```
    *
-   * This rule considers functions defined in the CSS Specifications to be known.
+   * Use this rule to avoid mistyped functions, e.g. `rgbaa()`.
+   * Browsers [ignore the whole declaration](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Syntax/Error_handling#errors_within_css_declaration_blocks).
    *
-   * This rule ignores double-dashed custom functions, e.g. `--custom-function()`.
+   * This rule considers functions defined in the CSS Specifications, up to and including Editor's Drafts, to be known.
+   *
+   * You can filter the [CSSTree Syntax Reference](https://csstree.github.io/docs/syntax/) to find out what functions are known, and use the [`languageOptions`](https://stylelint.io/user-guide/configure#languageoptions) configuration property to extend it.
+   *
+   * This rule ignores:
+   * - double-dashed custom functions, e.g., `--custom-function()`
+   * - vendor-prefixed functions, e.g., `-webkit-calc()`
    *
    * ### Primary Options
    * `true`
