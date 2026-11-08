@@ -113,8 +113,6 @@ export interface StylelintConfig {
    * `postprocess` runs after all rules have been evaluated.
    * This function receives the `result` object of the linting process and can modify it.
    *
-   * @experimental
-   *
    * @example
    * ```ts
    * {
@@ -289,8 +287,6 @@ export interface StylelintConfig {
 
   /**
    * An array of globs or objects to specify what files to get reference information from
-   *
-   * @experimental This is an experimental feature. The API may change in the future.
    *
    * @see [referenceFiles](https://stylelint.io/user-guide/configure#referencefiles)
    */
