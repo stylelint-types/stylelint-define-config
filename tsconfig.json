@@ -10,7 +10,9 @@
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "isolatedDeclarations": true
+    "isolatedDeclarations": true,
+    "types": ["node"]
   },
+  "include": ["src", "tsdown.config.ts"],
   "exclude": ["node_modules", "dist"]
 }
