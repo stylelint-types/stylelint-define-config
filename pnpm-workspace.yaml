@@ -7,4 +7,7 @@ trustPolicyExclude:
 shellEmulator: true
 
 overrides:
-  baseline-browser-mapping: ^2.11.21
+  baseline-browser-mapping: ^2.11.35
+permissions:
+  tsdown:
+    skills: false
