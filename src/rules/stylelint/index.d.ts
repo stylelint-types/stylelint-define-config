@@ -3486,7 +3486,13 @@ export interface StyleLintRules {
   'value-no-vendor-prefix': ValueNoVendorPrefixOptions
 
   /**
-   * Require custom properties for values matching selected CSS value types.
+   * Specify a list of value types that require custom properties.
+   *
+   * ```scss
+   * a { border: 1px solid red; }
+   * //          ^^^       ^^^
+   * //         These <length> and <color> values
+   * ```
    *
    * ### Primary Options:
    *
