@@ -34,7 +34,6 @@ import type { DeclarationBlockNoDuplicateCustomPropertiesOptions } from './decla
 import type { DeclarationBlockNoDuplicatePropertiesOptions } from './declaration-block-no-duplicate-properties.js'
 import type { DeclarationBlockNoRedundantLonghandPropertiesOptions } from './declaration-block-no-redundant-longhand-properties.js'
 import type { DeclarationBlockNoShorthandPropertyOverridesOptions } from './declaration-block-no-shorthand-property-overrides.js'
-import type { DeclarationBlockSingleLineMaxDeclarationsOptions } from './declaration-block-single-line-max-declarations.js'
 import type { DeclarationEmptyLineBeforeOptions } from './declaration-empty-line-before.js'
 import type { DeclarationNoImportantOptions } from './declaration-no-important.js'
 import type { DeclarationPropertyCustomPropertyAllowedListOptions } from './declaration-property-custom-property-allowed-list.js'
@@ -848,22 +847,6 @@ export interface StyleLintRules {
    * @see [declaration-block-no-shorthand-property-overrides](https://stylelint.io/user-guide/rules/declaration-block-no-shorthand-property-overrides)
    */
   'declaration-block-no-shorthand-property-overrides': DeclarationBlockNoShorthandPropertyOverridesOptions
-
-  /**
-   * Limit the number of declarations within a single-line declaration block.
-   *
-   * ```scss
-   * a { color: pink; top: 0; }
-   * //  ^            ^
-   * //  The number of these declarations
-   * ```
-   *
-   * ### Primary Options:
-   *
-   * `int`: Maximum number of declarations allowed.
-   * @see [declaration-block-single-line-max-declarations](https://stylelint.io/user-guide/rules/declaration-block-single-line-max-declarations)
-   */
-  'declaration-block-single-line-max-declarations': DeclarationBlockSingleLineMaxDeclarationsOptions
 
   /**
    * Require or disallow an empty line before declarations.
