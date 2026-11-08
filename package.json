@@ -62,12 +62,12 @@
     "typescript": "^7.0.2"
   },
   "peerDependencies": {
-    "stylelint": ">=17.0.0"
+    "stylelint": ">=18.0.0"
   },
   "engines": {
-    "node": ">=20.19.0",
+    "node": ">=22.12.0",
     "npm": ">=9",
-    "pnpm": ">=10"
+    "pnpm": ">=12"
   },
   "packageManager": "pnpm@12.18.0"
 }
