@@ -906,7 +906,17 @@ export interface StyleLintRules {
   'declaration-no-important': DeclarationNoImportantOptions
 
   /**
-   * Restrict custom properties to the allowed names or patterns for each CSS property.
+   * Specify a list of allowed property and custom property pairs within declarations.
+   *
+   * ```scss
+   * a { color: var(--foo); }
+   * //  ^^^^^      ^^^^^
+   * // These properties and these custom properties
+   * ```
+   *
+   * Use this rule to enforce a subset of custom properties for a property as a convention. For example, allow only:
+   * - `/^--radius-/` for `/radius$/`, so that only radius tokens are used for radii
+   * - `/^--space-/` for `/^(margin|padding|gap)/`, so that only spacing tokens are used for spacing
    *
    * ### Primary Options:
    *
