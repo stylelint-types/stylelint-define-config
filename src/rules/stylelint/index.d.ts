@@ -209,6 +209,16 @@ export interface StyleLintRules {
   /**
    * Disallow malformed or misplaced `@charset` declarations.
    *
+   * >```scss
+   * >@charset "utf-8";
+   * >^^^^^^^^
+   * > This rule
+   * >```
+   *
+   * Use this rule to avoid falling back to another encoding. Browsers ignore an invalid `@charset` and decode the stylesheet with the referring document's encoding or UTF-8.
+   *
+   * The `@charset` rule is not an at-rule. It's a byte sequence that browsers look for at the very start of a stylesheet, as defined in the [CSS Syntax Level 3](https://drafts.csswg.org/css-syntax/#determine-the-fallback-encoding) specification.
+   *
    * ### Primary Options:
    *
    * `true`
