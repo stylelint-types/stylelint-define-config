@@ -1,6 +1,6 @@
 {
   "name": "stylelint-define-config",
-  "version": "17.15.0",
+  "version": "18.0.0",
   "description": "Provide a defineConfig function for stylelint.config.js files",
   "keywords": [
     "config",

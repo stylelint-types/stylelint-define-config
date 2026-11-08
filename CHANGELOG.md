@@ -1,3 +1,23 @@
+# [18.0.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.15.0...v18.0.0) (2026-11-08)
+
+### Bug Fixes
+
+- restore `ignoreFunctions` arrays for `length-zero-no-unit` ([#4](https://github.com/stylelint-types/stylelint-define-config/issues/4)) ([904fac1](https://github.com/stylelint-types/stylelint-define-config/commit/904fac15d1ec18559505cb4846465e5af6d4dfc0))
+
+### Features
+
+- add `at-charset-rule-no-invalid` rule ([23b7aa4](https://github.com/stylelint-types/stylelint-define-config/commit/23b7aa496b19746ad99e9662245f254dc9488a82))
+- add `declaration-property-custom-property-allowed-list` rule ([3220467](https://github.com/stylelint-types/stylelint-define-config/commit/32204670908a03913bb691262970518d7e2e7a5a))
+- add `value-no-invalid` rule ([037a0bb](https://github.com/stylelint-types/stylelint-define-config/commit/037a0bb23f3bccfcc7c2000140fe8e7b7c9552be))
+- add `value-type-custom-property-required-list` experimental rule ([5db2f33](https://github.com/stylelint-types/stylelint-define-config/commit/5db2f335b8ef68607c1583b1e10f91b5ab2cbdfa))
+- Add types for new Stylelint 18 rules ([#5](https://github.com/stylelint-types/stylelint-define-config/issues/5)) ([0ded456](https://github.com/stylelint-types/stylelint-define-config/commit/0ded456f3f234ec5685d5063437e963e45a8593e))
+- change `function-no-unknown` to use the CSSTree Syntax Reference for known functions and to ignore vendor-prefixed functions ([e4492d0](https://github.com/stylelint-types/stylelint-define-config/commit/e4492d0e472ddfdd5f21f387e0254ebaa6e6e69b))
+- remove `*syntax` options from `declaration-property-value-no-unknown` ([06b192e](https://github.com/stylelint-types/stylelint-define-config/commit/06b192e2b4303318671020ccb7d8d298b82ee280))
+- remove `declaration-block-single-line-max-declarations` rule ([f78c4ba](https://github.com/stylelint-types/stylelint-define-config/commit/f78c4ba30fc05b5ddf2c50af4a0873c6a8bfd484))
+- remove `ignoreSelectors` option from `selector-max-specificity` ([8550557](https://github.com/stylelint-types/stylelint-define-config/commit/85505578b83410ff59fa86ade8bea160f52c6f84))
+- stable support for `processors` and `referenceFiles` configuration ([43e33f8](https://github.com/stylelint-types/stylelint-define-config/commit/43e33f8b0f397feb62e9dda598c04622dc573ab3))
+- update stylelint to `v18` ([6c4e811](https://github.com/stylelint-types/stylelint-define-config/commit/6c4e811a15308646ca8025365974c920c986c1f7))
+
 # [17.15.0](https://github.com/stylelint-types/stylelint-define-config/compare/v17.14.0...v17.15.0) (2026-09-07)
 
 ### Features
